@@ -393,7 +393,7 @@ BigQuery can query files in GCS without loading them first — **external tables
 | Convert timezones (UTC → local) | Join to dimension tables (that is Gold) |
 | Fix data types (strings → dates, numbers) | Create surrogate keys (that is Gold) |
 | Standardize text (trim whitespace, consistent casing) | Aggregate or summarize (that is Gold) |
-| Flatten nested JSON (MongoDB documents → flat columns) | Apply business rules like "Emson = Bullseye Pro" (that is Gold dimensions) |
+| Flatten nested JSON (MongoDB documents → flat columns) | Apply business rules like "ClientA = Product A Pro" (that is Gold dimensions) |
 | Flag missing values (boolean columns: `has_missing_X`) | Filter records for specific consumers (that is Gold) |
 | Union multiple sources into one table (VA + Live → `silver.calls`) | Build the star schema (that is Gold) |
 

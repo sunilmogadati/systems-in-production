@@ -63,7 +63,7 @@ Gap:         Small — but both lines are high
 
 Both losses are high. Neither is improving much. The model is not learning — not from training data, not generalizing to test data.
 
-**The analogy:** A student trying to understand calculus with only addition skills. The tool is too simple for the problem. No amount of practice helps — the student needs a more powerful framework.
+**The analogy:** A student trying to understand calculus with only addition skills. The tool is too simple for the problem. No amount of practice helps — the practitioner needs a more powerful framework.
 
 **Diagnosis:** Underfitting. The model is too simple. It does not have enough capacity (layers, neurons, parameters) to capture the pattern in the data. Or the learning rate is too low and the model is barely moving.
 

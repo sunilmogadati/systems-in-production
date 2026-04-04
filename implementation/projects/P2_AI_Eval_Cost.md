@@ -237,11 +237,11 @@ gh repo create p2-ai-eval-cost --public --push
 
 | What You Build Here | Where It Goes |
 |:---|:---|
-| LLM-as-judge evaluation pattern | **P3 (Week 8):** RAGAS evaluation uses the same judge pattern on RAG responses |
-| Latency benchmarking | **P5 (Week 12):** Load testing with Locust/k6 builds on latency measurement skills |
-| Cost modeling | **Week 13 (LLMOps):** Token cost dashboards, rate limiting, caching strategies |
-| Hallucination detection | **P3 (Week 8):** RAG faithfulness scores measure the same thing in a retrieval context |
-| Experiment tracking (MLflow/W&B) | **Week 13:** Production MLOps integrates experiment tracking into CI/CD pipelines |
+| LLM-as-judge evaluation pattern | **P3 (the RAG section):** RAGAS evaluation uses the same judge pattern on RAG responses |
+| Latency benchmarking | **P5 (the Enterprise Integration section):** Load testing with Locust/k6 builds on latency measurement skills |
+| Cost modeling | **the LLMOps section (LLMOps):** Token cost dashboards, rate limiting, caching strategies |
+| Hallucination detection | **P3 (the RAG section):** RAG faithfulness scores measure the same thing in a retrieval context |
+| Experiment tracking (MLflow/W&B) | **the LLMOps section:** Production MLOps integrates experiment tracking into CI/CD pipelines |
 | Model comparison methodology | **Every future project:** You will always need to justify model choices with data, not opinions |
 
 ---

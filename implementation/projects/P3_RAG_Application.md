@@ -12,7 +12,7 @@ Build a **production-quality document Q&A system** using RAG (Retrieval-Augmente
 
 This is not another tutorial. You already built a RAG system in the notebook (Section 6-27). This project adds what the notebook intentionally left out: **your own documents, automated evaluation, security, and production structure.**
 
-P3 is also the foundation for P4 (Week 10), where you will swap repos with a partner and extend their code. Build it like someone else will read and modify it — because they will.
+P3 is also the foundation for P4 (the Advanced RAG section), where you will swap repos with a partner and extend their code. Build it like someone else will read and modify it — because they will.
 
 ---
 
@@ -204,12 +204,12 @@ A hands-on guide for cloning and running these repos is available at: [RAG Proje
 
 | What You Build Here | Where It Goes |
 |:---|:---|
-| Modular, well-documented code | **P4 (Week 10):** A classmate will clone your P3 and extend it. They will read every line. |
+| Modular, well-documented code | **P4 (the Advanced RAG section):** A classmate will clone your P3 and extend it. They will read every line. |
 | RAGAS evaluation test set | **P4:** Your partner runs the same test set after their changes. Scores should improve, not regress. |
 | ChromaDB + LangChain pipeline | **P4:** Partner adds reranking, hybrid search, or query classification on top of your pipeline |
-| Prompt injection defense | **P5 (Week 12):** Enterprise integration adds PII (Personally Identifiable Information) redaction, RBAC (Role-Based Access Control), and formal security assessment |
+| Prompt injection defense | **P5 (the Enterprise Integration section):** Enterprise integration adds PII (Personally Identifiable Information) redaction, RBAC (Role-Based Access Control), and formal security assessment |
 | Reflection on architectural decisions | **P4:** Partner documents what they would have done differently — your decisions become their constraints |
-| The entire RAG system | **P6 (Week 16):** Capstone builds on the same platform — adds agents, voice/chat UI, and 1-week production operation |
+| The entire RAG system | **P6 (the Capstone section):** Capstone builds on the same platform — adds agents, voice/chat UI, and 1-week production operation |
 
 ---
 

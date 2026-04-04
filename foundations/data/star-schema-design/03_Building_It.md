@@ -137,7 +137,7 @@ SELECT * FROM call_center_gold.dim_campaign;
 ```
 
 **What this replaces:**
-- `UPDATE t SET t.programName = 'Bullseye Pro English' WHERE t.client = 'Emson'` — the correct name is a column in this table
+- `UPDATE t SET t.programName = 'Product A English' WHERE t.client = 'ClientA'` — the correct name is a column in this table
 - `WHERE t.id IN (1094758, 1085870, 1090805)` — hard-coded call ID overrides disappear. The campaign mapping is data.
 
 > **Note:** The synthetic dataset has a simple campaign table. In production, this dimension would also include `source_name`, `media_source` (buyer), `media_type`, `buyer_source_code`, `script_id` — all from `tblSource`. The principle is the same: put the mapping in a dimension table, not in a stored proc.

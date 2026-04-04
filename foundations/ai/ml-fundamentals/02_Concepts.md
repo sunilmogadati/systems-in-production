@@ -39,7 +39,7 @@ graph LR
 
 | Type | What the Model Learns From | Example | Analogy |
 |:---|:---|:---|:---|
-| **Supervised** | Labeled data — input + correct answer | "This call resulted in churn (yes/no)" — the model learns the relationship between features and outcome | A teacher grading homework — the student sees the correct answer and adjusts |
+| **Supervised** | Labeled data — input + correct answer | "This call resulted in churn (yes/no)" — the model learns the relationship between features and outcome | A teacher grading homework — the practitioner sees the correct answer and adjusts |
 | **Unsupervised** | Unlabeled data — input only, no correct answer | "Group these customers into segments" — the model finds patterns without being told what to look for | Sorting a pile of photos without being told the categories — the groupings emerge from similarity |
 | **Self-Supervised** | Creates its own labels from the data | "Predict the next word in this sentence" — the label is the actual next word, already in the text | A student who covers a word, tries to guess it, then checks — no teacher needed. This is how GPT and BERT are trained. |
 

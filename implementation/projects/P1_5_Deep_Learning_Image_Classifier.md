@@ -10,7 +10,7 @@
 
 Build a **PyTorch image classifier** that recognizes real-world objects from photographs. You will design a neural network architecture, train it, diagnose training problems using loss curves, and compare multiple approaches to find the best model.
 
-This project bridges the gap between "I understand the theory" and "I can build and debug a neural network." Every technique you use here — training loops, loss curves, regularization, architecture comparison — applies directly to the Transformer and fine-tuning work in Weeks 4-6.
+This project bridges the gap between "I understand the theory" and "I can build and debug a neural network." Every technique you use here — training loops, loss curves, regularization, architecture comparison — applies directly to the Transformer and Fine-Tuning sections.
 
 ---
 
@@ -215,9 +215,9 @@ p1-5-image-classifier/
 
 | What You Build Here | Where It Goes |
 |:---|:---|
-| nn.Module class pattern | Week 4-5: You will build Transformer blocks as nn.Module subclasses |
-| Training loop (5-step pattern) | Week 5: Same loop trains nanoGPT. Same loop trains everything. |
-| Loss curve diagnostics | Week 5: You will use loss curves to debug a language model |
-| Regularization (dropout, data augmentation) | Week 6: LoRA/QLoRA fine-tuning is fundamentally a regularization strategy |
-| Architecture comparison methodology | Week 7 (P2): Comparing LLM models on cost, latency, and quality |
-| Confusion matrix analysis | Week 8+: Understanding where RAG and agents fail follows the same pattern |
+| nn.Module class pattern | the Transformer section: You will build Transformer blocks as nn.Module subclasses |
+| Training loop (5-step pattern) | the Transformer section: Same loop trains nanoGPT. Same loop trains everything. |
+| Loss curve diagnostics | the Transformer section: You will use loss curves to debug a language model |
+| Regularization (dropout, data augmentation) | the Fine-Tuning section: LoRA/QLoRA fine-tuning is fundamentally a regularization strategy |
+| Architecture comparison methodology | the Cloud & MLOps section (P2): Comparing LLM models on cost, latency, and quality |
+| Confusion matrix analysis | the RAG section+: Understanding where RAG and agents fail follows the same pattern |
