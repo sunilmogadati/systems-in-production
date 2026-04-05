@@ -1,0 +1,8 @@
+service_name,team,language,database,message_broker,deployment_target,oncall_rotation,repo_url,runbook_url,sla_p99_ms
+api-gateway,Platform,Java,PostgreSQL,SQS,Kubernetes,platform-oncall,https://github.com/acme-corp/api-gateway,https://docs.internal/runbooks/api-gateway,200
+order-service,Commerce,Python,PostgreSQL,Kafka,Lambda,commerce-oncall,https://github.com/acme-corp/order-service,https://docs.internal/runbooks/order-service,1000
+payment-service,Commerce,Java,PostgreSQL,Kafka,Kubernetes,commerce-oncall,https://github.com/acme-corp/payment-service,https://docs.internal/runbooks/payment-service,200
+inventory-service,Commerce,Java,MySQL,none,Kubernetes,commerce-oncall,https://github.com/acme-corp/inventory-service,https://docs.internal/runbooks/inventory-service,1000
+notification-service,Platform,Node.js,PostgreSQL,RabbitMQ,Lambda,platform-oncall,https://github.com/acme-corp/notification-service,https://docs.internal/runbooks/notification-service,1000
+auth-service,Identity,Node.js,MongoDB,RabbitMQ,Kubernetes,identity-oncall,https://github.com/acme-corp/auth-service,https://docs.internal/runbooks/auth-service,500
+search-service,Discovery,Java,PostgreSQL,none,Kubernetes,discovery-oncall,https://github.com/acme-corp/search-service,https://docs.internal/runbooks/search-service,500

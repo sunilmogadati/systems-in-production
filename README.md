@@ -9,7 +9,7 @@ This is not a tutorial collection. This is documentation of how production syste
 ## Start Here
 
 ### → [See a real system](systems/call-intelligence/)
-A call center intelligence system that unifies 7 fragmented data sources, auto-diagnoses every call, and recovers lost revenue through automated reconciliation. Architecture, data flow, failure points, and design decisions — documented.
+A production diagnostic system that unifies fragmented data sources, automates investigation across databases, logs, and documents, and surfaces operational issues before they compound. Architecture, data flow, failure points, and design decisions.
 
 ### → [Understand the patterns](patterns/)
 Architecture patterns extracted from production systems: Bronze-Silver-Gold data pipelines, multi-system reconciliation, AI-derived feature engineering, feedback loops that make systems improve over time.

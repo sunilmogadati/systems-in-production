@@ -29,3 +29,9 @@ chroma_data/
 
 # Internal planning
 CURRICULUM_MASTER.md
+
+# Generated artifacts from notebook execution
+implementation/notebooks/chroma/
+implementation/notebooks/data/
+implementation/notebooks/mlruns/
+data/production-support/generate_dataset.py
