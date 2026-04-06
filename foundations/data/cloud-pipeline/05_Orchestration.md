@@ -2,6 +2,8 @@
 
 **How to run pipeline steps in the right order, handle failures, and make it all repeatable.**
 
+> These concepts apply to any cloud (GCP, AWS, Azure). Examples use GCP as the primary, with AWS equivalents noted. The hands-on notebooks are cloud-specific: [GCP Pipeline](../../../implementation/notebooks/GCP_Full_Pipeline.ipynb) | AWS Pipeline (coming soon).
+
 ---
 
 ## The Problem

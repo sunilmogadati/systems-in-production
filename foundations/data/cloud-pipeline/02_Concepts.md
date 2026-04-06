@@ -2,6 +2,8 @@
 
 **Every cloud service in plain English. How they connect. What each one does in the pipeline.**
 
+> These concepts apply to any cloud (GCP, AWS, Azure). Examples use GCP as the primary, with AWS equivalents noted. The hands-on notebooks are cloud-specific: [GCP Pipeline](../../../implementation/notebooks/GCP_Full_Pipeline.ipynb) | AWS Pipeline (coming soon).
+
 ---
 
 ## The GCP Services You Need (and Only These)

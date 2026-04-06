@@ -2,6 +2,8 @@
 
 **Upload data to GCS, load it into BigQuery, run a query, see a result. In 10 minutes.**
 
+> This hello world uses GCP (GCS + BigQuery). For AWS (S3 + Redshift), see AWS_Full_Pipeline (coming soon). The concepts are identical, only the commands differ.
+
 ---
 
 ## What You Need
