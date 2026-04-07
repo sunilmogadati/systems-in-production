@@ -20,8 +20,8 @@ Where and why systems fail in production — not in theory, but from real incide
 ### → [Explore how decisions are made](decisions/)
 The decisions behind the architecture: batch vs streaming, star schema vs querying source tables directly, SQL vs Spark vs BigQuery. Not what to choose — but how to think about choosing.
 
-### → [Go deeper on foundations](foundations/)
-Structured concept guides for data engineering and AI: star schema design, data modeling, deep learning, ML fundamentals. Each topic follows: why it matters → mental models → hello world → how it works → decisions → real-world architecture.
+### → [Explore the playbooks](playbooks/)
+Reference architectures and operating frameworks for Cloud, Data, and AI. Each topic follows: why it matters, how it works, how to build it, production patterns, system design, quality and security, observability, and a decision guide.
 
 ### → [Run the code](implementation/)
 30 Jupyter notebooks, pipeline implementations, and project specifications. Open any notebook in Google Colab — no local setup needed.
