@@ -201,4 +201,4 @@ This is the same 10-step framework used in the Interview Prep notebook and the A
 
 ---
 
-**Next:** [08 — Security & Governance](08_Security_Governance.md) — Adversarial attacks, data privacy, bias auditing, regulatory compliance, and building AI systems that are safe to deploy.
+**Next:** [08 — Security & Governance](08_Quality_Security_Governance.md) — Adversarial attacks, data privacy, bias auditing, regulatory compliance, and building AI systems that are safe to deploy.

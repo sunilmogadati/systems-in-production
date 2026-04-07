@@ -143,11 +143,11 @@ See the full architecture: [Production Diagnostics Architecture](../../systems/p
 | [02 - Concepts](02_Concepts.md) | Embeddings, vector databases, chunking, retrieval. In plain English. |
 | [03 - Hello World](03_Hello_World.md) | Build a working RAG system in 20 lines of code. |
 | [04 - How It Works](04_How_It_Works.md) | What happens at each step. Why embeddings capture meaning. |
-| [05 - Decisions](05_Decisions.md) | Chunk size, embedding model, retrieval strategy, LLM choice. Every tradeoff. |
-| [06 - Real World](06_Real_World.md) | How GitHub Copilot, Perplexity, Glean, Notion AI use RAG in production. |
+| [05 - Building It](05_Building_It.md) | Chunk size, embedding model, retrieval strategy, LLM choice. Every tradeoff. |
+| [06 - Production Patterns](06_Production_Patterns.md) | How GitHub Copilot, Perplexity, Glean, Notion AI use RAG in production. |
 | [07 - System Design](07_System_Design.md) | Scaling RAG: caching, hybrid search, re-ranking, multi-tenant. |
-| [08 - Security](08_Security.md) | Prompt injection, data leakage, PII in retrievals, access control. |
-| [09 - Observability](09_Observability.md) | Measuring retrieval quality, answer quality, cost, latency. |
-| [10 - Checklist](10_Checklist.md) | "Should I use RAG?" decision table. Production readiness checklist. |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Prompt injection, data leakage, PII in retrievals, access control. |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Measuring retrieval quality, answer quality, cost, latency. |
+| [10 - Decision Guide](10_Decision_Guide.md) | "Should I use RAG?" decision table. Production readiness checklist. |
 
 **Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb) — builds everything from ingestion to evaluation, running locally with Ollama.

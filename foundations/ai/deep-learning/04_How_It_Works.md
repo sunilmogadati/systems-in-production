@@ -228,4 +228,4 @@ When loss is not decreasing or accuracy is stuck, work through this list **in or
 
 ---
 
-**Next:** [05 — Decisions](05_Decisions.md) — Every architectural choice, with tradeoffs. Activation functions, loss functions, optimizers, architecture selection — the decision framework for deep learning projects.
+**Next:** [05 — Decisions](05_Building_It.md) — Every architectural choice, with tradeoffs. Activation functions, loss functions, optimizers, architecture selection — the decision framework for deep learning projects.

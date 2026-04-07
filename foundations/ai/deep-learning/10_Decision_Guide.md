@@ -125,12 +125,12 @@ Use this for any ML system design question — interviews, architecture reviews,
 | [02 — Concepts](02_Concepts.md) | Mental models, analogies, building blocks |
 | [03 — Hello World](03_Hello_World.md) | 10 lines of code, 97% accuracy |
 | [04 — How It Works](04_How_It_Works.md) | Training diagnostics, loss curves |
-| [05 — Decisions](05_Decisions.md) | Every architectural choice with tradeoffs |
-| [06 — Real World](06_Real_World.md) | Production case studies (Google Health, Tesla, Midjourney) |
+| [05 — Decisions](05_Building_It.md) | Every architectural choice with tradeoffs |
+| [06 — Real World](06_Production_Patterns.md) | Production case studies (Google Health, Tesla, Midjourney) |
 | [07 — System Design](07_System_Design.md) | Scalability, cloud, CI/CD, distributed training |
-| [08 — Security & Governance](08_Security_Governance.md) | Adversarial attacks, privacy, bias, compliance |
-| [09 — Observability](09_Observability.md) | Monitoring, drift detection, debugging method |
-| [10 — Checklist](10_Checklist.md) | This page |
+| [08 — Security & Governance](08_Quality_Security_Governance.md) | Adversarial attacks, privacy, bias, compliance |
+| [09 — Observability](09_Observability_Troubleshooting.md) | Monitoring, drift detection, debugging method |
+| [10 — Checklist](10_Decision_Guide.md) | This page |
 
 ---
 

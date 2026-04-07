@@ -359,12 +359,12 @@ This 10-chapter series covers AI agents from first principles to production read
 | [02 - Concepts](02_Concepts.md) | Tools, reasoning loops, ReAct, chain of thought. All in plain English. |
 | [03 - Hello World](03_Hello_World.md) | A working agent in minimal code. The minimum viable agent. |
 | [04 - How It Works](04_How_It_Works.md) | How LLMs call tools. How the reasoning loop executes. Token mechanics. |
-| [05 - Decisions](05_Decisions.md) | Model choice, tool design, autonomy level, framework selection. Every tradeoff. |
-| [06 - Real World](06_Real_World.md) | How Claude Code, Devin, AutoGPT, Copilot Workspace, customer support agents, and the production diagnostic agent work. |
+| [05 - Building It](05_Building_It.md) | Model choice, tool design, autonomy level, framework selection. Every tradeoff. |
+| [06 - Production Patterns](06_Production_Patterns.md) | How Claude Code, Devin, AutoGPT, Copilot Workspace, customer support agents, and the production diagnostic agent work. |
 | [07 - System Design](07_System_Design.md) | Single agent, multi-agent (orchestrator, pipeline, debate), LangGraph, MCP (Model Context Protocol), A2A (Agent-to-Agent protocol), cost control. |
-| [08 - Security](08_Security.md) | Permissions, prompt injection, sandboxing, audit logging, approval gates, threat model. |
-| [09 - Observability](09_Observability.md) | Six core metrics, tracing, debugging, loop detection, evaluation, dashboard design. |
-| [10 - Checklist](10_Checklist.md) | This page. Decision table, production readiness checklist, templates, failure modes. |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Permissions, prompt injection, sandboxing, audit logging, approval gates, threat model. |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Six core metrics, tracing, debugging, loop detection, evaluation, dashboard design. |
+| [10 - Decision Guide](10_Decision_Guide.md) | This page. Decision table, production readiness checklist, templates, failure modes. |
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) -- builds a ReAct agent with tool calling, from scratch.
 
@@ -378,12 +378,12 @@ This 10-chapter series covers AI agents from first principles to production read
 | [02 - Concepts](02_Concepts.md) | Tools, reasoning, ReAct loop |
 | [03 - Hello World](03_Hello_World.md) | Build an agent in minimal code |
 | [04 - How It Works](04_How_It_Works.md) | Deep dive into agent internals |
-| [05 - Decisions](05_Decisions.md) | Every tradeoff and choice |
-| [06 - Real World](06_Real_World.md) | How production agents work |
+| [05 - Building It](05_Building_It.md) | Every tradeoff and choice |
+| [06 - Production Patterns](06_Production_Patterns.md) | How production agents work |
 | [07 - System Design](07_System_Design.md) | Architecture patterns for agents |
-| [08 - Security](08_Security.md) | Permissions, injection, sandboxing |
-| [09 - Observability](09_Observability.md) | Measuring and debugging agents |
-| **[10 - Checklist](10_Checklist.md)** | **This page** |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Permissions, injection, sandboxing |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Measuring and debugging agents |
+| **[10 - Decision Guide](10_Decision_Guide.md)** | **This page** |
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb)
 

@@ -145,4 +145,4 @@ This framework is covered hands-on in the Enterprise Integration project (P5), w
 
 ---
 
-**Next:** [09 — Observability](09_Observability.md) — Monitoring deployed models, detecting accuracy drift, latency dashboards, and the drill-down debugging method for production ML systems.
+**Next:** [09 — Observability](09_Observability_Troubleshooting.md) — Monitoring deployed models, detecting accuracy drift, latency dashboards, and the drill-down debugging method for production ML systems.

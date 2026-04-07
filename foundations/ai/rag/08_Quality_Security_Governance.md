@@ -375,11 +375,11 @@ flowchart TD
 | [02 - Concepts](02_Concepts.md) | Embeddings, vectors, chunking |
 | [03 - Hello World](03_Hello_World.md) | Build a RAG system in 20 lines |
 | [04 - How It Works](04_How_It_Works.md) | Embeddings, similarity, ANN algorithms |
-| [05 - Decisions](05_Decisions.md) | Every tradeoff and choice |
-| [06 - Real World](06_Real_World.md) | How production RAG systems work |
+| [05 - Building It](05_Building_It.md) | Every tradeoff and choice |
+| [06 - Production Patterns](06_Production_Patterns.md) | How production RAG systems work |
 | [07 - System Design](07_System_Design.md) | Scaling, caching, hybrid search |
-| [08 - Security](08_Security.md) | This page |
-| [09 - Observability](09_Observability.md) | Measuring quality and cost |
-| [10 - Checklist](10_Checklist.md) | Decision table and production readiness |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | This page |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Measuring quality and cost |
+| [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
 **Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb)

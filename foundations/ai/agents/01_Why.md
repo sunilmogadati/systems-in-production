@@ -172,12 +172,12 @@ This is not new. This is how human experts work. The agent just does it faster, 
 | [02 - Concepts](02_Concepts.md) | Agent architecture, ReAct pattern, tools, memory. In plain English. |
 | [03 - Hello World](03_Hello_World.md) | Build a working agent in ~30 lines of Python. |
 | [04 - How It Works](04_How_It_Works.md) | The ReAct loop in detail. How tool calling works under the hood. |
-| [05 - Decisions](05_Decisions.md) | LLM choice, framework choice, single vs multi-agent. Every tradeoff. |
-| [06 - Real World](06_Real_World.md) | How GitHub Copilot, Devin, and enterprise systems use agents in production. |
+| [05 - Building It](05_Building_It.md) | LLM choice, framework choice, single vs multi-agent. Every tradeoff. |
+| [06 - Production Patterns](06_Production_Patterns.md) | How GitHub Copilot, Devin, and enterprise systems use agents in production. |
 | [07 - System Design](07_System_Design.md) | Scaling agents: state management, fault tolerance, human-in-the-loop. |
-| [08 - Security](08_Security.md) | Prompt injection, tool misuse, permission boundaries, sandboxing. |
-| [09 - Observability](09_Observability.md) | Tracing agent reasoning, measuring tool call success, cost monitoring. |
-| [10 - Checklist](10_Checklist.md) | "Should I use an agent?" decision table. Production readiness checklist. |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Prompt injection, tool misuse, permission boundaries, sandboxing. |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Tracing agent reasoning, measuring tool call success, cost monitoring. |
+| [10 - Decision Guide](10_Decision_Guide.md) | "Should I use an agent?" decision table. Production readiness checklist. |
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) -- builds ReAct agents from scratch, then with LangChain, then multi-agent with LangGraph. All running locally with Ollama, no API keys needed.
 

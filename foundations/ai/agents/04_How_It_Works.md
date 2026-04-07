@@ -350,12 +350,12 @@ This prevents infinite loops and forces the agent to converge.
 | [02 - Concepts](02_Concepts.md) | Agent architecture, ReAct, tools, memory |
 | [03 - Hello World](03_Hello_World.md) | Build a working agent in ~30 lines |
 | [04 - How It Works](04_How_It_Works.md) | This page |
-| [05 - Decisions](05_Decisions.md) | LLM, framework, architecture tradeoffs |
-| [06 - Real World](06_Real_World.md) | How production agent systems work |
+| [05 - Building It](05_Building_It.md) | LLM, framework, architecture tradeoffs |
+| [06 - Production Patterns](06_Production_Patterns.md) | How production agent systems work |
 | [07 - System Design](07_System_Design.md) | Scaling, state, fault tolerance |
-| [08 - Security](08_Security.md) | Prompt injection, tool misuse, sandboxing |
-| [09 - Observability](09_Observability.md) | Tracing, cost monitoring, debugging |
-| [10 - Checklist](10_Checklist.md) | Decision table and production readiness |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Prompt injection, tool misuse, sandboxing |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Tracing, cost monitoring, debugging |
+| [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) -- see all of this in action, including failure handling and multi-agent coordination.
 

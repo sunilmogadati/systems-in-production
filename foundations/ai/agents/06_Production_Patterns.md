@@ -309,12 +309,12 @@ If you are building a production diagnostic agent (see [Production Diagnostics A
 | [02 - Concepts](02_Concepts.md) | Tools, reasoning, ReAct loop |
 | [03 - Hello World](03_Hello_World.md) | Build an agent in minimal code |
 | [04 - How It Works](04_How_It_Works.md) | Deep dive into agent internals |
-| [05 - Decisions](05_Decisions.md) | Every tradeoff and choice |
-| **[06 - Real World](06_Real_World.md)** | **This page** |
+| [05 - Building It](05_Building_It.md) | Every tradeoff and choice |
+| **[06 - Production Patterns](06_Production_Patterns.md)** | **This page** |
 | [07 - System Design](07_System_Design.md) | Architecture patterns for agents |
-| [08 - Security](08_Security.md) | Permissions, injection, sandboxing |
-| [09 - Observability](09_Observability.md) | Measuring and debugging agents |
-| [10 - Checklist](10_Checklist.md) | Decision table and production readiness |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Permissions, injection, sandboxing |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Measuring and debugging agents |
+| [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb)
 

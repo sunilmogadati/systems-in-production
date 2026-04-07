@@ -198,4 +198,4 @@ This is the same incident report format used in any production system — SRE (S
 
 ---
 
-**Next:** [10 — Checklist](10_Checklist.md) — The one-page decision reference for deep learning projects. Print it, keep it on the desk.
+**Next:** [10 — Checklist](10_Decision_Guide.md) — The one-page decision reference for deep learning projects. Print it, keep it on the desk.

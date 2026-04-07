@@ -205,12 +205,12 @@ You have seen it work. Now the question is: how do you make it work **better**, 
 |:---|:---|
 | What if my images are real photos, not clean digits? | The notebook — CIFAR-10 section (color photos, backgrounds, noise) |
 | How do I know if my model is overfitting or underfitting? | [04 — How It Works](04_How_It_Works.md) — training diagnostics and loss curves |
-| Which activation function, loss function, and optimizer should I use? | [05 — Decisions](05_Decisions.md) — every choice, with tradeoffs |
-| How do Google, Tesla, and hospitals actually deploy this? | [06 — Real World](06_Real_World.md) — production architectures |
+| Which activation function, loss function, and optimizer should I use? | [05 — Decisions](05_Building_It.md) — every choice, with tradeoffs |
+| How do Google, Tesla, and hospitals actually deploy this? | [06 — Real World](06_Production_Patterns.md) — production architectures |
 | How do I serve this model to 10,000 users? | [07 — System Design](07_System_Design.md) — scalability, cloud, deployment |
-| What if someone attacks my model with adversarial images? | [08 — Security & Governance](08_Security_Governance.md) |
-| How do I know if my deployed model is still working? | [09 — Observability](09_Observability.md) — monitoring, drift, debugging |
-| Give me the one-page decision reference | [10 — Checklist](10_Checklist.md) |
+| What if someone attacks my model with adversarial images? | [08 — Security & Governance](08_Quality_Security_Governance.md) |
+| How do I know if my deployed model is still working? | [09 — Observability](09_Observability_Troubleshooting.md) — monitoring, drift, debugging |
+| Give me the one-page decision reference | [10 — Checklist](10_Decision_Guide.md) |
 
 ---
 

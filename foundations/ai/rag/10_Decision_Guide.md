@@ -307,12 +307,12 @@ This 10-chapter series covers RAG from first principles to production readiness.
 | [02 - Concepts](02_Concepts.md) | Embeddings, vector databases, chunking, retrieval -- all in plain English. |
 | [03 - Hello World](03_Hello_World.md) | A working RAG system in 20 lines of code. The minimum viable pipeline. |
 | [04 - How It Works](04_How_It_Works.md) | Why embeddings capture meaning. Cosine similarity. ANN algorithms (HNSW, IVF). The full query flow. |
-| [05 - Decisions](05_Decisions.md) | Chunk size, embedding model, retrieval strategy, LLM choice. Every tradeoff with data. |
-| [06 - Real World](06_Real_World.md) | How GitHub Copilot, Perplexity, Glean, Notion AI, and others use RAG in production. |
+| [05 - Building It](05_Building_It.md) | Chunk size, embedding model, retrieval strategy, LLM choice. Every tradeoff with data. |
+| [06 - Production Patterns](06_Production_Patterns.md) | How GitHub Copilot, Perplexity, Glean, Notion AI, and others use RAG in production. |
 | [07 - System Design](07_System_Design.md) | Scaling RAG: caching, hybrid search, re-ranking, multi-tenant architecture. |
-| [08 - Security](08_Security.md) | Prompt injection, data leakage, PII, document poisoning, compliance (HIPAA, GDPR, SOC 2). |
-| [09 - Observability](09_Observability.md) | Retrieval quality, answer quality, latency, cost. LLM-as-judge. Drift detection. Debugging method. |
-| [10 - Checklist](10_Checklist.md) | This page. Decision tables, production readiness checklist, quick reference cards. |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Prompt injection, data leakage, PII, document poisoning, compliance (HIPAA, GDPR, SOC 2). |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Retrieval quality, answer quality, latency, cost. LLM-as-judge. Drift detection. Debugging method. |
+| [10 - Decision Guide](10_Decision_Guide.md) | This page. Decision tables, production readiness checklist, quick reference cards. |
 
 **Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb) -- builds everything from ingestion to evaluation, running locally with Ollama.
 
@@ -326,11 +326,11 @@ This 10-chapter series covers RAG from first principles to production readiness.
 | [02 - Concepts](02_Concepts.md) | Embeddings, vectors, chunking |
 | [03 - Hello World](03_Hello_World.md) | Build a RAG system in 20 lines |
 | [04 - How It Works](04_How_It_Works.md) | Embeddings, similarity, ANN algorithms |
-| [05 - Decisions](05_Decisions.md) | Every tradeoff and choice |
-| [06 - Real World](06_Real_World.md) | How production RAG systems work |
+| [05 - Building It](05_Building_It.md) | Every tradeoff and choice |
+| [06 - Production Patterns](06_Production_Patterns.md) | How production RAG systems work |
 | [07 - System Design](07_System_Design.md) | Scaling, caching, hybrid search |
-| [08 - Security](08_Security.md) | Prompt injection, data leakage |
-| [09 - Observability](09_Observability.md) | Measuring quality and cost |
-| [10 - Checklist](10_Checklist.md) | This page |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Prompt injection, data leakage |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Measuring quality and cost |
+| [10 - Decision Guide](10_Decision_Guide.md) | This page |
 
 **Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb)

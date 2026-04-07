@@ -184,4 +184,4 @@ This same idea — residual connections — appears in Transformers, and is one 
 
 ---
 
-**Next:** [06 — Real World](06_Real_World.md) — How companies deploy deep learning in production. Tesla, Google Health, Midjourney — the architectures behind real products.
+**Next:** [06 — Real World](06_Production_Patterns.md) — How companies deploy deep learning in production. Tesla, Google Health, Midjourney — the architectures behind real products.

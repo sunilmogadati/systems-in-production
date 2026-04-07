@@ -310,10 +310,10 @@ You have seen it work. Now the question is: how does it REALLY work under the ho
 | Question | Where You Find the Answer |
 |---|---|
 | How does the LLM know to output "Action:" instead of just answering? | [04 - How It Works](04_How_It_Works.md) -- prompt engineering and output parsing |
-| Should I use Mistral, GPT-4, or Claude for my agent? | [05 - Decisions](05_Decisions.md) -- every tradeoff |
+| Should I use Mistral, GPT-4, or Claude for my agent? | [05 - Building It](05_Building_It.md) -- every tradeoff |
 | How do I build a multi-agent system where agents collaborate? | The notebook -- Section 3 builds multi-agent with LangGraph |
 | How do production agent systems handle failures? | [07 - System Design](07_System_Design.md) -- fault tolerance and human-in-the-loop |
-| What if someone tricks my agent into calling dangerous tools? | [08 - Security](08_Security.md) -- prompt injection and sandboxing |
+| What if someone tricks my agent into calling dangerous tools? | [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) -- prompt injection and sandboxing |
 
 **Next:** [04 - How It Works](04_How_It_Works.md) -- The mechanics behind what you just saw. How the LLM generates structured tool calls, how parsing works, and why agents fail.
 
@@ -327,12 +327,12 @@ You have seen it work. Now the question is: how does it REALLY work under the ho
 | [02 - Concepts](02_Concepts.md) | Agent architecture, ReAct, tools, memory |
 | [03 - Hello World](03_Hello_World.md) | This page |
 | [04 - How It Works](04_How_It_Works.md) | The ReAct loop in detail |
-| [05 - Decisions](05_Decisions.md) | LLM, framework, architecture tradeoffs |
-| [06 - Real World](06_Real_World.md) | How production agent systems work |
+| [05 - Building It](05_Building_It.md) | LLM, framework, architecture tradeoffs |
+| [06 - Production Patterns](06_Production_Patterns.md) | How production agent systems work |
 | [07 - System Design](07_System_Design.md) | Scaling, state, fault tolerance |
-| [08 - Security](08_Security.md) | Prompt injection, tool misuse, sandboxing |
-| [09 - Observability](09_Observability.md) | Tracing, cost monitoring, debugging |
-| [10 - Checklist](10_Checklist.md) | Decision table and production readiness |
+| [08 - Quality, Security, Governance](08_Quality_Security_Governance.md) | Prompt injection, tool misuse, sandboxing |
+| [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Tracing, cost monitoring, debugging |
+| [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) -- the full implementation with from-scratch agents, LangChain agents, and LangGraph multi-agent systems.
 
