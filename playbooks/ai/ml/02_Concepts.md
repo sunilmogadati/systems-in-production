@@ -291,6 +291,72 @@ This is the pipeline that the notebook implements in code (Section 9). Every ste
 
 ---
 
+## Supervised vs Unsupervised vs Anomaly Detection
+
+The table in Section 1 introduced supervised, unsupervised, and self-supervised learning. This section goes deeper into the two categories that the rest of this playbook has not yet covered: **unsupervised learning** and **anomaly detection.**
+
+### Supervised Learning (Recap)
+
+Supervised learning has labeled data — input features paired with a known correct answer. The model learns the mapping from features to labels. Classification (predict a category) and regression (predict a number) are both supervised. The chapters on linear regression, logistic regression, Random Forest, and GradientBoosting all cover supervised algorithms. The key point: **you need labels,** and labels are expensive to collect.
+
+### Unsupervised Learning — Find Structure Without Labels
+
+Unsupervised learning has no labels. The model receives only input features and must find structure on its own. The analogy: supervised learning is "sort these letters into mailboxes I have labeled." Unsupervised learning is "sort these letters into piles that make sense — you decide the groups."
+
+Two major branches:
+
+#### Clustering — Group Similar Items Together
+
+| Algorithm | How It Works | Best For | Limitation |
+|:---|:---|:---|:---|
+| **K-Means** | Assign each data point to the nearest of K cluster centers. Iterate: move centers, reassign points, repeat until stable. | Customer segmentation, grouping similar incidents, any case where you know roughly how many groups to expect | You must choose K in advance. Assumes spherical clusters (roughly equal-sized, round groups). |
+| **DBSCAN (Density-Based Spatial Clustering of Applications with Noise, pronounced "D-B-scan")** | Groups points that are densely packed together. Points in sparse regions are labeled as noise (outliers). | Geospatial data, data with irregular-shaped clusters, cases where you do NOT know the number of clusters | Struggles when clusters have very different densities. Two parameters to tune: epsilon (neighborhood radius) and min_samples. |
+| **Hierarchical Clustering** | Builds a tree (dendrogram) of clusters. Start with each point as its own cluster, then iteratively merge the two closest clusters. Cut the tree at the desired level. | Small-to-medium datasets where you want to visualize the cluster hierarchy. Exploratory analysis. | Does not scale well beyond a few thousand data points. |
+
+**Production use case:** In the Production Diagnostic System, K-Means groups incidents by similarity — service, severity pattern, time of day, resolution path. The operations team discovers that one cluster contains 80% of off-hours escalations involving the payment service after deployments. That cluster becomes a runbook entry.
+
+#### Dimensionality Reduction — Compress Many Features Into Few
+
+| Algorithm | How It Works | Best For |
+|:---|:---|:---|
+| **PCA (Principal Component Analysis, pronounced "P-C-A")** | Finds the directions (components) along which the data varies most. Projects the data onto those directions, discarding the rest. | Reducing 100 features to 10 before feeding to a model. Removing noise. Speeding up training. |
+| **t-SNE (t-distributed Stochastic Neighbor Embedding, pronounced "T-snee")** | Non-linear reduction that preserves local neighborhoods. Points that are close in high-dimensional space stay close in 2D. | Visualizing high-dimensional data in 2D scatter plots. Exploring clusters visually. |
+| **UMAP (Uniform Manifold Approximation and Projection, pronounced "YOU-map")** | Similar goal to t-SNE but faster and better at preserving global structure. | Same as t-SNE but at larger scale. Often preferred over t-SNE for datasets with more than a few thousand points. |
+
+> **PCA is a preprocessing step.** t-SNE and UMAP are visualization tools. PCA produces features that can be fed to a model. t-SNE and UMAP produce 2D coordinates for plotting — they are not inputs to downstream models.
+
+### Anomaly Detection — Find the Rare and Unusual
+
+Anomaly detection identifies data points that are significantly different from the majority. Unlike classification, anomaly detection typically works **without labels** — the model learns what "normal" looks like and flags deviations.
+
+| Algorithm | How It Works | Best For |
+|:---|:---|:---|
+| **Isolation Forest** | Randomly splits the data with decision trees. Anomalies are isolated in fewer splits because they are different from everything else. Normal points require many splits to isolate. | Production monitoring, fraud detection, any high-dimensional numeric data. Fast and scalable. |
+| **LOF (Local Outlier Factor, pronounced "L-O-F")** | Compares each point's local density to the density of its neighbors. A point in a sparse region surrounded by dense regions is an outlier. | Fraud detection, manufacturing defect detection, cases where anomalies are defined by local context rather than global statistics. |
+| **Autoencoders (neural network)** | A neural network trained to compress data to a small representation and then reconstruct it. Trained on normal data, the autoencoder reconstructs normal data well but fails on anomalies — high reconstruction error signals an anomaly. | Complex, high-dimensional data (sensor streams, images, network traffic). When simpler methods do not capture the structure. |
+
+**Production use case:** In the Production Diagnostic System, anomaly detection watches infrastructure metrics continuously. Memory usage climbing steadily for 5 days when the historical pattern is flat? Anomaly. CPU spike that does not correlate with traffic? Anomaly. Error rate at 2% when the 30-day average is 0.1%? Anomaly. These are flagged for investigation before they escalate to incidents.
+
+```mermaid
+graph TD
+    A["Incoming metric<br/>(CPU, memory, error rate)"] --> B["Isolation Forest<br/>(trained on 30 days<br/>of normal data)"]
+    B --> C{"Anomaly<br/>score"}
+    C -->|"Normal"| D["Continue monitoring"]
+    C -->|"Anomaly"| E["Flag for investigation<br/>+ enrich with context"]
+    E --> F["On-call engineer<br/>reviews with SHAP-like<br/>feature breakdown"]
+```
+
+### When to Use Each Paradigm
+
+| Paradigm | You Have | You Want To | Example |
+|:---|:---|:---|:---|
+| **Supervised** | Labeled data (input + correct answer) | Predict the label for new data | "Will this incident escalate?" (yes/no labels exist) |
+| **Unsupervised (Clustering)** | Unlabeled data | Find natural groups in the data | "What types of incidents do we have?" (no predefined categories) |
+| **Unsupervised (Dim. Reduction)** | Too many features | Reduce features or visualize structure | "Can we compress 200 metrics into 10 meaningful components?" |
+| **Anomaly Detection** | Mostly normal data, few or no labeled anomalies | Find the rare, unusual data points | "Which infrastructure metrics are behaving abnormally right now?" |
+
+---
+
 ## Glossary — Quick Reference
 
 | Term | Full Form | Pronounced | What It Means |

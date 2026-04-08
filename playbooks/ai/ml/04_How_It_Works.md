@@ -197,4 +197,80 @@ The metrics above are for **classification** (predicting a category: churn/no-ch
 
 ---
 
+## Ensemble Methods: Combining Multiple Models
+
+A single model has blind spots. Ensemble methods combine multiple models to reduce those blind spots. The principle: asking 100 people and averaging their answers produces a more reliable answer than asking one person — even if no individual is an expert.
+
+Ensembles are not a separate algorithm family. They are a **strategy** that wraps around base algorithms (usually decision trees). The three strategies are bagging, boosting, and stacking.
+
+### Bagging — Train Many Models on Random Subsets, Average the Answers
+
+**Bagging (Bootstrap AGGregatING)** trains many models independently, each on a random subset of the training data (sampled with replacement). At prediction time, each model votes, and the ensemble takes the majority vote (classification) or average (regression).
+
+**Random Forest** is bagging applied to decision trees — with one addition: each tree also sees only a random subset of features at each split. This double randomization (random data subsets AND random feature subsets) makes the trees diverse. Diverse models that make different mistakes average out to something better than any individual tree.
+
+**Why it works:** Variance reduction. Each individual tree overfits in a different way. Averaging many overfitting trees cancels out the noise, leaving the signal. A single decision tree is a bad predictor. 500 decision trees averaged together are a strong predictor.
+
+### Boosting — Train Models Sequentially, Each One Fixes the Previous Mistakes
+
+Boosting trains models one after another. Each new model focuses on the data points that the previous models got wrong. The ensemble is a weighted sum of all models, with later models correcting earlier errors.
+
+| Boosting Algorithm | Key Idea | When to Use |
+|:---|:---|:---|
+| **AdaBoost (Adaptive Boosting, pronounced "ADA-boost")** | Increases the weight of misclassified examples so the next model focuses on them | Historical importance. Largely superseded by gradient boosting variants. |
+| **GradientBoosting** | Each new tree fits the residual errors (gradients) of the ensemble so far. Sklearn implementation. | Good default. Slower than LightGBM/XGBoost on large data. |
+| **XGBoost (eXtreme Gradient Boosting, pronounced "X-G-boost")** | Optimized GradientBoosting with regularization, parallel tree construction, and handling of missing values | Production systems, competitions. The most widely used boosting library. |
+| **LightGBM (Light Gradient Boosting Machine, pronounced "light G-B-M")** | Grows trees leaf-wise instead of level-wise. Histogram-based splitting for speed. | Large datasets (millions of rows). Fastest training among boosting libraries. Native categorical feature handling. |
+| **CatBoost (Categorical Boosting, pronounced "cat-boost")** | Specialized handling of categorical features using ordered target encoding. Reduces overfitting on categoricals. | Datasets with many categorical features. Requires less preprocessing of categoricals than XGBoost or LightGBM. |
+
+**Why it works:** Bias reduction. Each model is weak (a shallow tree), but the sequential correction process builds a strong ensemble that captures complex patterns. Boosting typically achieves higher accuracy than bagging on tabular data, at the cost of being more sensitive to noisy data.
+
+### Stacking — Train Multiple Different Models, Then Train a Meta-Model
+
+Stacking (stacked generalization) trains several diverse base models (e.g., Logistic Regression, Random Forest, GradientBoosting). Their predictions become the input features for a **meta-model** (often a simple Logistic Regression) that learns how to best combine them.
+
+**Why it works:** Different algorithms capture different patterns. A linear model captures linear trends. A tree-based model captures non-linear interactions. The meta-model learns which base model to trust for which region of the data.
+
+### How They Relate
+
+```mermaid
+graph TD
+    subgraph "Bagging (Random Forest)"
+        A1["Tree 1<br/>(random subset)"] --> V["Vote /<br/>Average"]
+        A2["Tree 2<br/>(random subset)"] --> V
+        A3["Tree 3<br/>(random subset)"] --> V
+        A4["... Tree N<br/>(random subset)"] --> V
+        V --> P1["Final<br/>Prediction"]
+    end
+
+    subgraph "Boosting (XGBoost, LightGBM)"
+        B1["Tree 1"] -->|"errors"| B2["Tree 2<br/>(fixes Tree 1)"]
+        B2 -->|"errors"| B3["Tree 3<br/>(fixes Trees 1+2)"]
+        B3 -->|"errors"| B4["... Tree N"]
+        B4 --> P2["Weighted<br/>Sum"]
+    end
+
+    subgraph "Stacking"
+        C1["Logistic<br/>Regression"] --> M["Meta-Model<br/>(learns which<br/>to trust)"]
+        C2["Random<br/>Forest"] --> M
+        C3["GradientBoosting"] --> M
+        M --> P3["Final<br/>Prediction"]
+    end
+```
+
+### Comparison Table
+
+| | **Bagging** | **Boosting** | **Stacking** |
+|:---|:---|:---|:---|
+| **Training** | Parallel — models are independent | Sequential — each depends on the previous | Two stages: base models (parallel), then meta-model |
+| **Speed** | Fast (parallelizable) | Slower (sequential) | Slowest (train multiple models + meta-model) |
+| **Accuracy** | Good | Typically highest on tabular data | Can exceed boosting, but marginal gains |
+| **Overfitting risk** | Low — averaging reduces variance | Moderate — can overfit noisy data if not regularized | Moderate — risk of overfitting in the meta-model if not cross-validated |
+| **Interpretability** | Medium — feature importance available | Medium — SHAP provides per-prediction explanations | Low — predictions come from a combination of diverse models |
+| **When to use** | When you want a robust default with low tuning effort | When you need the best tabular performance and are willing to tune | When you have tried multiple algorithms and want to squeeze the last 1-2% |
+
+> **The practical guidance:** Start with Random Forest (bagging). If it does not meet the success metric, move to XGBoost or LightGBM (boosting). Stacking is rarely necessary — it adds complexity for diminishing returns. In the Production Diagnostic System, GradientBoosting (boosting) was the winner because it achieved 83% recall where Random Forest reached only 79%.
+
+---
+
 **Next:** [05 — Decisions](05_Decisions.md) — Model selection, regularization choices, feature engineering strategies, and hyperparameter tuning — the decision framework for ML projects.

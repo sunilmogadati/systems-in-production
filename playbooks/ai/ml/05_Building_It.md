@@ -306,6 +306,128 @@ graph TD
 
 ---
 
+## Building an Anomaly Detection Pipeline
+
+The pipeline above predicts incident escalation — a supervised classification problem. This section covers a different pattern: **anomaly detection** — finding unusual data points without labeled examples.
+
+### Use Case: Detecting Anomalous Infrastructure Metrics
+
+In the Production Diagnostic System, hundreds of services emit metrics every minute: CPU utilization, memory usage, error rate, request latency, queue depth. Most of the time, these metrics follow predictable patterns. The goal: detect when a metric deviates from its normal pattern — before it triggers an incident.
+
+This is not classification. There are no labels ("this metric reading is anomalous" / "this metric reading is normal"). Labeling thousands of metric readings is impractical. Instead, the model learns what "normal" looks like and flags deviations.
+
+### Step 1: Define "Normal" — Train on Historical Data
+
+Collect 30 days of infrastructure metrics during periods with no known incidents. This becomes the training set — a representation of normal operations.
+
+```python
+# Pseudocode — train Isolation Forest on historical metrics
+
+from sklearn.ensemble import IsolationForest
+
+# historical_metrics: DataFrame with columns
+# [cpu_pct, memory_pct, error_rate, latency_p99, queue_depth, requests_per_sec]
+# 30 days of 1-minute readings, filtered to periods with no known incidents
+
+model = IsolationForest(
+    contamination=0.05,  # expect roughly 5% of training data to be borderline
+    n_estimators=200,    # number of isolation trees
+    random_state=42
+)
+model.fit(historical_metrics)
+```
+
+**Why Isolation Forest:** It works by randomly splitting the data with decision trees. Normal points are surrounded by similar points and require many splits to isolate. Anomalies are different from everything else and are isolated in very few splits. Fast, handles high-dimensional data, requires no labels, and scales to millions of data points.
+
+### Step 2: Score New Data — Anomaly Score Per Observation
+
+Each new metric reading receives a score. Isolation Forest returns `1` for normal and `-1` for anomalous.
+
+```python
+# Pseudocode — score incoming metrics
+
+new_metrics = get_latest_metrics(window="5m")  # last 5 minutes of readings
+
+# Predict: 1 = normal, -1 = anomaly
+predictions = model.predict(new_metrics)
+
+# Also get the raw anomaly score (lower = more anomalous)
+scores = model.decision_function(new_metrics)
+```
+
+### Step 3: Set Threshold — A Business Decision
+
+The `contamination` parameter and the raw anomaly score together determine the threshold. This is not a pure math decision — it is a business decision:
+
+| Threshold Setting | Effect | When to Use |
+|:---|:---|:---|
+| **Aggressive (low contamination, e.g., 0.01)** | Fewer anomalies flagged. Higher precision (fewer false alarms). Lower recall (some real anomalies missed). | Operations team is small — cannot investigate many alerts. False alarms erode trust. |
+| **Sensitive (high contamination, e.g., 0.10)** | More anomalies flagged. Lower precision (more false alarms). Higher recall (fewer real anomalies missed). | The cost of missing an anomaly is high (financial systems, safety-critical). Team can handle the alert volume. |
+| **Balanced (e.g., 0.05)** | Middle ground. | Default starting point. Adjust based on operational feedback. |
+
+> **In practice:** Start with `contamination=0.05`. Run for one week. Count false alarms and missed anomalies (discovered retrospectively from incident reports). Adjust the threshold until the alert-to-investigation ratio is manageable.
+
+### Step 4: Alert or Act — Flag Anomalies for Investigation
+
+An anomaly score alone is not actionable. Enrich the alert with context:
+
+```python
+# Pseudocode — enrich and alert
+
+anomalies = new_metrics[predictions == -1]
+
+for idx, row in anomalies.iterrows():
+    alert = {
+        "service": row["service_name"],
+        "timestamp": row["timestamp"],
+        "anomaly_score": scores[idx],
+        "metrics": {
+            "cpu_pct": row["cpu_pct"],
+            "memory_pct": row["memory_pct"],
+            "error_rate": row["error_rate"],
+            "latency_p99": row["latency_p99"],
+        },
+        "context": f"Memory at {row['memory_pct']:.1f}% vs 30-day avg of {historical_avg['memory_pct']:.1f}%",
+    }
+    send_to_alerting_system(alert)
+```
+
+### The Full Anomaly Detection Pipeline
+
+```mermaid
+graph TD
+    A["1. Collect 30 days of<br/>normal metric data"] --> B["2. Train Isolation Forest<br/>(contamination=0.05)"]
+    B --> C["3. Stream incoming<br/>metrics (every minute)"]
+    C --> D["4. Score each reading<br/>(1=normal, -1=anomaly)"]
+    D --> E{"Anomaly?"}
+    E -->|"Normal"| F["Log score,<br/>continue monitoring"]
+    E -->|"Anomaly"| G["Enrich with context<br/>(historical avg, recent trend)"]
+    G --> H["Send alert to<br/>on-call engineer"]
+    H --> I["Engineer investigates<br/>or dismisses"]
+    I -->|"Feedback loop"| J["Adjust threshold /<br/>retrain monthly"]
+    J --> B
+```
+
+### Why Isolation Forest for Production Systems
+
+| Requirement | How Isolation Forest Meets It |
+|:---|:---|
+| **No labels needed** | Trained on normal data only. No need to manually label thousands of metric readings. |
+| **Fast inference** | Prediction is a tree traversal — microseconds per data point. Handles real-time metric streams. |
+| **High-dimensional** | Works with 10, 50, or 200 metric dimensions without modification. No curse of dimensionality. |
+| **Interpretable enough** | While not as interpretable as a decision tree, the anomaly score provides a continuous severity signal. Combined with feature-level context, engineers can understand WHY a reading was flagged. |
+| **Low maintenance** | Retrain monthly on the latest 30 days of normal data. No label collection, no complex retraining pipeline. |
+
+### When Isolation Forest Is Not Enough
+
+| Situation | Better Choice |
+|:---|:---|
+| Anomalies are defined by local density (normal in one region, anomalous in another) | **LOF (Local Outlier Factor)** — compares each point to its local neighborhood |
+| Complex temporal patterns (anomaly is a sequence, not a single point) | **Autoencoders** or **LSTM (Long Short-Term Memory) autoencoders** — learn temporal "normal" and flag sequences with high reconstruction error |
+| You eventually DO get labeled anomalies | Switch to **supervised classification** — it will outperform any unsupervised method given enough labeled examples |
+
+---
+
 ## Quick Links
 
 | Chapter | Title |

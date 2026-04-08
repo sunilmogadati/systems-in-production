@@ -49,7 +49,89 @@ A first attempt: "If error rate > 5% AND deployment in last 2 hours AND off-hour
 | **CNN (Convolutional Neural Network)** | Images, spatial data | Large + image data | Low | Slow (training), moderate (inference) | Image classification, object detection, medical imaging |
 | **Transformer / LLM (Large Language Model)** | Text, sequence data | Very large | Low | Slow | NLP (Natural Language Processing), text classification, generation, summarization |
 
-### The Algorithm Decision Tree
+### Comprehensive Algorithm Reference
+
+| Algorithm | Type | Best For | Interpretable? | Handles Missing? | Speed | When to Use |
+|:---|:---|:---|:---|:---|:---|:---|
+| **Linear Regression** | Regression | Continuous target, linear relationships | Yes | No | Fast | Baseline for regression. Simple relationships. Coefficients directly show feature impact. |
+| **Logistic Regression** | Classification | Binary or multi-class, linear decision boundaries | Yes | No | Fast | Baseline for classification. Always start here. Interpretability required by stakeholders or regulators. |
+| **Ridge / Lasso / ElasticNet** | Regression | Regularized linear models, feature selection (Lasso) | Yes | No | Fast | Many features, multicollinearity. Lasso for automatic feature selection. ElasticNet when both properties are needed. |
+| **Decision Tree** | Both | Simple rule-based decisions, visualization | Yes | Yes | Fast | When explainability is the top priority. Small datasets. Generating human-readable rules. |
+| **Random Forest** | Both | General-purpose tabular data, mixed feature types | Medium | Yes | Medium | Default choice when the baseline is not enough. Robust to outliers and noise. Low tuning effort. |
+| **GradientBoosting / XGBoost** | Both | Best tabular performance, structured data | Low | Yes | Medium | Production systems on structured data. When you need the best accuracy and can invest in tuning. |
+| **LightGBM** | Both | Large datasets, fast training | Low | Yes | Fast | Millions of rows. Native categorical feature handling. Fastest boosting library. |
+| **CatBoost** | Both | Categorical-heavy data | Low | Yes | Medium | Many categorical features. Less preprocessing required than XGBoost or LightGBM for categoricals. |
+| **SVM (Support Vector Machine)** | Classification | Small-to-medium data, clear class margins | Medium | No | Slow on large data | Text classification on small datasets. When you have fewer than 10K rows and clear separation. |
+| **Naive Bayes** | Classification | Text, high-dimensional sparse data | Yes | Yes (by design) | Very fast | Spam filters, text classification, document categorization. Extremely fast training and inference. |
+| **KNN (K-Nearest Neighbors)** | Both | Similarity-based predictions, no training phase | Yes | No | Slow on large data | Recommendation systems, small datasets. No training needed — predictions are based on nearest neighbors at inference time. |
+| **K-Means** | Clustering | Group similar items, known number of groups | Medium | No | Fast | Customer segmentation, incident grouping, any case where you want K distinct groups. |
+| **DBSCAN** | Clustering | Irregular-shaped clusters, outlier detection | Medium | No | Medium | Geospatial data, noise-heavy data. When the number of clusters is unknown. |
+| **Hierarchical Clustering** | Clustering | Exploring cluster hierarchy, small datasets | Medium | No | Slow on large data | Exploratory analysis. When you want to visualize how groups relate to each other (dendrogram). |
+| **PCA** | Dim. Reduction | Reduce features, remove noise, speed up training | Medium | No | Fast | Preprocessing step when you have many features. Visualization of high-dimensional data. |
+| **t-SNE / UMAP** | Dim. Reduction | Visualize high-dimensional data in 2D | Low | No | Medium | Visualizing clusters, exploring embedding spaces. Not for model input — only for visualization. |
+| **Isolation Forest** | Anomaly Detection | Find outliers without labels | Low | Yes | Fast | Production monitoring, fraud detection. No labeled anomalies needed. Scales to millions of points. |
+| **LOF (Local Outlier Factor)** | Anomaly Detection | Local density anomalies | Low | No | Slow on large data | Fraud detection, manufacturing defects. When anomalies are defined by local context, not global statistics. |
+| **Autoencoders** | Anomaly Detection | Complex, high-dimensional anomaly patterns | Low | No | Medium | Sensor streams, network traffic, image anomalies. When simpler methods do not capture the pattern. |
+| **Neural Network (MLP)** | Both | Tabular data with very large datasets | Low | No | Slow (training) | Only when tree-based models plateau AND you have >100K rows to justify the complexity. |
+| **CNN (Convolutional Neural Network)** | Classification | Images, spatial data | Low | No | Slow (training) | Image classification, object detection, medical imaging. |
+| **Transformer / LLM** | Both | Text, sequence data | Low | No | Slow | NLP tasks: text classification, generation, summarization, question answering. |
+
+### The Algorithm Decision Flowchart
+
+The first question is always: **what kind of problem do you have?**
+
+```mermaid
+graph TD
+    A["What kind of<br/>problem?"] --> B{"Predict a<br/>number?"}
+    A --> C{"Predict a<br/>category?"}
+    A --> D{"Find groups<br/>or patterns?"}
+    A --> E{"Find unusual<br/>items?"}
+    A --> F{"Too many<br/>features?"}
+
+    B -->|"Regression"| B1{"< 1,000 rows<br/>or need<br/>interpretability?"}
+    B1 -->|Yes| B2["Linear Regression<br/>(or Ridge/Lasso)"]
+    B1 -->|No| B3{"Need best<br/>performance?"}
+    B3 -->|Yes| B4["XGBoost / LightGBM"]
+    B3 -->|"Good enough<br/>+ robust"| B5["Random Forest"]
+
+    C -->|"Classification"| C1{"< 1,000 rows<br/>or need<br/>interpretability?"}
+    C1 -->|Yes| C2["Logistic Regression"]
+    C1 -->|No| C3{"Text or<br/>sparse data?"}
+    C3 -->|Yes| C4["Naive Bayes<br/>(fast baseline)<br/>then Transformer"]
+    C3 -->|"Tabular"| C5{"Need best<br/>performance?"}
+    C5 -->|Yes| C6["XGBoost / LightGBM"]
+    C5 -->|"Good enough<br/>+ robust"| C7["Random Forest"]
+
+    D -->|"Clustering"| D1{"Know number<br/>of groups?"}
+    D1 -->|Yes| D2["K-Means"]
+    D1 -->|No| D3{"Data has noise<br/>or irregular<br/>shapes?"}
+    D3 -->|Yes| D4["DBSCAN"]
+    D3 -->|No| D5["Hierarchical<br/>Clustering"]
+
+    E -->|"Anomaly Detection"| E1{"Have labeled<br/>anomalies?"}
+    E1 -->|Yes| E2["Supervised classification<br/>(Logistic Regression,<br/>Random Forest, XGBoost)"]
+    E1 -->|No| E3{"Data is<br/>high-dimensional<br/>or complex?"}
+    E3 -->|"Simple numeric"| E4["Isolation Forest"]
+    E3 -->|"Complex patterns"| E5["Autoencoder or LOF"]
+
+    F -->|"Dim. Reduction"| F1{"For model<br/>input?"}
+    F1 -->|Yes| F2["PCA"]
+    F1 -->|"For visualization"| F3["t-SNE / UMAP"]
+```
+
+### The Algorithm Selection Principle
+
+**Start simple, add complexity only when justified.** Within each problem type:
+
+1. **Regression:** Linear Regression first. Then Ridge/Lasso if overfitting or many features. Then Random Forest. Then XGBoost/LightGBM.
+2. **Classification:** Logistic Regression first. Then Random Forest. Then XGBoost/LightGBM. Naive Bayes for text baselines.
+3. **Clustering:** K-Means first (if you know K). DBSCAN if you do not. Hierarchical for small exploratory datasets.
+4. **Anomaly Detection:** Isolation Forest first. LOF if local context matters. Autoencoders for complex temporal/spatial patterns.
+5. **Dimensionality Reduction:** PCA for preprocessing. t-SNE/UMAP for visualization only.
+
+Each step up adds training time, tuning effort, and interpretability cost. Only move to the next level when the simpler model does not meet the success metric defined in the Architect Decision Checklist.
+
+### The Original Algorithm Decision Tree (By Data Type)
 
 ```mermaid
 graph TD
