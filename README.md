@@ -2,15 +2,19 @@
 
 **How to build intelligent systems that work in the real world — across Cloud, Data, and AI.**
 
-101 playbook chapters. 33 executable notebooks. Architecture patterns, failure analyses, and decision frameworks extracted from production systems.
+Start with one notebook. Get your first win in 30 minutes.
 
 ---
 
 ## Start Here
 
+This repo is a library. You are not meant to read it front to back. Pick one path, follow it, and build something.
+
 **Your first 30 minutes:** Click a Colab badge below. The notebook opens in your browser. Run each cell top to bottom (Shift+Enter). No setup, no install, no account needed. You'll see results immediately.
 
 | You Are | Start With | Your First Win (30 min) |
+|---|---|---|
+| You Are | Start With | Your First Win |
 |---|---|---|
 | **Brand new to programming** | [Python Basics](playbooks/python/01_Why.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) Write your first Python code, see it run |
 | **Know Python, new to AI** | [ML Playbook ch 01](playbooks/ai/ml/01_Why.md) then [ch 03](playbooks/ai/ml/03_Hello_World.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Linear_Regression.ipynb) Train your first ML model in 5 lines |
@@ -19,6 +23,18 @@
 | **Want to see production architecture** | [Architecture](systems/production-diagnostics/architecture.md) | [Start reading](systems/production-diagnostics/architecture.md) See how a real diagnostic system is designed |
 | **Want to see what breaks in production** | [Failures](failures/) | [Start reading](failures/why-flat-tables-break.md) Learn from real production failures |
 | **Know Java/C#, need Python fast** | [Java Bridge](implementation/notebooks/Python_Java_Bridge.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb) Translate what you know to Python |
+
+### Your First Week (if you're starting from scratch)
+
+| Day | What to Do | Time |
+|---|---|---|
+| 1 | [Python Basics notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) — variables, types, strings | 1-2 hours |
+| 2 | [Data Structures notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Data_Structures.ipynb) — lists, dicts, comprehensions | 1-2 hours |
+| 3 | [Functions and Classes notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Functions_Classes.ipynb) — functions, lambdas, classes | 1-2 hours |
+| 4 | [ML Hello World](playbooks/ai/ml/03_Hello_World.md) then [Linear Regression notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Linear_Regression.ipynb) | 1-2 hours |
+| 5 | [NumPy and Pandas notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb) — data manipulation | 1-2 hours |
+| 6 | [RAG Hello World](playbooks/ai/rag/03_Hello_World.md) — build AI that answers from documents | 1 hour |
+| 7 | Pick one thing you learned and build something small with it | Your pace |
 
 Every playbook chapter: read on GitHub (diagrams render here). Every notebook: one click to run on Google Colab.
 
@@ -78,16 +94,16 @@ Each playbook has 10 chapters: Why, Concepts, Hello World, How It Works, Buildin
 
 | Step | Playbook | Notebooks | Level |
 |---|---|---|---|
-| **Python** | [10 chapters](playbooks/python/) | [7 notebooks](playbooks/python/README.md) (Basics through Advanced) | Start here |
-| **SQL** | [10 chapters](playbooks/data/sql/) | [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) | Start here |
-| **Data Modeling** | [10 chapters](playbooks/data/data-modeling/) + [Star Schema](playbooks/data/star-schema-design/) | [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) | Intermediate |
-| **Cloud Pipelines** | [6 chapters](playbooks/data/cloud-pipeline/) | [GCP Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) + [Automation](implementation/notebooks/GCP_Pipeline_Automation.ipynb) | Intermediate |
-| **PySpark** | [10 chapters](playbooks/data/pyspark/) | [PySpark](implementation/notebooks/PySpark.ipynb) | Intermediate |
-| **Machine Learning** | [10 chapters](playbooks/ai/ml/) (21 algorithms) | [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb) + [Linear Regression](implementation/notebooks/Linear_Regression.ipynb) + [Logistic Regression](implementation/notebooks/Logistic_Regression.ipynb) | Intermediate |
-| **Deep Learning** | [10 chapters](playbooks/ai/deep-learning/) | [PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) + [CNN](implementation/notebooks/Deep_Learning_CNN.ipynb) | Advanced |
-| **RAG** | [10 chapters](playbooks/ai/rag/) | [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) | Advanced |
-| **Agents** | [10 chapters](playbooks/ai/agents/) | [Agents](implementation/notebooks/Agents.ipynb) | Advanced |
-| **Software Engineering** | [10 chapters](playbooks/engineering/) | [CI/CD](implementation/notebooks/CICD_for_DE.ipynb) | Intermediate |
+| **Python** | [10 chapters](playbooks/python/) | [7 notebooks](playbooks/python/README.md) (Basics through Advanced) | No background needed |
+| **SQL** | [10 chapters](playbooks/data/sql/) | [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) | No background needed |
+| **Data Modeling** | [10 chapters](playbooks/data/data-modeling/) + [Star Schema](playbooks/data/star-schema-design/) | [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) | Good if you know basic SQL |
+| **Cloud Pipelines** | [6 chapters](playbooks/data/cloud-pipeline/) | [GCP Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) + [Automation](implementation/notebooks/GCP_Pipeline_Automation.ipynb) | Good if you know basic SQL |
+| **PySpark** | [10 chapters](playbooks/data/pyspark/) | [PySpark](implementation/notebooks/PySpark.ipynb) | Good if you know basic Python |
+| **Machine Learning** | [10 chapters](playbooks/ai/ml/) (21 algorithms) | [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb) + [Linear Regression](implementation/notebooks/Linear_Regression.ipynb) + [Logistic Regression](implementation/notebooks/Logistic_Regression.ipynb) | Good if you know basic Python |
+| **Deep Learning** | [10 chapters](playbooks/ai/deep-learning/) | [PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) + [CNN](implementation/notebooks/Deep_Learning_CNN.ipynb) | Come here after ML |
+| **RAG** | [10 chapters](playbooks/ai/rag/) | [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) | Come here after ML |
+| **Agents** | [10 chapters](playbooks/ai/agents/) | [Agents](implementation/notebooks/Agents.ipynb) | Come here after RAG |
+| **Software Engineering** | [10 chapters](playbooks/engineering/) | [CI/CD](implementation/notebooks/CICD_for_DE.ipynb) | Good if you know basic Python |
 
 ---
 

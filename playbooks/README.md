@@ -2,6 +2,8 @@
 
 **Reference architectures and operating frameworks for building intelligent production systems.**
 
+Do not try to read everything. Follow one path until you can build something. Then come back for the next one.
+
 Each playbook follows the same 10-chapter framework:
 
 ```
