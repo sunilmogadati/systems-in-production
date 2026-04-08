@@ -8,18 +8,19 @@
 
 ## Start Here
 
-**New to this repo?** Pick your starting point:
+**Your first 30 minutes:** Click a Colab badge below. The notebook opens in your browser. Run each cell top to bottom (Shift+Enter). No setup, no install, no account needed. You'll see results immediately.
 
-| You Are | Start With | First Click |
+| You Are | Start With | Your First Win (30 min) |
 |---|---|---|
-| **"I want to build AI systems"** | [Python Playbook](playbooks/python/) then [ML Playbook](playbooks/ai/ml/) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) |
-| **"I want to build data pipelines"** | [SQL Playbook](playbooks/data/sql/) then [Cloud Pipelines](playbooks/data/cloud-pipeline/) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) |
-| **"I want to see how production systems are designed"** | [Architecture](systems/production-diagnostics/architecture.md) then [Patterns](patterns/) | [Start reading](systems/production-diagnostics/architecture.md) |
-| **"I want to see what breaks in production"** | [Failures](failures/) then [Decisions](decisions/) | [Start reading](failures/why-flat-tables-break.md) |
-| **"I know Python, show me AI"** | [ML Playbook](playbooks/ai/ml/) chapter 03 | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) |
-| **"I know Java/C#, need Python fast"** | [Python Java Bridge](implementation/notebooks/Python_Java_Bridge.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb) |
+| **Brand new to programming** | [Python Basics](playbooks/python/01_Why.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) Write your first Python code, see it run |
+| **Know Python, new to AI** | [ML Playbook ch 01](playbooks/ai/ml/01_Why.md) then [ch 03](playbooks/ai/ml/03_Hello_World.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Linear_Regression.ipynb) Train your first ML model in 5 lines |
+| **Know Python, want to build AI apps** | [RAG Playbook ch 01](playbooks/ai/rag/01_Why.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb) Build AI that answers from your documents |
+| **Want to build data pipelines** | [SQL Playbook ch 01](playbooks/data/sql/01_Why.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) Query real data in minutes |
+| **Want to see production architecture** | [Architecture](systems/production-diagnostics/architecture.md) | [Start reading](systems/production-diagnostics/architecture.md) See how a real diagnostic system is designed |
+| **Want to see what breaks in production** | [Failures](failures/) | [Start reading](failures/why-flat-tables-break.md) Learn from real production failures |
+| **Know Java/C#, need Python fast** | [Java Bridge](implementation/notebooks/Python_Java_Bridge.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb) Translate what you know to Python |
 
-Every playbook chapter: read on GitHub (diagrams render here). Every notebook: one click to open on Google Colab (no setup needed).
+Every playbook chapter: read on GitHub (diagrams render here). Every notebook: one click to run on Google Colab.
 
 ---
 
