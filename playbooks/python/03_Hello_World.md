@@ -179,7 +179,7 @@ Training accuracy: 100%
 3. scikit-learn's DecisionTreeClassifier learned that longer calls with longer waits tend to escalate
 4. The model predicted that a 250-second call with 40 seconds of wait would be escalated
 
-**Why 100% accuracy is suspicious:** With only 10 records, the model memorized the training data. This is called overfitting. In production, you split data into training and test sets and evaluate on data the model has never seen. The [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) covers this properly.
+**Why 100% accuracy is suspicious:** With only 10 records, the model memorized the training data. This is called overfitting. In production, you split data into training and test sets and evaluate on data the model has never seen. The [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) covers this properly.
 
 ---
 
@@ -222,7 +222,7 @@ Written to calls_clean.parquet (9 rows, 6 columns)
 2. We applied three data quality rules: removed invalid records, filled missing values, and removed duplicates
 3. The cleaned data was written to Parquet -- a compressed, typed, columnar format that data warehouses and Spark can read efficiently
 
-**Why Parquet matters:** The CSV was human-readable but slow to query and had no type enforcement. The Parquet file is smaller, faster to read, and preserves column types (integers stay integers, not strings). Every production data pipeline converts to Parquet as early as possible. The [Python for DE notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_DE.ipynb) covers this in depth.
+**Why Parquet matters:** The CSV was human-readable but slow to query and had no type enforcement. The Parquet file is smaller, faster to read, and preserves column types (integers stay integers, not strings). Every production data pipeline converts to Parquet as early as possible. The [Python for DE notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb) covers this in depth.
 
 ---
 
@@ -289,9 +289,9 @@ You now have a working Python environment and have run both an AI and a DE workf
 
 For the full deep dive, continue to the hands-on notebooks:
 
-- **AI track:** [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) -- 100+ cells covering NumPy, pandas, scikit-learn, and more
-- **DE track:** [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_DE.ipynb) -- 100+ cells covering Python, PySpark, and data engineering patterns
-- **Java developers:** [Python for AI Java Dev Guide on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI_Java_Bridge.ipynb) -- Python through a Java developer's lens
+- **AI track:** [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) -- 100+ cells covering NumPy, pandas, scikit-learn, and more
+- **DE track:** [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb) -- 100+ cells covering Python, PySpark, and data engineering patterns
+- **Java developers:** [Python for AI Java Dev Guide on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb) -- Python through a Java developer's lens
 
 ---
 

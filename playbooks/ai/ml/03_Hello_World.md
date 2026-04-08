@@ -2,7 +2,7 @@
 
 **Train a model, evaluate it honestly, explain its predictions — in 20 lines.**
 
-> **Python note:** The code below uses `import`, `print`, and standard library calls. If any syntax is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) covers everything needed. But try running the code first.
+> **Python note:** The code below uses `import`, `print`, and standard library calls. If any syntax is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) covers everything needed. But try running the code first.
 
 ---
 

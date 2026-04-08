@@ -323,8 +323,8 @@ Dunder (double underscore) methods are Python's way of enabling operator overloa
 
 | Resource | Link |
 |:---|:---|
-| Python for AI (notebook) | [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) |
-| Python for DE (notebook) | [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_DE.ipynb) |
+| Python for AI (notebook) | [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) |
+| Python for DE (notebook) | [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb) |
 | Previous chapter | [05 -- Control Flow, Functions, and Lambdas](05_Control_Flow_Functions.md) |
 | Next chapter | [07 -- File I/O and Data Formats](07_File_IO_Data_Formats.md) |
 

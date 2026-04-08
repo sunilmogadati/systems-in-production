@@ -232,6 +232,6 @@ Before promoting a PySpark job to production, verify every item on this list.
 | [09](09_Observability_Troubleshooting.md) | PySpark - Observability and Troubleshooting |
 | **10** | **PySpark - Decision Guide** |
 
-**Reference notebook:** [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_DE.ipynb)
+**Reference notebook:** [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb)
 
 **Related:** [Cloud Pipeline Scale chapter](../cloud-pipeline/06_Scale.md)

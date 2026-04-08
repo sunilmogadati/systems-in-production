@@ -97,9 +97,9 @@ model = RandomForestClassifier().fit(X, y)
 print(f"Accuracy: {model.score(X, y):.2%}")
 ```
 
-Deep dive: [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb)
+Deep dive: [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb)
 
-For Java developers: [Python for AI Java Dev Guide on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI_Java_Bridge.ipynb)
+For Java developers: [Python for AI Java Dev Guide on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb)
 
 ---
 
@@ -127,7 +127,7 @@ clean = df.dropDuplicates(["call_id"]).filter("duration > 0")
 clean.write.parquet("s3://processed-data/calls/", mode="overwrite")
 ```
 
-Deep dive: [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_DE.ipynb)
+Deep dive: [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb)
 
 ---
 

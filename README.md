@@ -1,14 +1,31 @@
 # Systems in Production
 
-**Reference architectures, diagnostics, and operating frameworks for Cloud, Data, and AI systems.**
+**How to build intelligent systems that work in the real world — across Cloud, Data, and AI.**
 
-This is not a tutorial collection. This is documentation of how production systems actually work — where they fail, what patterns hold up, and how decisions are made under real constraints.
+101 playbook chapters. 33 executable notebooks. Architecture patterns, failure analyses, and decision frameworks extracted from production systems.
+
+---
+
+## Start Here
+
+**New to this repo?** Pick your starting point:
+
+| You Are | Start With | First Click |
+|---|---|---|
+| **"I want to build AI systems"** | [Python Playbook](playbooks/python/) then [ML Playbook](playbooks/ai/ml/) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) |
+| **"I want to build data pipelines"** | [SQL Playbook](playbooks/data/sql/) then [Cloud Pipelines](playbooks/data/cloud-pipeline/) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) |
+| **"I want to see how production systems are designed"** | [Architecture](systems/production-diagnostics/architecture.md) then [Patterns](patterns/) | [Start reading](systems/production-diagnostics/architecture.md) |
+| **"I want to see what breaks in production"** | [Failures](failures/) then [Decisions](decisions/) | [Start reading](failures/why-flat-tables-break.md) |
+| **"I know Python, show me AI"** | [ML Playbook](playbooks/ai/ml/) chapter 03 | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) |
+| **"I know Java/C#, need Python fast"** | [Python Java Bridge](implementation/notebooks/Python_Java_Bridge.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb) |
+
+Every playbook chapter: read on GitHub (diagrams render here). Every notebook: one click to open on Google Colab (no setup needed).
 
 ---
 
 ## The Builder's Path
 
-How to build intelligent production systems — from the language to the architecture.
+The full sequence for building intelligent production systems.
 
 ```mermaid
 graph TD
@@ -54,36 +71,38 @@ graph TD
     SWE --> SYS
 ```
 
-| Step | Playbook | Notebooks | What You Build |
-|---|---|---|---|
-| **Python** | [10 chapters](playbooks/python/) | [7 notebooks](implementation/notebooks/) (Basics through Advanced) | The language everything runs in |
-| **SQL** | Coming soon | [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) | How to query and transform data |
-| **Data Modeling** | [3 chapters](playbooks/data/data-modeling/) + [Star Schema](playbooks/data/star-schema-design/) | [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) | How to structure data for querying and ML |
-| **Cloud Pipelines** | [6 chapters](playbooks/data/cloud-pipeline/) | [GCP Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) + [Automation](implementation/notebooks/GCP_Pipeline_Automation.ipynb) | How data moves from source to warehouse (Bronze, Silver, Gold) |
-| **PySpark** | [10 chapters](playbooks/data/pyspark/) | [PySpark](implementation/notebooks/PySpark.ipynb) | Distributed data processing at scale |
-| **Machine Learning** | [10 chapters](playbooks/ai/ml/) (21 algorithms) | [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb) + [Linear Regression](implementation/notebooks/Linear_Regression.ipynb) + [Logistic Regression](implementation/notebooks/Logistic_Regression.ipynb) | Prediction, classification, anomaly detection |
-| **Deep Learning** | [10 chapters](playbooks/ai/deep-learning/) | [PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) + [CNN](implementation/notebooks/Deep_Learning_CNN.ipynb) | Neural networks, image recognition, pattern detection |
-| **RAG** | [10 chapters](playbooks/ai/rag/) | [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) | AI that answers from your organization's data |
-| **Agents** | [10 chapters](playbooks/ai/agents/) | [Agents](implementation/notebooks/Agents.ipynb) | AI that takes actions, not just answers |
-| **Software Engineering** | [10 chapters](playbooks/engineering/) | [CICD for DE](implementation/notebooks/CICD_for_DE.ipynb) | APIs, testing, Docker, CI/CD, production patterns |
+### Playbooks
 
-Each playbook follows the same framework: Why, Concepts, Hello World, How It Works, Building It, Production Patterns, System Design, Quality/Security/Governance, Observability/Troubleshooting, Decision Guide.
+Each playbook has 10 chapters: Why, Concepts, Hello World, How It Works, Building It, Production Patterns, System Design, Quality/Security, Observability, Decision Guide.
+
+| Step | Playbook | Notebooks | Level |
+|---|---|---|---|
+| **Python** | [10 chapters](playbooks/python/) | [7 notebooks](playbooks/python/README.md) (Basics through Advanced) | Start here |
+| **SQL** | [10 chapters](playbooks/data/sql/) | [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) | Start here |
+| **Data Modeling** | [10 chapters](playbooks/data/data-modeling/) + [Star Schema](playbooks/data/star-schema-design/) | [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) | Intermediate |
+| **Cloud Pipelines** | [6 chapters](playbooks/data/cloud-pipeline/) | [GCP Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) + [Automation](implementation/notebooks/GCP_Pipeline_Automation.ipynb) | Intermediate |
+| **PySpark** | [10 chapters](playbooks/data/pyspark/) | [PySpark](implementation/notebooks/PySpark.ipynb) | Intermediate |
+| **Machine Learning** | [10 chapters](playbooks/ai/ml/) (21 algorithms) | [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb) + [Linear Regression](implementation/notebooks/Linear_Regression.ipynb) + [Logistic Regression](implementation/notebooks/Logistic_Regression.ipynb) | Intermediate |
+| **Deep Learning** | [10 chapters](playbooks/ai/deep-learning/) | [PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) + [CNN](implementation/notebooks/Deep_Learning_CNN.ipynb) | Advanced |
+| **RAG** | [10 chapters](playbooks/ai/rag/) | [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) | Advanced |
+| **Agents** | [10 chapters](playbooks/ai/agents/) | [Agents](implementation/notebooks/Agents.ipynb) | Advanced |
+| **Software Engineering** | [10 chapters](playbooks/engineering/) | [CI/CD](implementation/notebooks/CICD_for_DE.ipynb) | Intermediate |
 
 ---
 
 ## How Real Systems Are Built
 
-### [See a real system](systems/production-diagnostics/)
-A production diagnostic system that collects data from databases, logs, documents, and APIs, then diagnoses issues and recommends actions. Architecture with Mermaid diagrams.
+### [See a real system](systems/production-diagnostics/architecture.md)
+A production diagnostic system that collects data from databases, logs, documents, and APIs, then diagnoses issues and recommends actions. Full architecture with Mermaid diagrams.
 
 ### [Understand the patterns](patterns/)
-Reusable architecture patterns: Bronze-Silver-Gold pipelines, multi-system reconciliation, AI-derived feature engineering, feedback loops, event-driven diagnostics.
+Reusable architecture patterns: [Bronze-Silver-Gold](patterns/bronze-silver-gold.md), [multi-system reconciliation](patterns/multi-system-reconciliation.md), [AI-derived features](patterns/ai-derived-features.md), [feedback loops](patterns/feedback-loops.md), [event-driven diagnostics](patterns/event-driven-diagnostics.md).
 
 ### [Learn where systems break](failures/)
-Real production failures: flat table architectures that create duplicate data, ML models that fail because features don't carry signal, cross-system joins that silently drop records.
+Real production failures: [flat tables at scale](failures/why-flat-tables-break.md), [ML with bad features](failures/why-ml-fails-with-bad-features.md), [cross-system joins](failures/why-cross-system-joins-fail.md).
 
 ### [Explore how decisions are made](decisions/)
-The decisions behind the architecture: batch vs streaming, star schema vs querying source tables, SQL vs Spark vs BigQuery. Not what to choose — how to think about choosing.
+Architecture decisions: [batch vs streaming](decisions/batch-vs-streaming.md), [star schema vs query source](decisions/star-schema-vs-query-source.md), [SQL vs Spark vs BigQuery](decisions/sql-vs-spark-vs-bigquery.md).
 
 ---
 
@@ -91,26 +110,7 @@ The decisions behind the architecture: batch vs streaming, star schema vs queryi
 
 Click any Colab badge to open and run. No setup needed.
 
-### Data
-
-| Notebook | Open in Colab |
-|---|---|
-| [GCP Full Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) — Bronze, Silver, Gold on BigQuery | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) |
-| [GCP Pipeline Automation](implementation/notebooks/GCP_Pipeline_Automation.ipynb) — Pub/Sub, Cloud Functions, Dataproc, Composer | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Pipeline_Automation.ipynb) |
-| [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) — Star schema, fact/dimension tables, SCD | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb) |
-| [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) — Window functions, CTEs, optimization | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) |
-| [PySpark](implementation/notebooks/PySpark.ipynb) — Distributed data processing | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/PySpark.ipynb) |
-
-### Machine Learning and AI
-
-| Notebook | Open in Colab |
-|---|---|
-| [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb) — Full pipeline, SHAP, MLflow | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) |
-| [Deep Learning / PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) — Neural networks, training diagnostics | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb) |
-| [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) — Retrieval-augmented generation | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb) |
-| [Agents](implementation/notebooks/Agents.ipynb) — ReAct, tool use, multi-step reasoning | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) |
-
-### Python
+### Python (start here)
 
 | Notebook | Open in Colab |
 |---|---|
@@ -120,6 +120,27 @@ Click any Colab badge to open and run. No setup needed.
 | [File I/O](implementation/notebooks/Python_File_IO.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_File_IO.ipynb) |
 | [NumPy and Pandas](implementation/notebooks/Python_NumPy_Pandas.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb) |
 | [Advanced Patterns](implementation/notebooks/Python_Advanced.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Advanced.ipynb) |
+| [Java/C# Developer Bridge](implementation/notebooks/Python_Java_Bridge.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb) |
+
+### Data
+
+| Notebook | Open in Colab |
+|---|---|
+| [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) — Window functions, CTEs, optimization | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) |
+| [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) — Star schema, fact/dimension tables | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb) |
+| [GCP Full Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) — Bronze, Silver, Gold on BigQuery | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) |
+| [GCP Pipeline Automation](implementation/notebooks/GCP_Pipeline_Automation.ipynb) — Pub/Sub, Cloud Functions, Dataproc | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Pipeline_Automation.ipynb) |
+| [PySpark](implementation/notebooks/PySpark.ipynb) — Distributed data processing | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/PySpark.ipynb) |
+
+### Machine Learning and AI
+
+| Notebook | Open in Colab |
+|---|---|
+| [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb) — Full pipeline, SHAP, MLflow | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) |
+| [Linear Regression](implementation/notebooks/Linear_Regression.ipynb) — Where all of ML begins | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Linear_Regression.ipynb) |
+| [Deep Learning / PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) — Neural networks, training diagnostics | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb) |
+| [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) — Retrieval-augmented generation | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb) |
+| [Agents](implementation/notebooks/Agents.ipynb) — ReAct, tool use, multi-step reasoning | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) |
 
 ---
 
@@ -127,20 +148,22 @@ Click any Colab badge to open and run. No setup needed.
 
 **Call center analytics** — synthetic data with intentional quality issues (duplicates, timezone bugs, missing values). Powers both the data pipeline and ML pipeline.
 
-**Production support** — 7 microservices, 15 incidents, 28K log entries, deployment records, infrastructure metrics, service runbooks. 10 hidden diagnostic patterns.
+**Production support** — 7 microservices, 15 incidents, 28K log entries, deployment records, infrastructure metrics, service runbooks. 10 hidden diagnostic patterns to discover.
 
 ---
 
-## Community
+## Community and Support
 
-[DeliveryMomentum on Skool](https://www.skool.com/deliverymomentum) — where real systems are examined, built, and discussed.
+**[DeliveryMomentum on Skool](https://www.skool.com/deliverymomentum)** — ask questions, share what you're building, discuss real systems.
+
+**[Book a 1:1 with Sunil](https://calendly.com/sunil-mogadati/connect)** — 20 minutes, focused on your specific situation.
 
 ---
 
 ## Author
 
-**Sunil Mogadati** — 25+ years building and operating complex systems end-to-end. I fix systems that don't respond to more tools or more people.
+**Sunil Mogadati** — 25+ years building and operating complex systems end-to-end across software, cloud, data, and AI.
 
-Ground truth leadership — from the codebase to the boardroom.
+I fix systems that don't respond to more tools or more people. Ground truth leadership — from the codebase to the boardroom.
 
 [LinkedIn](https://linkedin.com/in/sunilmogadati) · [GitHub](https://github.com/sunilmogadati)

@@ -8,7 +8,7 @@
 
 - GCP project with billing enabled and BigQuery API active
 - Call center data loaded into BigQuery (the `call_center_raw` dataset from the GCP Pipeline notebook)
-- If not loaded yet, run the [GCP Pipeline notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Pipeline.ipynb) first
+- If not loaded yet, run the [GCP Pipeline notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) first
 
 All SQL below runs in the [BigQuery console](https://console.cloud.google.com/bigquery) or via `bq query --use_legacy_sql=false`.
 

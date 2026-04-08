@@ -342,8 +342,8 @@ print(f"Wrote {len(df)} records to bronze layer")
 
 | Resource | Link |
 |:---|:---|
-| Python for AI (notebook) | [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) |
-| Python for DE (notebook) | [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_DE.ipynb) |
+| Python for AI (notebook) | [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) |
+| Python for DE (notebook) | [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb) |
 | Previous chapter | [06 -- Classes and Objects](06_Classes_Objects.md) |
 | Next chapter | [08 -- NumPy and Pandas](08_NumPy_Pandas.md) |
 

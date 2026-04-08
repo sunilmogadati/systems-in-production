@@ -2,7 +2,7 @@
 
 **See it work first. Understand it after.**
 
-> **Python note:** The code below uses `import`, `def`, `while` loops, `json`, and `print`. If any of that is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) covers everything you need. But try reading the code first -- you may understand more than you think.
+> **Python note:** The code below uses `import`, `def`, `while` loops, `json`, and `print`. If any of that is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) covers everything you need. But try reading the code first -- you may understand more than you think.
 
 ---
 
