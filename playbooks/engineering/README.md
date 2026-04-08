@@ -21,7 +21,7 @@
 
 | Notebook | Open in Colab |
 |---|---|
-| [CI/CD for DE](../../../implementation/notebooks/CICD_for_DE.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/CICD_for_DE.ipynb) |
+| [CI/CD for DE](../../implementation/notebooks/CICD_for_DE.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/CICD_for_DE.ipynb) |
 
 ## Get Help
 

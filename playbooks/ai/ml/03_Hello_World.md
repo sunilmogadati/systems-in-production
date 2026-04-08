@@ -175,12 +175,12 @@ That is actionable. The stakeholder can ask: "show me all houses where AveOccup 
 | Question | Where to Find the Answer |
 |:---|:---|
 | How do I choose precision vs recall vs F1? | [04 — How It Works](04_How_It_Works.md) — evaluation metrics deep dive |
-| How do I prevent overfitting systematically? | [05 — Decisions](05_Decisions.md) — regularization, feature selection, hyperparameter tuning |
-| How do Tesla, Google, and banks use ML in production? | [06 — Real World](06_Real_World.md) — production case studies |
+| How do I prevent overfitting systematically? | [05 — Decisions](05_Building_It.md) — regularization, feature selection, hyperparameter tuning |
+| How do Tesla, Google, and banks use ML in production? | [06 — Real World](06_Production_Patterns.md) — production case studies |
 | How do I deploy a model to serve 10,000 users? | [07 — System Design](07_System_Design.md) — serving, scaling, cloud |
-| What if someone games the model? | [08 — Security & Governance](08_Security_Governance.md) — adversarial inputs, bias, compliance |
-| How do I know if my deployed model is still working? | [09 — Observability](09_Observability.md) — monitoring, drift, debugging |
-| Give me the one-page decision reference | [10 — Checklist](10_Checklist.md) |
+| What if someone games the model? | [08 — Security & Governance](08_Quality_Security_Governance.md) — adversarial inputs, bias, compliance |
+| How do I know if my deployed model is still working? | [09 — Observability](09_Observability_Troubleshooting_Troubleshooting.md) — monitoring, drift, debugging |
+| Give me the one-page decision reference | [10 — Checklist](10_Decision_Guide.md) |
 
 ---
 
