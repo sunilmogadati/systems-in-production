@@ -30,7 +30,11 @@ graph TD
         AGENTS["Agents"]
     end
 
-    subgraph "4. Production System"
+    subgraph "4. Software Engineering"
+        SWE["APIs + Testing + Docker<br/>CI/CD + Production Patterns"]
+    end
+
+    subgraph "5. Production System"
         SYS["System Design<br/>Architecture + Patterns +<br/>Failures + Decisions"]
     end
 
@@ -44,9 +48,10 @@ graph TD
     ML --> RAG
     DL --> RAG
     RAG --> AGENTS
-    AGENTS --> SYS
-    PIPE --> SYS
-    ML --> SYS
+    AGENTS --> SWE
+    PIPE --> SWE
+    ML --> SWE
+    SWE --> SYS
 ```
 
 | Step | Playbook | Notebooks | What You Build |
@@ -60,6 +65,7 @@ graph TD
 | **Deep Learning** | [10 chapters](playbooks/ai/deep-learning/) | [PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) + [CNN](implementation/notebooks/Deep_Learning_CNN.ipynb) | Neural networks, image recognition, pattern detection |
 | **RAG** | [10 chapters](playbooks/ai/rag/) | [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) | AI that answers from your organization's data |
 | **Agents** | [10 chapters](playbooks/ai/agents/) | [Agents](implementation/notebooks/Agents.ipynb) | AI that takes actions, not just answers |
+| **Software Engineering** | [10 chapters](playbooks/engineering/) | [CICD for DE](implementation/notebooks/CICD_for_DE.ipynb) | APIs, testing, Docker, CI/CD, production patterns |
 
 Each playbook follows the same framework: Why, Concepts, Hello World, How It Works, Building It, Production Patterns, System Design, Quality/Security/Governance, Observability/Troubleshooting, Decision Guide.
 
