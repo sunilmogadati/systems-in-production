@@ -10,10 +10,10 @@ Start with one notebook. Get your first win in 30 minutes.
 
 This repo is a library. You are not meant to read it front to back. Pick one path, follow it, and build something.
 
-**Your first 30 minutes:** Click a Colab badge below. The notebook opens in your browser. Run each cell top to bottom (Shift+Enter). No setup, no install, no account needed. You'll see results immediately.
+**Your first 30 minutes:** Click a Colab badge below. The notebook opens in your browser. Run each cell top to bottom (Shift+Enter). You'll see results immediately.
 
-| You Are | Start With | Your First Win (30 min) |
-|---|---|---|
+Most notebooks run directly on Colab (no setup). A few advanced topics (RAG, Agents) require local setup (Ollama for running AI models locally) — those chapters explain what you need.
+
 | You Are | Start With | Your First Win |
 |---|---|---|
 | **Brand new to programming** | [Python Basics](playbooks/python/01_Why.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) Write your first Python code, see it run |

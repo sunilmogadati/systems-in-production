@@ -12,7 +12,7 @@ Build a **production-quality document Q&A system** using RAG (Retrieval-Augmente
 
 This is not another tutorial. You already built a RAG system in the notebook (Section 6-27). This project adds what the notebook intentionally left out: **your own documents, automated evaluation, security, and production structure.**
 
-P3 is also the foundation for P4 (the Advanced RAG section), where you will swap repos with a partner and extend their code. Build it like someone else will read and modify it — because they will.
+Build it like someone else will read and modify it. Clean, modular code is a professional standard.
 
 ---
 
@@ -96,7 +96,7 @@ P3 is also the foundation for P4 (the Advanced RAG section), where you will swap
 - [ ] A `requirements.txt` with pinned versions
 - [ ] A `.gitignore` (exclude `__pycache__/`, `.venv/`, `chroma/`, large data files)
 
-> **Build it like someone else will modify it.** In P4, a classmate will receive your repo, read your code, and extend it. If your code is a single 500-line script with no comments, they will have a bad time — and your P4 peer review score will reflect it.
+> **Build it like someone else will modify it.** If your code is a single 500-line script with no comments, nobody can maintain or extend it.
 
 ### 7. README
 - [ ] Problem statement: what domain, what documents, what questions it answers
@@ -118,7 +118,7 @@ Answer in a separate `REFLECTION.md`:
 2. What was the hardest question for your system to answer correctly? Why?
 3. What would break if you deployed this to 100 concurrent users tomorrow?
 4. How did RAGAS (or your evaluation method) change your understanding of the system's quality?
-5. What architectural decisions did you make that a partner might disagree with in P4?
+5. What architectural decisions did you make that someone extending your code might change?
 
 ---
 
@@ -152,7 +152,7 @@ Install RAGAS and run your test set. Record the scores. If a score is below 0.7,
 Add input validation to your query pipeline. Test it with the 5 injection attempts. Document what you catch and what you do not.
 
 ### Step 8: Refactor for modularity
-If your code is still in one file, split it. Your partner in P4 will thank you.
+If your code is still in one file, split it. Future you (or any collaborator) will thank you.
 
 ### Step 9: Write README, reflection, push to GitHub
 ```bash
@@ -181,7 +181,7 @@ gh repo create p3-rag-application --public --push
 
 ## The Interview Story
 
-> "I built a RAG system for [your domain] using LangChain, ChromaDB, and a local LLM via Ollama. The corpus was [X] documents, [Y] pages total. I evaluated it with a 15-question test set covering factual lookups, multi-hop reasoning, and unanswerable questions. My RAGAS scores were [context relevance: X, faithfulness: Y, answer relevance: Z]. The weakest area was [X] because [reason] — the retrieval was pulling [problem]. I also added prompt injection defense — basic input validation that catches 'ignore previous instructions' patterns and system prompt extraction attempts. If I were taking this to production, the first thing I would add is [guardrails framework / reranking / hybrid search / authentication] because [reason]. My classmate extended this system in P4 and added [what they built]."
+> "I built a RAG system for [your domain] using LangChain, ChromaDB, and a local LLM via Ollama. The corpus was [X] documents, [Y] pages total. I evaluated it with a 15-question test set covering factual lookups, multi-hop reasoning, and unanswerable questions. My RAGAS scores were [context relevance: X, faithfulness: Y, answer relevance: Z]. The weakest area was [X] because [reason] — the retrieval was pulling [problem]. I also added prompt injection defense — basic input validation that catches 'ignore previous instructions' patterns and system prompt extraction attempts. If I were taking this to production, the first thing I would add is [guardrails framework / reranking / hybrid search / authentication] because [reason]. If I were extending this further, I would add [what you would build next]."
 
 ---
 
@@ -204,12 +204,12 @@ A hands-on guide for cloning and running these repos is available at: [RAG Proje
 
 | What You Build Here | Where It Goes |
 |:---|:---|
-| Modular, well-documented code | **P4 (the Advanced RAG section):** A classmate will clone your P3 and extend it. They will read every line. |
-| RAGAS evaluation test set | **P4:** Your partner runs the same test set after their changes. Scores should improve, not regress. |
-| ChromaDB + LangChain pipeline | **P4:** Partner adds reranking, hybrid search, or query classification on top of your pipeline |
-| Prompt injection defense | **P5 (the Enterprise Integration section):** Enterprise integration adds PII (Personally Identifiable Information) redaction, RBAC (Role-Based Access Control), and formal security assessment |
-| Reflection on architectural decisions | **P4:** Partner documents what they would have done differently — your decisions become their constraints |
-| The entire RAG system | **P6 (the Capstone section):** Capstone builds on the same platform — adds agents, voice/chat UI, and 1-week production operation |
+| Modular, well-documented code | Future extension: add reranking, hybrid search, or advanced retrieval |
+| RAGAS evaluation test set | Regression testing: run the same test set after changes |
+| ChromaDB + LangChain pipeline | Extension: add reranking, hybrid search, or query classification |
+| Prompt injection defense | Enterprise readiness: add PII redaction, RBAC, security assessment |
+| Reflection on architectural decisions | Code review: document what you would change with more time |
+| The entire RAG system | Advanced: add agents, conversational UI, production deployment |
 
 ---
 
@@ -237,4 +237,4 @@ p3-rag-application/
     evaluation_report.md      # RAGAS scores + interpretation
 ```
 
-> **Why this structure?** Each file has one job. Your partner in P4 can find the retrieval logic without reading the ingestion code. The test set is separate from the code so it can be run independently. The `.env.example` tells them what configuration they need without exposing your actual settings.
+> **Why this structure?** Each file has one job. Anyone can find the retrieval logic without reading the ingestion code. The test set is separate from the code so it can be run independently. The `.env.example` tells them what configuration they need without exposing your actual settings.
