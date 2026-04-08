@@ -179,6 +179,6 @@ This is not new. This is how human experts work. The agent just does it faster, 
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Tracing agent reasoning, measuring tool call success, cost monitoring. |
 | [10 - Decision Guide](10_Decision_Guide.md) | "Should I use an agent?" decision table. Production readiness checklist. |
 
-**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) -- builds ReAct agents from scratch, then with LangChain, then multi-agent with LangGraph. All running locally with Ollama, no API keys needed.
+**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) -- builds ReAct agents from scratch, then with LangChain, then multi-agent with LangGraph. All running locally with Ollama, no API keys needed.
 
 **Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)

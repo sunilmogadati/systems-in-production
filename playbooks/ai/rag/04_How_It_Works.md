@@ -242,7 +242,7 @@ Answer:
 
 The prompt template is not decoration. It is architecture. A well-designed prompt is the difference between a RAG system that works and one that confidently produces wrong answers.
 
-See the prompt engineering patterns in the hands-on notebook: [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb)
+See the prompt engineering patterns in the hands-on notebook: [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb)
 
 ---
 
@@ -307,6 +307,6 @@ The LLM generation step accounts for 80-95% of total latency. This is why cachin
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Measuring quality and cost |
 | [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
-**Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb)
+**Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb)
 
 **Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)

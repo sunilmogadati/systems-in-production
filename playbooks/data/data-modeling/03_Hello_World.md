@@ -2,7 +2,7 @@
 
 **Build the call center star schema on BigQuery. See the difference a data model makes.**
 
-> **Prerequisites:** A GCP (Google Cloud Platform) account with BigQuery enabled. If the account is not set up yet, see the GCP Setup section in the Cloud Pipeline notebook (M08, Section 3.1a). Basic SQL — `SELECT`, `JOIN`, `GROUP BY`, `WHERE`. If SQL syntax is unfamiliar, the [SQL Foundations notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M02_Git_Linux_SQL_Foundations.ipynb) covers everything needed.
+> **Prerequisites:** A GCP (Google Cloud Platform) account with BigQuery enabled. If the account is not set up yet, see the GCP Setup section in the Cloud Pipeline notebook (M08, Section 3.1a). Basic SQL — `SELECT`, `JOIN`, `GROUP BY`, `WHERE`. If SQL syntax is unfamiliar, the [SQL Foundations notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Git_Linux_SQL.ipynb) covers everything needed.
 
 ---
 
@@ -303,6 +303,6 @@ That is the VP's 3 AM question — answered in one readable SQL query, running i
 
 ---
 
-**Hands-on notebook:** [M05 — Data Modeling](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M05_Data_Modeling.ipynb) — the same star schema built step-by-step with Python + SQL, including SCD Type 2, edge cases, and interview questions.
+**Hands-on notebook:** [M05 — Data Modeling](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb) — the same star schema built step-by-step with Python + SQL, including SCD Type 2, edge cases, and interview questions.
 
-**Full pipeline build:** [M08 — Cloud Data Pipeline Build](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M08_Cloud_Data_Pipeline_Build.ipynb) — 208 cells covering GCS, BigQuery, Dataflow, Bronze/Silver/Gold, and 20 GCP subsections with console walkthroughs.
+**Full pipeline build:** [M08 — Cloud Data Pipeline Build](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Cloud_Pipeline_Reference.ipynb) — 208 cells covering GCS, BigQuery, Dataflow, Bronze/Silver/Gold, and 20 GCP subsections with console walkthroughs.

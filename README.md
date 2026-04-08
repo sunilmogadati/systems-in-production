@@ -41,26 +41,26 @@ Click any Colab badge to open and run.
 |:---|:---|
 | [GCP Full Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) — Bronze → Silver → Gold on BigQuery | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) |
 | [Analytics Pipeline](implementation/pipelines/Analytics_Pipeline.ipynb) — Bronze → Silver → Gold in Pandas | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/pipelines/Analytics_Pipeline.ipynb) |
-| [Data Modeling](implementation/notebooks/M05_Data_Modeling.ipynb) — Star schema, SCD, partitioning | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M05_Data_Modeling.ipynb) |
-| [Advanced SQL](implementation/notebooks/M04_Advanced_SQL_for_DE.ipynb) — Window functions, CTEs | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M04_Advanced_SQL_for_DE.ipynb) |
+| [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) — Star schema, SCD, partitioning | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb) |
+| [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) — Window functions, CTEs | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) |
 
 ### Machine Learning & AI
 
 | Notebook | Open in Colab |
 |:---|:---|
 | [ML Pipeline](implementation/pipelines/ML_Pipeline.ipynb) — Feature engineering → train → evaluate → SHAP | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/pipelines/ML_Pipeline.ipynb) |
-| [ML Fundamentals](implementation/notebooks/AI_Engineer_Accelerator_ML_Fundamentals.ipynb) — Bias-variance, regularization, SHAP, MLflow | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_ML_Fundamentals.ipynb) |
-| [Deep Learning & PyTorch](implementation/notebooks/AI_Engineer_Accelerator_Deep_Learning_PyTorch.ipynb) — Neural networks, training diagnostics | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Deep_Learning_PyTorch.ipynb) |
-| [RAG from Scratch](implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb) — Retrieval-augmented generation | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb) |
-| [Agents](implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) — ReAct, tool use, multi-step reasoning | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) |
+| [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb) — Bias-variance, regularization, SHAP, MLflow | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) |
+| [Deep Learning & PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) — Neural networks, training diagnostics | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb) |
+| [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) — Retrieval-augmented generation | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb) |
+| [Agents](implementation/notebooks/Agents.ipynb) — ReAct, tool use, multi-step reasoning | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) |
 
 ### Foundations
 
 | Notebook | Open in Colab |
 |:---|:---|
-| [Python for AI](implementation/notebooks/AI_Engineer_Accelerator_Python_for_AI.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Python_for_AI.ipynb) |
-| [Database Essentials](implementation/notebooks/AI_Engineer_Accelerator_Database_Essentials.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Database_Essentials.ipynb) |
-| [Math for AI](implementation/notebooks/AI_Engineer_Accelerator_Math_for_AI.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Math_for_AI.ipynb) |
+| [Python for AI](implementation/notebooks/Python_for_AI.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) |
+| [Database Essentials](implementation/notebooks/Database_Essentials.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Database_Essentials.ipynb) |
+| [Math for AI](implementation/notebooks/Math_for_AI.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Math_for_AI.ipynb) |
 
 ---
 

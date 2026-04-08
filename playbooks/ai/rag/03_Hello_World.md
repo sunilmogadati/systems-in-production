@@ -176,4 +176,4 @@ You just built a working RAG system. The next chapters explain:
 | [04 - How It Works](04_How_It_Works.md) | Deep dive into each step |
 | [05 - Building It](05_Building_It.md) | Every tradeoff and choice |
 
-**Full hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb)
+**Full hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb)

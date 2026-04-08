@@ -314,7 +314,7 @@ This 10-chapter series covers RAG from first principles to production readiness.
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Retrieval quality, answer quality, latency, cost. LLM-as-judge. Drift detection. Debugging method. |
 | [10 - Decision Guide](10_Decision_Guide.md) | This page. Decision tables, production readiness checklist, quick reference cards. |
 
-**Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb) -- builds everything from ingestion to evaluation, running locally with Ollama.
+**Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb) -- builds everything from ingestion to evaluation, running locally with Ollama.
 
 ---
 
@@ -333,4 +333,4 @@ This 10-chapter series covers RAG from first principles to production readiness.
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Measuring quality and cost |
 | [10 - Decision Guide](10_Decision_Guide.md) | This page |
 
-**Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb)
+**Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb)

@@ -7,7 +7,7 @@
 - Git installed (`git --version`)
 - Ollama installed ([ollama.com/download](https://ollama.com/download)) — for Projects 1, 2, and 4
 - 8+ GB RAM recommended for local LLM inference
-- Completed the [RAG from Scratch notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb) (Section 29 references these projects)
+- Completed the [RAG from Scratch notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb) (Section 29 references these projects)
 
 **Time estimate:** ~30-45 minutes for Project 1 (the primary one). Budget extra time for model downloads on first run.
 
@@ -736,7 +736,7 @@ When you hit a problem:
 
 After running at least Project 1:
 
-1. Go back to the [RAG from Scratch notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb), Section 29 ("Your Turn — Build Your Own")
+1. Go back to the [RAG from Scratch notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb), Section 29 ("Your Turn — Build Your Own")
 2. Pick a domain (your own documents)
 3. Use Project 1's file structure as your starting template
 4. Add your own improvements — this becomes your P3 project

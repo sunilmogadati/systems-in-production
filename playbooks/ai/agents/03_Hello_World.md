@@ -2,7 +2,7 @@
 
 **See it work first. Understand it after.**
 
-> **Python note:** The code below uses `import`, `def`, `while` loops, `json`, and `print`. If any of that is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Python_for_AI.ipynb) covers everything you need. But try reading the code first -- you may understand more than you think.
+> **Python note:** The code below uses `import`, `def`, `while` loops, `json`, and `print`. If any of that is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) covers everything you need. But try reading the code first -- you may understand more than you think.
 
 ---
 
@@ -334,6 +334,6 @@ You have seen it work. Now the question is: how does it REALLY work under the ho
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Tracing, cost monitoring, debugging |
 | [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
-**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) -- the full implementation with from-scratch agents, LangChain agents, and LangGraph multi-agent systems.
+**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) -- the full implementation with from-scratch agents, LangChain agents, and LangGraph multi-agent systems.
 
 **Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)

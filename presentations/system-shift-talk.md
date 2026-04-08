@@ -191,7 +191,7 @@ Key moments:
 
 > Speaker notes: "This ML pipeline trains 3 models and compares them side by side. In our diagnostic system, this predicts which incidents will escalate. The SHAP chart shows WHY the model flagged something. That's not a black box, that's a transparent recommendation." 2-3 min.
 
-**Demo link:** [ML Fundamentals on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_ML_Fundamentals.ipynb)
+**Demo link:** [ML Fundamentals on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb)
 
 ---
 
@@ -211,7 +211,7 @@ Steps:
 
 > Speaker notes: "In our diagnostic system, RAG is the knowledge layer. It ingests runbooks, post-mortems, architecture docs. When the system detects an anomaly, RAG retrieves relevant documentation and past fixes. No more searching Confluence at 2 AM." 2-3 min.
 
-**Demo link:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb)
+**Demo link:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb)
 
 ---
 
@@ -231,7 +231,7 @@ Source to GCS (Storage) to BigQuery (Warehouse) to Transformation to Analytics
 
 > Speaker notes: "In our diagnostic system, this is how data gets from source to usable. Logs come in as JSON, metrics as CSV, incidents from ticketing APIs. The pipeline cleans, deduplicates, fixes timezone issues, and structures it for analysis. Without this, nothing else works." 2-3 min.
 
-**Demo link:** [GCP Pipeline on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M08_Cloud_Data_Pipeline_Build.ipynb)
+**Demo link:** [GCP Pipeline on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Cloud_Pipeline_Reference.ipynb)
 
 ---
 
@@ -249,7 +249,7 @@ Source to GCS (Storage) to BigQuery (Warehouse) to Transformation to Analytics
 
 > Speaker notes: "In our diagnostic system, deep learning watches the metrics. CPU, memory, latency, error rates. It learns what normal looks like for each service. When something drifts outside normal, it flags it. Remember that search-service memory leak in our dataset? It built up over 5 days before crashing. A trained model catches that on day 2." 2 min.
 
-**Demo link:** [Deep Learning on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Deep_Learning_PyTorch.ipynb)
+**Demo link:** [Deep Learning on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb)
 
 ---
 
@@ -266,7 +266,7 @@ Source to GCS (Storage) to BigQuery (Warehouse) to Transformation to Analytics
 
 > Speaker notes: "This is where it all comes together. The agent doesn't just answer questions. It takes action. It receives an alert, queries the DB, reads the logs, checks the runbook via RAG, correlates with recent deployments, and creates a ticket with findings. That's not a chatbot. That's a diagnostic system. And it needed every skill in this room to build: data engineering, software development, AI/ML, DevOps, QA to validate it, PM to scope it." 2 min.
 
-**Demo link:** [AI Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb)
+**Demo link:** [AI Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
 ---
 
@@ -412,11 +412,11 @@ github.com/sunilmogadati/systems-in-production
 Open these before the presentation:
 
 1. **Star Schema Design:** https://github.com/sunilmogadati/systems-in-production/tree/main/playbooks/data/star-schema-design
-2. **ML Fundamentals:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_ML_Fundamentals.ipynb
-3. **RAG from Scratch:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb
-4. **GCP Pipeline:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M08_Cloud_Data_Pipeline_Build.ipynb
-5. **Deep Learning:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Deep_Learning_PyTorch.ipynb
-6. **Agents:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb
+2. **ML Fundamentals:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb
+3. **RAG from Scratch:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb
+4. **GCP Pipeline:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Cloud_Pipeline_Reference.ipynb
+5. **Deep Learning:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb
+6. **Agents:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb
 
 ---
 

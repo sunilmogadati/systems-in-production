@@ -311,6 +311,6 @@ The pipeline has four stages:
 | **[09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md)** | **This page** |
 | [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
-**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb)
+**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
 **Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)

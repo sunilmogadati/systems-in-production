@@ -366,7 +366,7 @@ This 10-chapter series covers AI agents from first principles to production read
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Six core metrics, tracing, debugging, loop detection, evaluation, dashboard design. |
 | [10 - Decision Guide](10_Decision_Guide.md) | This page. Decision table, production readiness checklist, templates, failure modes. |
 
-**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) -- builds a ReAct agent with tool calling, from scratch.
+**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) -- builds a ReAct agent with tool calling, from scratch.
 
 ---
 
@@ -385,6 +385,6 @@ This 10-chapter series covers AI agents from first principles to production read
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Measuring and debugging agents |
 | **[10 - Decision Guide](10_Decision_Guide.md)** | **This page** |
 
-**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb)
+**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
 **Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)

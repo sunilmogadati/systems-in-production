@@ -134,6 +134,6 @@ Use this for any ML system design question — interviews, architecture reviews,
 
 ---
 
-**Hands-on:** [Deep Learning & PyTorch Notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Deep_Learning_PyTorch.ipynb) — Build everything from this material with working code.
+**Hands-on:** [Deep Learning & PyTorch Notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb) — Build everything from this material with working code.
 
 **Project:** [P1.5 — Deep Learning Image Classifier](https://github.com/sunilmogadati/systems-in-production/blob/main/implementation/projects/P1_5_Deep_Learning_Image_Classifier.md) — Apply it: build 3 architectures on CIFAR-10, diagnose training, compare results.

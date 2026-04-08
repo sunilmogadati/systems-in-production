@@ -295,7 +295,7 @@ Use this table when designing a new agent system. Fill in each row.
 | Cost limit per run | $0.01 / $0.05 / $0.10 / $0.50+ / Free (local) | | |
 | Human-in-the-loop | Every call / Write operations / Destructive only / Never | | |
 
-**Fill this out BEFORE writing code.** The notebook lets you experiment with different configurations: [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb)
+**Fill this out BEFORE writing code.** The notebook lets you experiment with different configurations: [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
 ---
 
@@ -379,6 +379,6 @@ These defaults get you a working agent in under an hour. After that, the decisio
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Tracing, cost monitoring, debugging |
 | [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
-**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb)
+**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
 **Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)

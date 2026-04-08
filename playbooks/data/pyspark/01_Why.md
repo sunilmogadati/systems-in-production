@@ -1,7 +1,7 @@
 # PySpark - Why It Matters
 
 **Series:** PySpark Concept Chapters (1 of 10)
-**Notebook:** [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M03_Python_for_Data_Engineering.ipynb) (PySpark sections 18-22)
+**Notebook:** [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_DE.ipynb) (PySpark sections 18-22)
 
 ---
 

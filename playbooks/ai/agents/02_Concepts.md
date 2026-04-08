@@ -190,7 +190,7 @@ flowchart TD
 
 Each agent is an expert in its domain (3-5 tools). The supervisor coordinates them. This mirrors how human teams work: you do not ask one person to be the log expert, the metrics expert, and the runbook expert. You assemble a team.
 
-The hands-on notebook builds both: a single ReAct agent from scratch, then a multi-agent system with LangGraph. [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb)
+The hands-on notebook builds both: a single ReAct agent from scratch, then a multi-agent system with LangGraph. [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
 ---
 
@@ -266,6 +266,6 @@ See the full system: [Production Diagnostics Architecture](../../systems/product
 | [09 - Observability & Troubleshooting](09_Observability_Troubleshooting.md) | Tracing, cost monitoring, debugging |
 | [10 - Decision Guide](10_Decision_Guide.md) | Decision table and production readiness |
 
-**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb) -- builds everything from a from-scratch ReAct agent to multi-agent systems with LangGraph, all running locally with Ollama.
+**Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) -- builds everything from a from-scratch ReAct agent to multi-agent systems with LangGraph, all running locally with Ollama.
 
 **Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)

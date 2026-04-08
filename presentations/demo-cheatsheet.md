@@ -31,7 +31,7 @@ Say: "Let me show you a system I'm building. It collects data from databases, ap
 
 **What it is in the system:** Predicts which P3 incident will escalate to P1. Classifies root causes automatically. Learns from past incidents.
 
-**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_ML_Fundamentals.ipynb
+**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb
 
 **Scroll map (all outputs saved, no need to run):**
 
@@ -57,7 +57,7 @@ Say: "Let me show you a system I'm building. It collects data from databases, ap
 
 **What it is in the system:** When an engineer is debugging at 2 AM, they need answers from runbooks, post-mortems, and docs. RAG makes that searchable by meaning, not keywords.
 
-**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_RAG_from_Scratch.ipynb
+**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb
 
 **Show:**
 - The pipeline flow: ingest documents, create embeddings, retrieve, answer
@@ -75,7 +75,7 @@ Say: "Let me show you a system I'm building. It collects data from databases, ap
 
 **What it is in the system:** Logs, metrics, incidents, deployments arrive in different formats from different systems. This pipeline moves them from raw to clean to analysis-ready.
 
-**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/M08_Cloud_Data_Pipeline_Build.ipynb
+**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Cloud_Pipeline_Reference.ipynb
 
 **Show:**
 - Bronze to Silver to Gold sections
@@ -91,7 +91,7 @@ Say: "Let me show you a system I'm building. It collects data from databases, ap
 
 **What it is in the system:** Memory usage climbing over 5 days. Normal growth or a leak? A neural network trained on historical metrics catches patterns that dashboards miss.
 
-**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Deep_Learning_PyTorch.ipynb
+**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb
 
 **Show:**
 - Training output: loss curves, accuracy going up
@@ -109,7 +109,7 @@ Say: "Let me show you a system I'm building. It collects data from databases, ap
 
 **What it is in the system:** The orchestrator. Receives an alert. Queries the DB. Checks logs. Searches the runbook via RAG. Correlates with recent deployments. Creates a ticket with findings.
 
-**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Agents.ipynb
+**Open:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb
 
 **Show:**
 - Tool-calling flow: agent receives query, picks a tool, executes, returns result

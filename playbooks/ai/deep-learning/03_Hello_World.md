@@ -2,7 +2,7 @@
 
 **See it work first. Understand it after.**
 
-> **Python note:** The code below uses `import`, `class`, `for` loops, and `print`. If any of that is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Python_for_AI.ipynb) covers everything you need. But try running the code first — you may understand more than you think.
+> **Python note:** The code below uses `import`, `class`, `for` loops, and `print`. If any of that is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) covers everything you need. But try running the code first — you may understand more than you think.
 
 ---
 
@@ -188,7 +188,7 @@ These failures are not random. They reveal the boundaries of what the model lear
 
 ## Try It Yourself
 
-1. **Run the code** in the [Deep Learning notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Deep_Learning_PyTorch.ipynb) — Sections 3-4 walk you through this exact example with visualizations
+1. **Run the code** in the [Deep Learning notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb) — Sections 3-4 walk you through this exact example with visualizations
 2. **Change something and see what happens:**
    - Change `nn.Linear(784, 128)` to `nn.Linear(784, 16)` — fewer neurons. Does accuracy drop?
    - Change `num_epochs = 3` to `num_epochs = 10` — more training. Does accuracy improve? Does it plateau?

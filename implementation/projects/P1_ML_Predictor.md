@@ -157,7 +157,7 @@ Before building your own, study how others approached similar problems:
 | Repo | What to Study |
 |:---|:---|
 | [Kaggle kernels for this dataset](https://www.kaggle.com/datasets/shantanudhakadd/bank-churn-modelling/code) | See how other data scientists approached the same problem. Compare their feature engineering and model choices to yours. |
-| [ML Fundamentals notebook (Section 1-7)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_ML_Fundamentals.ipynb) | Your primary reference for the ML lifecycle, cross-validation, SHAP, and MLflow. |
+| [ML Fundamentals notebook (Section 1-7)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) | Your primary reference for the ML lifecycle, cross-validation, SHAP, and MLflow. |
 
 ---
 

@@ -2,7 +2,7 @@
 
 **Train a model, evaluate it honestly, explain its predictions — in 20 lines.**
 
-> **Python note:** The code below uses `import`, `print`, and standard library calls. If any syntax is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_Python_for_AI.ipynb) covers everything needed. But try running the code first.
+> **Python note:** The code below uses `import`, `print`, and standard library calls. If any syntax is unfamiliar, the [Python for AI notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI.ipynb) covers everything needed. But try running the code first.
 
 ---
 
@@ -162,7 +162,7 @@ That is actionable. The stakeholder can ask: "show me all houses where AveOccup 
 
 ## Try It Yourself
 
-1. **Run the code** in the [ML Fundamentals notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_ML_Fundamentals.ipynb) — Section 9 has the full pipeline with visualizations
+1. **Run the code** in the [ML Fundamentals notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) — Section 9 has the full pipeline with visualizations
 2. **Change something:**
    - Add `max_depth=5` to the Random Forest: `RandomForestRegressor(n_estimators=100, max_depth=5)`. Does the train-test gap shrink? (Hint: yes — limiting depth is regularization)
    - Try `n_estimators=10` instead of 100. Does performance drop? By how much?
@@ -184,6 +184,6 @@ That is actionable. The stakeholder can ask: "show me all houses where AveOccup 
 
 ---
 
-**Hands-on notebook:** [ML Fundamentals Notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/AI_Engineer_Accelerator_ML_Fundamentals.ipynb) — the full pipeline with visualizations, diagnostics, and experiment tracking.
+**Hands-on notebook:** [ML Fundamentals Notebook](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) — the full pipeline with visualizations, diagnostics, and experiment tracking.
 
 **Project:** [P1 — ML Predictor](https://github.com/sunilmogadati/systems-in-production/blob/main/implementation/projects/P1_ML_Predictor.md) — Bank churn prediction. Apply everything from this material to a real business problem.
