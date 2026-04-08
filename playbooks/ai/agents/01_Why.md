@@ -132,7 +132,7 @@ The ML (Machine Learning) model predicts. The DL (Deep Learning) model detects. 
 
 Without the agent, each component is useful but isolated. The ML model flags "this alert will likely escalate" -- but nobody sees it until they manually check the dashboard. RAG finds the runbook section -- but only when someone asks the right question. The agent connects these components into a coherent workflow: detect, diagnose, decide, act.
 
-See the full architecture: [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)
+See the full architecture: [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)
 
 ---
 
@@ -181,4 +181,4 @@ This is not new. This is how human experts work. The agent just does it faster, 
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) -- builds ReAct agents from scratch, then with LangChain, then multi-agent with LangGraph. All running locally with Ollama, no API keys needed.
 
-**Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)
+**Production architecture:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)

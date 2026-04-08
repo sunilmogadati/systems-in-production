@@ -284,6 +284,6 @@ graph TD
 
 **Hands-on notebook:** [ML Fundamentals on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) — the pipeline that produces the model this chapter deploys.
 
-**Architecture reference:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md) — the system these patterns serve.
+**Architecture reference:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md) — the system these patterns serve.
 
 **Next:** [07 — System Design](07_System_Design.md) — The 10-step framework for designing an ML system from requirements to iteration.

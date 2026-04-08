@@ -313,4 +313,4 @@ The pipeline has four stages:
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
-**Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)
+**Production architecture:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)

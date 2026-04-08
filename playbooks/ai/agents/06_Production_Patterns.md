@@ -174,7 +174,7 @@ Support agents use a classify-then-act pattern:
 
 **What it does:** Receives an alert from PagerDuty, investigates the issue by querying databases and logs, searches runbooks via RAG (Retrieval-Augmented Generation), determines a likely root cause, and creates a ticket with findings and recommended actions.
 
-See: [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)
+See: [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)
 
 **What tools the agent has:**
 - Database query tool (read-only access to metrics and application databases)
@@ -278,7 +278,7 @@ Every failed autonomous agent shares the same root causes. These are not theoret
 
 ## What This Means for Your System
 
-If you are building a production diagnostic agent (see [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)), every lesson from these real systems applies directly:
+If you are building a production diagnostic agent (see [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)), every lesson from these real systems applies directly:
 
 | Production Lesson | How It Applies to Diagnostics |
 |---|---|
@@ -318,4 +318,4 @@ If you are building a production diagnostic agent (see [Production Diagnostics A
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
-**Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)
+**Production architecture:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)

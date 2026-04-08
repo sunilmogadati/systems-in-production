@@ -447,6 +447,6 @@ graph TD
 
 **Hands-on notebook:** [ML Fundamentals on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) — the executable version of this pipeline with real data and visualizations.
 
-**Architecture reference:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md) — the system this model serves.
+**Architecture reference:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md) — the system this model serves.
 
 **Next:** [06 — Production Patterns](06_Production_Patterns.md) — How ML models actually run in production: training pipelines, serving patterns, feature stores, A/B testing, and the MLOps lifecycle.

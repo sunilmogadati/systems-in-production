@@ -221,11 +221,11 @@ Before promoting a PySpark job to production, verify every item on this list.
 
 | Chapter | Title |
 |---|---|
-| [01](01_Foundations.md) | PySpark - Foundations |
-| [02](02_Core_Operations.md) | PySpark - Core Operations |
-| [03](03_Data_Engineering_Patterns.md) | PySpark - Data Engineering Patterns |
-| [04](04_Advanced_Processing.md) | PySpark - Advanced Processing |
-| [05](05_Cloud_Integration.md) | PySpark - Cloud Integration |
+| [01](01_Why.md) | Why |
+| [02](02_Concepts.md) | Concepts |
+| [03](03_Hello_World.md) | Hello World |
+| [04](04_How_It_Works.md) | How It Works |
+| [05](05_Building_It.md) | Building It |
 | [06](06_Production_Patterns.md) | PySpark - Production Patterns |
 | [07](07_System_Design.md) | PySpark - System Design |
 | [08](08_Quality_Security_Governance.md) | PySpark - Quality, Security, Governance |

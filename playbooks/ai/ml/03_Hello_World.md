@@ -179,7 +179,7 @@ That is actionable. The stakeholder can ask: "show me all houses where AveOccup 
 | How do Tesla, Google, and banks use ML in production? | [06 — Real World](06_Production_Patterns.md) — production case studies |
 | How do I deploy a model to serve 10,000 users? | [07 — System Design](07_System_Design.md) — serving, scaling, cloud |
 | What if someone games the model? | [08 — Security & Governance](08_Quality_Security_Governance.md) — adversarial inputs, bias, compliance |
-| How do I know if my deployed model is still working? | [09 — Observability](09_Observability_Troubleshooting_Troubleshooting.md) — monitoring, drift, debugging |
+| How do I know if my deployed model is still working? | [09 — Observability](09_Observability_Troubleshooting.md) — monitoring, drift, debugging |
 | Give me the one-page decision reference | [10 — Checklist](10_Decision_Guide.md) |
 
 ---

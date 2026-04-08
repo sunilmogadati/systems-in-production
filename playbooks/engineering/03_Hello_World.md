@@ -228,10 +228,10 @@ This Hello World is intentionally minimal. It serves predictions, but it is not 
 | Authentication | Anyone can call your endpoint | 04 -- How It Works |
 | Tests | No way to verify correctness automatically | 05 -- Building It |
 | Service layer | Business logic mixed with API layer | 05 -- Building It |
-| Multi-stage Docker build | Image is larger than it needs to be | 07 -- Containers |
+| Multi-stage Docker build | Image is larger than it needs to be | 07 -- System Design |
 | CI/CD pipeline | Deployment is manual | 08 -- CI/CD |
-| Monitoring | No visibility into latency, errors, or model drift | 09 -- Monitoring |
-| Retry logic | One failure = one lost request | 10 -- Patterns |
+| Monitoring | No visibility into latency, errors, or model drift | 09 -- Observability and Troubleshooting |
+| Retry logic | One failure = one lost request | 10 -- Decision Guide |
 
 Every chapter that follows adds one or more of these layers. By chapter 05, you will have a complete production service. By chapter 10, you will have a resilient one.
 
@@ -260,8 +260,8 @@ Four files. This is the seed of every production ML service.
 | [03 -- Hello World](03_Hello_World.md) | Notebook to API in 10 Minutes |
 | [04 -- How It Works](04_How_It_Works.md) | How Production Services Work |
 | [05 -- Building It](05_Building_It.md) | Building a Complete Production Service |
-| [06 -- Testing](06_Testing.md) | Testing Strategies for AI/Data Systems |
-| [07 -- Containers](07_Containers.md) | Docker and Docker Compose for AI Workloads |
-| [08 -- CI/CD](08_CICD.md) | Automated Pipelines from Commit to Production |
-| [09 -- Monitoring](09_Monitoring.md) | Observability for Models, Pipelines, and Agents |
-| [10 -- Patterns](10_Patterns.md) | Production Patterns for Reliable Systems |
+| [06 -- Production Patterns](06_Production_Patterns.md) | Production Software Patterns |
+| [07 -- System Design](07_System_Design.md) | System Design for AI/Data Servicesads |
+| [08 -- CI/CD](08_Quality_Security_Governance.md) | Automated Pipelines from Commit to Production |
+| [09 -- Observability and Troubleshooting](09_Observability_Troubleshooting.md) | Observability for Models, Pipelines, and Agents |
+| [10 -- Decision Guide](10_Decision_Guide.md) | Production Patterns for Reliable Systems |

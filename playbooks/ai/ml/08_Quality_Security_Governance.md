@@ -252,6 +252,6 @@ This enables post-incident analysis: "The model predicted 35% escalation probabi
 
 **Hands-on notebook:** [ML Fundamentals on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) — SHAP explanations, metric evaluation, and the pipeline that governance wraps around.
 
-**Architecture reference:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md) — the system these governance structures protect.
+**Architecture reference:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md) — the system these governance structures protect.
 
 **Next:** [09 — Observability and Troubleshooting](09_Observability_Troubleshooting.md) — What to monitor, how to debug accuracy drops, SHAP for production debugging, and when to retrain.

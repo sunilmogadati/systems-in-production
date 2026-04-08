@@ -507,8 +507,8 @@ This is not over-engineering. This is what it takes to run a service that stays 
 | [03 -- Hello World](03_Hello_World.md) | Notebook to API in 10 Minutes |
 | [04 -- How It Works](04_How_It_Works.md) | How Production Services Work |
 | [05 -- Building It](05_Building_It.md) | Building a Complete Production Service |
-| [06 -- Testing](06_Testing.md) | Testing Strategies for AI/Data Systems |
-| [07 -- Containers](07_Containers.md) | Docker and Docker Compose for AI Workloads |
-| [08 -- CI/CD](08_CICD.md) | Automated Pipelines from Commit to Production |
-| [09 -- Monitoring](09_Monitoring.md) | Observability for Models, Pipelines, and Agents |
-| [10 -- Patterns](10_Patterns.md) | Production Patterns for Reliable Systems |
+| [06 -- Production Patterns](06_Production_Patterns.md) | Production Software Patterns |
+| [07 -- System Design](07_System_Design.md) | System Design for AI/Data Servicesads |
+| [08 -- CI/CD](08_Quality_Security_Governance.md) | Automated Pipelines from Commit to Production |
+| [09 -- Observability and Troubleshooting](09_Observability_Troubleshooting.md) | Observability for Models, Pipelines, and Agents |
+| [10 -- Decision Guide](10_Decision_Guide.md) | Production Patterns for Reliable Systems |

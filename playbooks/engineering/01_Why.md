@@ -142,11 +142,11 @@ The chapters build on each other:
 | 03 -- Hello World | Deploy an ML model as an API in 10 minutes |
 | 04 -- How It Works | Deep dive into HTTP, REST, auth, error handling |
 | 05 -- Building It | Build a complete production RAG service end-to-end |
-| 06 -- Testing | Testing strategies for AI/Data systems |
-| 07 -- Containers | Docker and docker-compose for ML/AI workloads |
+| 06 -- Production Patterns | Testing strategies for AI/Data systems |
+| 07 -- System Design | Docker and docker-compose for ML/AI workloads |
 | 08 -- CI/CD | Automated pipelines from commit to production |
-| 09 -- Monitoring | Observability for models, pipelines, and agents |
-| 10 -- Patterns | Production patterns: retry, circuit breaker, feature flags |
+| 09 -- Observability and Troubleshooting | Observability for models, pipelines, and agents |
+| 10 -- Decision Guide | Production patterns: retry, circuit breaker, feature flags |
 
 ---
 
@@ -159,8 +159,8 @@ The chapters build on each other:
 | [03 -- Hello World](03_Hello_World.md) | Notebook to API in 10 Minutes |
 | [04 -- How It Works](04_How_It_Works.md) | How Production Services Work |
 | [05 -- Building It](05_Building_It.md) | Building a Complete Production Service |
-| [06 -- Testing](06_Testing.md) | Testing Strategies for AI/Data Systems |
-| [07 -- Containers](07_Containers.md) | Docker and Docker Compose for AI Workloads |
-| [08 -- CI/CD](08_CICD.md) | Automated Pipelines from Commit to Production |
-| [09 -- Monitoring](09_Monitoring.md) | Observability for Models, Pipelines, and Agents |
-| [10 -- Patterns](10_Patterns.md) | Production Patterns for Reliable Systems |
+| [06 -- Production Patterns](06_Production_Patterns.md) | Production Software Patterns |
+| [07 -- System Design](07_System_Design.md) | System Design for AI/Data Servicesads |
+| [08 -- CI/CD](08_Quality_Security_Governance.md) | Automated Pipelines from Commit to Production |
+| [09 -- Observability and Troubleshooting](09_Observability_Troubleshooting.md) | Observability for Models, Pipelines, and Agents |
+| [10 -- Decision Guide](10_Decision_Guide.md) | Production Patterns for Reliable Systems |

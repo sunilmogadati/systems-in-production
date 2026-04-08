@@ -336,4 +336,4 @@ You have seen it work. Now the question is: how does it REALLY work under the ho
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) -- the full implementation with from-scratch agents, LangChain agents, and LangGraph multi-agent systems.
 
-**Production architecture:** [Production Diagnostics Architecture](../../systems/production-diagnostics/architecture.md)
+**Production architecture:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)
