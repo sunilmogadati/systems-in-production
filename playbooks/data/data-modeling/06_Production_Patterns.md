@@ -298,6 +298,101 @@ graph TD
 
 ---
 
+## Many-to-Many Relationships (Bridge Tables)
+
+Standard star schema joins are one-to-many: one dimension row maps to many fact rows. But some relationships are many-to-many: one order contains many products, and one product appears in many orders. Star schemas handle this with **bridge tables**.
+
+### The Problem
+
+A call center order can contain multiple products. If you put `product_id` directly in the fact table, you can only store one product per row. An order with 3 products would need 3 fact rows for the same call, inflating all your metrics.
+
+### The Solution: Bridge Table
+
+```mermaid
+erDiagram
+    fact_calls {
+        int call_key PK
+        int date_key FK
+        int campaign_key FK
+        int disposition_key FK
+        string call_id
+        int duration_sec
+    }
+    bridge_order_product {
+        string order_id FK
+        int product_key FK
+        int quantity
+        float line_amount
+        float weight_factor
+    }
+    dim_product {
+        int product_key PK
+        string product_name
+        string category
+        float unit_price
+    }
+    fact_calls ||--o{ bridge_order_product : "order_id"
+    bridge_order_product }o--|| dim_product : "product_key"
+```
+
+The bridge table sits between the fact and the dimension. Each row represents one order-product combination.
+
+### The Weight Factor: Avoiding Double-Counting
+
+When aggregating through a bridge, an order with 3 products could count the order total 3 times. Weight factors prevent this.
+
+| order_id | product_key | quantity | line_amount | weight_factor |
+|---|---|---|---|---|
+| ORD-101 | 1 | 2 | $40.00 | 0.40 |
+| ORD-101 | 2 | 1 | $35.00 | 0.35 |
+| ORD-101 | 3 | 1 | $25.00 | 0.25 |
+
+Weight factors sum to 1.0 per order.
+
+```sql
+-- Revenue by product (no double-counting)
+SELECT 
+    p.product_name,
+    SUM(b.line_amount) AS product_revenue,
+    SUM(b.quantity) AS units_sold
+FROM fact_calls f
+JOIN bridge_order_product b ON f.call_id = b.order_id
+JOIN dim_product p ON b.product_key = p.product_key
+GROUP BY p.product_name
+
+-- Total revenue across all products (weighted to avoid inflation)
+SELECT 
+    SUM(b.line_amount) AS total_revenue,
+    COUNT(DISTINCT b.order_id) AS total_orders
+FROM bridge_order_product b
+```
+
+### Three Patterns for Many-to-Many
+
+| Pattern | How It Works | When to Use |
+|---|---|---|
+| **Bridge table** | Separate table linking two dimensions through the fact. Each row is one combination. Standard keys and joins. | Clean, queryable, standard. Most common in production. |
+| **Multi-valued dimension** | Store an array or JSON in the fact column (`product_ids: [1,2,3]`). Use UNNEST (BigQuery) or LATERAL FLATTEN (Snowflake) to expand. | Quick analysis. Hard to join to dimension attributes. |
+| **Factless fact table** | A fact table with no measures, only keys. Records the existence of a relationship. | When the relationship IS the event: student enrolled in course, employee assigned to project. No "amount" to measure. |
+
+### Common Many-to-Many Relationships in Production
+
+| Relationship | Bridge Table | Why It's M:M |
+|---|---|---|
+| Orders and Products | `bridge_order_product` | One order has many products. One product in many orders. |
+| Patients and Diagnoses | `bridge_patient_diagnosis` | One patient has many diagnoses. One diagnosis applies to many patients. |
+| Incidents and Services | `bridge_incident_service` | One incident affects many services. One service has many incidents. |
+| Users and Roles | `bridge_user_role` | One user has many roles. One role assigned to many users. |
+| Calls and Agents | `bridge_call_agent` | One call transferred to multiple agents. One agent handles many calls. |
+
+### When NOT to Use a Bridge
+
+If the relationship is truly one-to-many (one campaign has many calls, but each call has exactly one campaign), use a foreign key directly in the fact table. Bridge tables add a join. Only use them when the many-to-many relationship is real.
+
+**Test:** Can one fact row map to multiple dimension values for this attribute? If yes, you need a bridge. If no, use a foreign key.
+
+---
+
 **Hands-on notebook:** [Data Modeling on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb)
 
 **Deep dive on star schema:** [Star Schema Design](../star-schema-design/)
