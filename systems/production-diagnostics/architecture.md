@@ -36,6 +36,12 @@ graph TD
         AGENT["AI Agent<br/>Orchestrates all components<br/>Creates ticket with findings"]
     end
 
+    subgraph Consumer Layer
+        DASH["Dashboards & Reports<br/>(Looker Studio, Tableau)"]
+        AIANA["AI Analytics<br/>(Natural language queries,<br/>chat with your data)"]
+        TICKET["Ticket Created<br/>What happened<br/>What's related<br/>Likely root cause<br/>Recommended action"]
+    end
+
     LOGS --> BRONZE
     DB --> BRONZE
     DEPLOY --> BRONZE
@@ -50,12 +56,15 @@ graph TD
     GOLD --> ML
     GOLD --> DL
     GOLD --> AGENT
+    GOLD --> DASH
+    GOLD --> AIANA
 
     ML --> AGENT
     DL --> AGENT
     RAG --> AGENT
+    RAG --> AIANA
 
-    AGENT --> TICKET["Ticket Created<br/>What happened<br/>What's related<br/>Likely root cause<br/>Recommended action"]
+    AGENT --> TICKET
 ```
 
 ---
