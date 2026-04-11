@@ -11,7 +11,7 @@ Before writing queries, understand how data is organized:
 
 ```mermaid
 flowchart TD
-    DB["Database\n(production_analytics)"] --> S1["Schema: bronze"]
+    DB["Database<br/>(production_analytics)"] --> S1["Schema: bronze"]
     DB --> S2["Schema: silver"]
     DB --> S3["Schema: gold"]
 
@@ -464,14 +464,14 @@ Most people think SQL executes top-to-bottom, the way it reads. It does not. The
 
 ```mermaid
 flowchart TD
-    FROM["1. FROM / JOIN\n(Identify and combine tables)"]
-    WHERE["2. WHERE\n(Filter rows)"]
-    GROUP["3. GROUP BY\n(Collapse into groups)"]
-    HAVING["4. HAVING\n(Filter groups)"]
-    SELECT["5. SELECT\n(Choose columns, compute expressions)"]
-    DISTINCT["6. DISTINCT\n(Remove duplicates)"]
-    ORDER["7. ORDER BY\n(Sort results)"]
-    LIMIT["8. LIMIT / OFFSET\n(Restrict output rows)"]
+    FROM["1. FROM / JOIN<br/>(Identify and combine tables)"]
+    WHERE["2. WHERE<br/>(Filter rows)"]
+    GROUP["3. GROUP BY<br/>(Collapse into groups)"]
+    HAVING["4. HAVING<br/>(Filter groups)"]
+    SELECT["5. SELECT<br/>(Choose columns, compute expressions)"]
+    DISTINCT["6. DISTINCT<br/>(Remove duplicates)"]
+    ORDER["7. ORDER BY<br/>(Sort results)"]
+    LIMIT["8. LIMIT / OFFSET<br/>(Restrict output rows)"]
 
     FROM --> WHERE --> GROUP --> HAVING --> SELECT --> DISTINCT --> ORDER --> LIMIT
 ```

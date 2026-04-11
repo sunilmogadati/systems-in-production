@@ -903,31 +903,31 @@ make down          # Stop all containers
 
 ```mermaid
 flowchart TD
-    CLIENT[Client] --> API[FastAPI\nsrc/main.py]
+    CLIENT[Client] --> API[FastAPI<br/>src/main.py]
 
     subgraph "API Layer"
-        API --> MW[Middleware\nauth + logging]
-        MW --> ROUTES[Routes\nhealth.py + predict.py]
+        API --> MW[Middleware<br/>auth + logging]
+        MW --> ROUTES[Routes<br/>health.py + predict.py]
     end
 
     subgraph "Validation"
-        ROUTES --> PYDANTIC[Pydantic Models\nrequests.py + responses.py]
+        ROUTES --> PYDANTIC[Pydantic Models<br/>requests.py + responses.py]
     end
 
     subgraph "Business Logic"
-        ROUTES --> SVC[RAG Service\nrag_service.py]
-        SVC --> EMB[Embedding Service\nembedding_service.py]
+        ROUTES --> SVC[RAG Service<br/>rag_service.py]
+        SVC --> EMB[Embedding Service<br/>embedding_service.py]
     end
 
     subgraph "Data Access"
-        SVC --> REPO_VS[Vector Store Repo\nvector_store.py]
-        SVC --> REPO_DB[Document Store Repo\ndocument_store.py]
+        SVC --> REPO_VS[Vector Store Repo<br/>vector_store.py]
+        SVC --> REPO_DB[Document Store Repo<br/>document_store.py]
     end
 
     subgraph "Infrastructure"
-        REPO_VS --> QDRANT[(Qdrant\nVector Store)]
-        REPO_DB --> PG[(PostgreSQL\nMetadata)]
-        EMB --> LLM_API[LLM API\nEmbedding + Generation]
+        REPO_VS --> QDRANT[(Qdrant<br/>Vector Store)]
+        REPO_DB --> PG[(PostgreSQL<br/>Metadata)]
+        EMB --> LLM_API[LLM API<br/>Embedding + Generation]
     end
 ```
 

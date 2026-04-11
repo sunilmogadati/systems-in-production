@@ -160,7 +160,7 @@ The notebook uses ReAct with Ollama because it works with any model and teaches 
 
 ```mermaid
 flowchart TD
-    Start["User question arrives"] --> Build["Build prompt:\nSystem prompt + tool registry\n+ conversation history\n+ user question"]
+    Start["User question arrives"] --> Build["Build prompt:<br/>System prompt + tool registry<br/>+ conversation history<br/>+ user question"]
     Build --> Call["Send to LLM"]
     Call --> Response["LLM generates response"]
     Response --> Check{"What did the LLM output?"}
@@ -169,19 +169,19 @@ flowchart TD
     Extract --> Return["Return answer to user"]
 
     Check -->|"Contains 'Action:'"| Parse["Parse tool name + input"]
-    Parse --> Validate{"Is the tool\nin the registry?"}
+    Parse --> Validate{"Is the tool<br/>in the registry?"}
 
     Validate -->|"Yes"| Execute["Execute the tool function"]
     Execute --> Observe["Format result as 'Observation: ...'"]
     Observe --> Append["Append to conversation history"]
-    Append --> StepCheck{"Max steps\nreached?"}
+    Append --> StepCheck{"Max steps<br/>reached?"}
     StepCheck -->|"No"| Call
-    StepCheck -->|"Yes"| Timeout["Return: 'Agent could not\ncomplete in time'"]
+    StepCheck -->|"Yes"| Timeout["Return: 'Agent could not<br/>complete in time'"]
 
-    Validate -->|"No"| Error["Format error:\n'Tool not found. Available: ...'"]
+    Validate -->|"No"| Error["Format error:<br/>'Tool not found. Available: ...'"]
     Error --> Append
 
-    Check -->|"Neither"| Nudge["Append: 'Please use the\nThought/Action format'"]
+    Check -->|"Neither"| Nudge["Append: 'Please use the<br/>Thought/Action format'"]
     Nudge --> Append
 
     style Start fill:#e2e3f1,stroke:#333

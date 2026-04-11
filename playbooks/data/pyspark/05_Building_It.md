@@ -13,10 +13,10 @@ The pipeline:
 
 ```mermaid
 flowchart LR
-    A["Bronze\n(GCS)\nRaw JSON/CSV"] -->|Read| B["PySpark\nTransform"]
+    A["Bronze<br/>(GCS)<br/>Raw JSON/CSV"] -->|Read| B["PySpark<br/>Transform"]
     B -->|Deduplicate| C["Deduped"]
     C -->|Clean + Cast| D["Typed + Clean"]
-    D -->|Write| E["Silver\n(GCS)\nParquet\nPartitioned by Date"]
+    D -->|Write| E["Silver<br/>(GCS)<br/>Parquet<br/>Partitioned by Date"]
 
     style A fill:#cd7f32,color:#fff
     style E fill:#c0c0c0,color:#000

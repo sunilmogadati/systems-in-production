@@ -62,9 +62,9 @@ Build from scratch or use a framework?
 
 ```mermaid
 flowchart LR
-    Scratch["From scratch\n(learn the pattern)"] --> LC["LangChain\n(add tools + memory)"]
-    LC --> LG["LangGraph\n(add multi-agent + state)"]
-    LG --> Custom["Custom framework\n(when frameworks limit you)"]
+    Scratch["From scratch<br/>(learn the pattern)"] --> LC["LangChain<br/>(add tools + memory)"]
+    LC --> LG["LangGraph<br/>(add multi-agent + state)"]
+    LG --> Custom["Custom framework<br/>(when frameworks limit you)"]
 
     style Scratch fill:#e2e3f1,stroke:#333
     style LC fill:#fff3cd,stroke:#333
@@ -200,10 +200,10 @@ What happens when the agent makes a mistake?
 flowchart TD
     Error["Agent encounters an error"] --> Type{"What kind of error?"}
     Type -->|"Tool not found"| Retry["Retry: tell agent which tools exist"]
-    Type -->|"Tool returned error"| Assess{"Is the error\nrecoverable?"}
+    Type -->|"Tool returned error"| Assess{"Is the error<br/>recoverable?"}
     Assess -->|"Yes (bad input, typo)"| Retry2["Retry: feed error back to agent"]
     Assess -->|"No (service down)"| Fail["Fail-fast: return error to user"]
-    Type -->|"Agent looping"| Max{"Max steps\nreached?"}
+    Type -->|"Agent looping"| Max{"Max steps<br/>reached?"}
     Max -->|"Yes"| Escalate["Escalate: page human with context"]
     Max -->|"No"| Nudge["Nudge: remind agent to give Final Answer"]
     Type -->|"High-risk action"| Human["Human approval required before execution"]

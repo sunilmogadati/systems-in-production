@@ -16,6 +16,8 @@ graph TD
         DEPLOY["Deployment Records<br/>(versions, rollbacks)"]
         DOCS["Runbooks & Docs<br/>(markdown, Confluence)"]
         API["APIs & Alerts<br/>(monitoring, ticketing)"]
+        CODE["Code Repositories<br/>(source code, configs)"]
+        GIT["Git History<br/>(commits, PRs, blame)"]
     end
 
     subgraph Data Pipeline
@@ -39,6 +41,8 @@ graph TD
     DEPLOY --> BRONZE
     DOCS --> RAG
     API --> BRONZE
+    CODE --> RAG
+    GIT --> BRONZE
 
     BRONZE --> SILVER
     SILVER --> GOLD

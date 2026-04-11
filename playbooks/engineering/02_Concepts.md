@@ -226,9 +226,9 @@ Tests are not optional in production systems. They are the only way to know your
 ```mermaid
 graph TD
     subgraph "Testing Pyramid"
-        E2E["End-to-End Tests\n(few, slow, expensive)\nDoes the whole system work?"]
-        INT["Integration Tests\n(moderate count)\nDo components work together?"]
-        UNIT["Unit Tests\n(many, fast, cheap)\nDoes each function work?"]
+        E2E["End-to-End Tests<br/>(few, slow, expensive)<br/>Does the whole system work?"]
+        INT["Integration Tests<br/>(moderate count)<br/>Do components work together?"]
+        UNIT["Unit Tests<br/>(many, fast, cheap)<br/>Does each function work?"]
     end
     E2E --- INT
     INT --- UNIT
@@ -257,13 +257,13 @@ Docker solves "it works on my machine." A container packages your code, dependen
 ```mermaid
 flowchart LR
     subgraph "Without Docker"
-        A1[Dev laptop\nPython 3.11\nnumpy 1.26] --> B1[Staging server\nPython 3.9\nnumpy 1.24]
-        B1 --> C1[Production\nPython 3.10\nnumpy 2.0]
+        A1[Dev laptop<br/>Python 3.11<br/>numpy 1.26] --> B1[Staging server<br/>Python 3.9<br/>numpy 1.24]
+        B1 --> C1[Production<br/>Python 3.10<br/>numpy 2.0]
         C1 --> D1["Crashes"]
     end
     subgraph "With Docker"
-        A2[Dev laptop\nDocker image v1.2] --> B2[Staging\nDocker image v1.2]
-        B2 --> C2[Production\nDocker image v1.2]
+        A2[Dev laptop<br/>Docker image v1.2] --> B2[Staging<br/>Docker image v1.2]
+        B2 --> C2[Production<br/>Docker image v1.2]
         C2 --> D2[Works identically]
     end
 ```
@@ -282,12 +282,12 @@ CI/CD automates the path from code change to production.
 
 ```mermaid
 flowchart LR
-    A[Developer\npushes code] --> B[CI: Run tests]
-    B -->|Tests pass| C[CI: Build\nDocker image]
-    B -->|Tests fail| X[Blocked.\nFix and retry.]
-    C --> D[CD: Push image\nto registry]
-    D --> E[CD: Deploy to\nstaging]
-    E --> F[CD: Deploy to\nproduction]
+    A[Developer<br/>pushes code] --> B[CI: Run tests]
+    B -->|Tests pass| C[CI: Build<br/>Docker image]
+    B -->|Tests fail| X[Blocked.<br/>Fix and retry.]
+    C --> D[CD: Push image<br/>to registry]
+    D --> E[CD: Deploy to<br/>staging]
+    E --> F[CD: Deploy to<br/>production]
 ```
 
 **Tools:** GitHub Actions (most common for teams already on GitHub), GitLab CI, Jenkins, CircleCI. This playbook uses GitHub Actions.

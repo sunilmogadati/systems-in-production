@@ -205,12 +205,12 @@ open http://localhost:8000/docs
 
 ```mermaid
 flowchart LR
-    A[model.pkl\nfrom notebook] --> B[app.py\nFastAPI wrapper]
-    B --> C[requirements.txt\npinned deps]
-    C --> D[Dockerfile\ncontainerized]
-    D --> E[Docker image\nml-api]
-    E --> F[Running container\nport 8000]
-    F --> G[Live predictions\nvia HTTP]
+    A[model.pkl<br/>from notebook] --> B[app.py<br/>FastAPI wrapper]
+    B --> C[requirements.txt<br/>pinned deps]
+    C --> D[Dockerfile<br/>containerized]
+    D --> E[Docker image<br/>ml-api]
+    E --> F[Running container<br/>port 8000]
+    F --> G[Live predictions<br/>via HTTP]
 ```
 
 In 10 minutes, you went from a pickle file to a containerized API serving live predictions. This is not a demo. This is the foundation of every production ML deployment.

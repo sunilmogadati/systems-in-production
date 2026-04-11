@@ -42,11 +42,11 @@ Google's managed Spark. You create a cluster (group of machines), submit your co
 
 ```mermaid
 graph LR
-    A["You write\\nPySpark code"] --> B["Submit to\\nDataproc cluster"]
-    B --> C["Cluster spins up\\n(2-3 minutes)"]
-    C --> D["Job runs\\n(distributed)"]
-    D --> E["Results written\\nto GCS/BigQuery"]
-    E --> F["Cluster deleted\\n(stop paying)"]
+    A["You write\<br/>PySpark code"] --> B["Submit to\<br/>Dataproc cluster"]
+    B --> C["Cluster spins up\<br/>(2-3 minutes)"]
+    C --> D["Job runs\<br/>(distributed)"]
+    D --> E["Results written\<br/>to GCS/BigQuery"]
+    E --> F["Cluster deleted\<br/>(stop paying)"]
 ```
 
 **You pay only for the time the cluster is running.** A 10-node cluster running for 30 minutes costs about $5. Then it's gone.
@@ -61,8 +61,8 @@ Two patterns for moving and transforming data. The difference is WHERE the trans
 
 ```mermaid
 graph LR
-    A["Extract\\n(read from source)"] --> B["Transform\\n(clean, in Spark/Python)"]
-    B --> C["Load\\n(write to warehouse)"]
+    A["Extract\<br/>(read from source)"] --> B["Transform\<br/>(clean, in Spark/Python)"]
+    B --> C["Load\<br/>(write to warehouse)"]
 ```
 
 - Transform happens BEFORE loading into the warehouse
@@ -75,8 +75,8 @@ graph LR
 
 ```mermaid
 graph LR
-    A["Extract\\n(read from source)"] --> B["Load\\n(dump into warehouse)"]
-    B --> C["Transform\\n(clean, in SQL inside warehouse)"]
+    A["Extract\<br/>(read from source)"] --> B["Load\<br/>(dump into warehouse)"]
+    B --> C["Transform\<br/>(clean, in SQL inside warehouse)"]
 ```
 
 - Load raw data into the warehouse first

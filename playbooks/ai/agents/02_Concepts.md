@@ -71,7 +71,7 @@ flowchart TD
     Q["User Question / Goal"] --> T1["Thought: What do I need to do?"]
     T1 --> A1["Action: Call a tool"]
     A1 --> O1["Observation: Tool result"]
-    O1 --> T2["Thought: What does this tell me?\nDo I need more information?"]
+    O1 --> T2["Thought: What does this tell me?<br/>Do I need more information?"]
     T2 -->|"Need more info"| A2["Action: Call another tool"]
     A2 --> O2["Observation: Tool result"]
     O2 --> T3["Thought: I now have enough to answer."]
@@ -133,7 +133,7 @@ Here is the complete execution flow of a ReAct agent:
 
 ```mermaid
 flowchart TD
-    Start["User sends a question"] --> SP["System prompt loaded\n(includes tool registry + ReAct instructions)"]
+    Start["User sends a question"] --> SP["System prompt loaded<br/>(includes tool registry + ReAct instructions)"]
     SP --> LLM["LLM generates response"]
     LLM --> Parse["Agent parses the response"]
     Parse -->|"Contains 'Action:'"| Execute["Execute the tool call"]
@@ -174,9 +174,9 @@ Multi-agent systems solve this by specialization:
 ```mermaid
 flowchart TD
     User["User: Investigate the order-service failure"] --> Supervisor["Supervisor Agent"]
-    Supervisor --> LogAgent["Log Analyst Agent\nTools: query_logs, parse_errors"]
-    Supervisor --> MetricAgent["Metrics Agent\nTools: query_prometheus, check_dashboards"]
-    Supervisor --> RunbookAgent["Runbook Agent\nTools: search_runbooks (RAG), check_past_incidents"]
+    Supervisor --> LogAgent["Log Analyst Agent<br/>Tools: query_logs, parse_errors"]
+    Supervisor --> MetricAgent["Metrics Agent<br/>Tools: query_prometheus, check_dashboards"]
+    Supervisor --> RunbookAgent["Runbook Agent<br/>Tools: search_runbooks (RAG), check_past_incidents"]
     LogAgent --> Supervisor
     MetricAgent --> Supervisor
     RunbookAgent --> Supervisor

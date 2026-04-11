@@ -50,8 +50,8 @@ In a Bronze-Silver-Gold data pipeline (see [Cloud Pipeline Concepts](../cloud-pi
 
 ```mermaid
 flowchart LR
-    A["Bronze Layer\n(Raw Data)"] -->|PySpark transforms| B["Silver Layer\n(Cleaned, Typed, Deduped)"]
-    B -->|Aggregations| C["Gold Layer\n(Business-Ready)"]
+    A["Bronze Layer<br/>(Raw Data)"] -->|PySpark transforms| B["Silver Layer<br/>(Cleaned, Typed, Deduped)"]
+    B -->|Aggregations| C["Gold Layer<br/>(Business-Ready)"]
 
     style A fill:#cd7f32,color:#fff
     style B fill:#c0c0c0,color:#000

@@ -230,7 +230,7 @@ The hybrid pattern:
 
 ```mermaid
 graph LR
-    A["File arrives\\n(any time)"] -->|"Cloud Function"| B["Bronze loaded\\n(event-driven)"]
+    A["File arrives\<br/>(any time)"] -->|"Cloud Function"| B["Bronze loaded\<br/>(event-driven)"]
     C["2 AM schedule"] -->|"Composer DAG"| D["Silver transform"]
     D --> E["Gold marts"]
     E --> F["Quality gates"]

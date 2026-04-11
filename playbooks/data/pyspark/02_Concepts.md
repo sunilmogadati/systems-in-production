@@ -22,12 +22,12 @@ This is exactly how Apache Spark works.
 ```mermaid
 flowchart TB
     subgraph Driver["Driver Program"]
-        SC["SparkSession\n(Entry Point)"]
-        LP["Logical Plan\n+ Optimizer"]
+        SC["SparkSession<br/>(Entry Point)"]
+        LP["Logical Plan<br/>+ Optimizer"]
     end
 
-    subgraph CM["Cluster Manager\n(YARN / Kubernetes / Standalone)"]
-        RM["Resource\nAllocation"]
+    subgraph CM["Cluster Manager<br/>(YARN / Kubernetes / Standalone)"]
+        RM["Resource<br/>Allocation"]
     end
 
     subgraph Worker1["Worker Node 1"]
@@ -103,9 +103,9 @@ Analogy: Writing a grocery list (transformations) versus actually going to the s
 
 ```mermaid
 flowchart LR
-    A["df.filter(...)"] -->|transformation\nno execution| B["df.groupBy(...)"]
-    B -->|transformation\nno execution| C["df.agg(...)"]
-    C -->|ACTION\ntriggers execution| D[".show()"]
+    A["df.filter(...)"] -->|transformation<br/>no execution| B["df.groupBy(...)"]
+    B -->|transformation<br/>no execution| C["df.agg(...)"]
+    C -->|ACTION<br/>triggers execution| D[".show()"]
 
     style D fill:#e74c3c,color:#fff
 ```
@@ -138,15 +138,15 @@ Analogy: Imagine 10 line cooks each have a random mix of appetizers, entrees, an
 ```mermaid
 flowchart TB
     subgraph Before["Before Shuffle"]
-        P1["Partition 1\nA, B, C, A"]
-        P2["Partition 2\nB, C, A, B"]
-        P3["Partition 3\nC, A, B, C"]
+        P1["Partition 1<br/>A, B, C, A"]
+        P2["Partition 2<br/>B, C, A, B"]
+        P3["Partition 3<br/>C, A, B, C"]
     end
 
     subgraph After["After Shuffle (groupBy key)"]
-        PA["Partition A\nA, A, A, A"]
-        PB["Partition B\nB, B, B, B"]
-        PC["Partition C\nC, C, C, C"]
+        PA["Partition A<br/>A, A, A, A"]
+        PB["Partition B<br/>B, B, B, B"]
+        PC["Partition C<br/>C, C, C, C"]
     end
 
     P1 -->|network transfer| PA

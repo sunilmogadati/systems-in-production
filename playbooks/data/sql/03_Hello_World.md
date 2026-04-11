@@ -235,11 +235,11 @@ ORDER BY conversion_pct DESC;
 
 ```mermaid
 flowchart TD
-    Q1["Query 1\nCOUNT - one table"]
-    Q2["Query 2\nJOIN + GROUP BY + ORDER BY"]
-    Q3["Query 3\nWHERE + aggregates + ROUND"]
-    Q4["Query 4\nHAVING + CTE + self-join"]
-    Q5["Query 5\nMulti-CTE + LEFT JOIN +\nCASE WHEN + NULLIF"]
+    Q1["Query 1<br/>COUNT - one table"]
+    Q2["Query 2<br/>JOIN + GROUP BY + ORDER BY"]
+    Q3["Query 3<br/>WHERE + aggregates + ROUND"]
+    Q4["Query 4<br/>HAVING + CTE + self-join"]
+    Q5["Query 5<br/>Multi-CTE + LEFT JOIN +<br/>CASE WHEN + NULLIF"]
 
     Q1 -->|"Add: JOIN, GROUP BY"| Q2
     Q2 -->|"Add: WHERE filter, ROUND"| Q3

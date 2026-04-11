@@ -22,11 +22,11 @@ Both teams had the same technical ability. The difference was software engineeri
 
 ```mermaid
 flowchart LR
-    A[Notebook Model\n92% accuracy] --> B{Engineering\nPractices?}
-    B -->|No| C[Sits in notebook\n6 months]
-    B -->|Yes| D[API on day 1\nIterating weekly]
-    C --> E[Model never\nreaches users]
-    D --> F[Model scoring\nlive customers]
+    A[Notebook Model<br/>92% accuracy] --> B{Engineering<br/>Practices?}
+    B -->|No| C[Sits in notebook<br/>6 months]
+    B -->|Yes| D[API on day 1<br/>Iterating weekly]
+    C --> E[Model never<br/>reaches users]
+    D --> F[Model scoring<br/>live customers]
 ```
 
 ---

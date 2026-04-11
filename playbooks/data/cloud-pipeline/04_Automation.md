@@ -24,10 +24,10 @@ Instead of a human running commands, the pipeline runs itself when something hap
 
 ```mermaid
 graph LR
-    A["New file lands\\nin GCS bucket"] -->|"GCS sends\\nnotification"| B["Cloud Function\\ntriggers"]
-    B -->|"Starts"| C["Pipeline runs:\\nBronze → Silver → Gold"]
-    C -->|"On success"| D["Dashboard updated\\nML model retrained"]
-    C -->|"On failure"| E["Alert sent to\\noncall engineer"]
+    A["New file lands\<br/>in GCS bucket"] -->|"GCS sends\<br/>notification"| B["Cloud Function\<br/>triggers"]
+    B -->|"Starts"| C["Pipeline runs:\<br/>Bronze → Silver → Gold"]
+    C -->|"On success"| D["Dashboard updated\<br/>ML model retrained"]
+    C -->|"On failure"| E["Alert sent to\<br/>oncall engineer"]
 ```
 
 **The trigger is the file, not the person.**

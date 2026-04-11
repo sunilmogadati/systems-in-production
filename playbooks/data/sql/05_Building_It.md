@@ -11,13 +11,13 @@ A complete Bronze-to-Silver-to-Gold SQL pipeline. The same pattern used in dbt (
 
 ```mermaid
 flowchart LR
-    B["Bronze\nRaw tables\nDuplicates, bad types,\nnulls, timezone mess"]
-    S["Silver\nCleaned tables\nDeduped, typed,\nnull-handled, UTC"]
-    G["Gold\nBusiness marts\nPre-aggregated,\njoined, ready to query"]
-    C["Consumers\nBI Dashboards\nML Features\nProduction Diagnostics"]
+    B["Bronze<br/>Raw tables<br/>Duplicates, bad types,<br/>nulls, timezone mess"]
+    S["Silver<br/>Cleaned tables<br/>Deduped, typed,<br/>null-handled, UTC"]
+    G["Gold<br/>Business marts<br/>Pre-aggregated,<br/>joined, ready to query"]
+    C["Consumers<br/>BI Dashboards<br/>ML Features<br/>Production Diagnostics"]
 
-    B -->|"Silver Transform\n(this chapter)"| S
-    S -->|"Gold Transform\n(this chapter)"| G
+    B -->|"Silver Transform<br/>(this chapter)"| S
+    S -->|"Gold Transform<br/>(this chapter)"| G
     G --> C
 
     style B fill:#cd7f32,color:#fff
@@ -438,14 +438,14 @@ WHERE duration_seconds < 0 OR duration_seconds > 7200;
 
 ```mermaid
 flowchart LR
-    T["Silver Transform\nCompletes"] --> QG["Quality Gates"]
-    QG --> RC["Row Count\n>= 400?"]
-    QG --> NC["Null Check\ncall_id, timestamps"]
-    QG --> UC["Uniqueness\ncall_id unique?"]
-    QG --> RI["Referential Integrity\nDNIS mapped?"]
-    QG --> RNG["Range Check\nduration 0-7200?"]
+    T["Silver Transform<br/>Completes"] --> QG["Quality Gates"]
+    QG --> RC["Row Count<br/>>= 400?"]
+    QG --> NC["Null Check<br/>call_id, timestamps"]
+    QG --> UC["Uniqueness<br/>call_id unique?"]
+    QG --> RI["Referential Integrity<br/>DNIS mapped?"]
+    QG --> RNG["Range Check<br/>duration 0-7200?"]
 
-    RC -->|"PASS"| DONE["Write to Silver\nNotify downstream"]
+    RC -->|"PASS"| DONE["Write to Silver<br/>Notify downstream"]
     RC -->|"FAIL"| ALERT["Alert + Stop Pipeline"]
     NC -->|"PASS"| DONE
     NC -->|"FAIL"| ALERT
@@ -468,14 +468,14 @@ Here is the complete pattern as a repeatable template:
 
 ```mermaid
 flowchart TD
-    B["Bronze\n(raw ingestion)"]
-    S1["CTE: source\n(read from Bronze)"]
-    S2["CTE: deduped\n(ROW_NUMBER + PARTITION BY)"]
-    S3["CTE: cleaned\n(CAST, COALESCE, UPPER, timezone)"]
+    B["Bronze<br/>(raw ingestion)"]
+    S1["CTE: source<br/>(read from Bronze)"]
+    S2["CTE: deduped<br/>(ROW_NUMBER + PARTITION BY)"]
+    S3["CTE: cleaned<br/>(CAST, COALESCE, UPPER, timezone)"]
     S4["CREATE TABLE silver.table_name"]
-    QG["Quality Gates\n(row count, nulls, uniqueness, ranges)"]
-    G1["CTE: enriched\n(JOIN Silver tables)"]
-    G2["CTE: aggregated\n(GROUP BY, window functions)"]
+    QG["Quality Gates<br/>(row count, nulls, uniqueness, ranges)"]
+    G1["CTE: enriched<br/>(JOIN Silver tables)"]
+    G2["CTE: aggregated<br/>(GROUP BY, window functions)"]
     G3["CREATE TABLE gold.mart_name"]
 
     B --> S1 --> S2 --> S3 --> S4

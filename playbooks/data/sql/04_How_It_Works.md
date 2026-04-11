@@ -19,13 +19,13 @@ This is why two queries that return identical results can have wildly different 
 
 ```mermaid
 flowchart TD
-    SQL["SQL Text\n(what you write)"]
-    PARSE["1. Parser\nCheck syntax\nBuild parse tree"]
-    BIND["2. Binder / Analyzer\nResolve table names, column types\nValidate references"]
-    LOGICAL["3. Logical Plan\nAbstract representation\nJoin order, filter placement"]
-    OPTIMIZE["4. Optimizer\nCost-based rewriting\nPredicate pushdown\nJoin reordering"]
-    PHYSICAL["5. Physical Plan\nConvert to execution operators\nChoose join algorithms\nChoose scan types"]
-    EXECUTE["6. Executor\nRead data from storage\nApply operators\nReturn results"]
+    SQL["SQL Text<br/>(what you write)"]
+    PARSE["1. Parser<br/>Check syntax<br/>Build parse tree"]
+    BIND["2. Binder / Analyzer<br/>Resolve table names, column types<br/>Validate references"]
+    LOGICAL["3. Logical Plan<br/>Abstract representation<br/>Join order, filter placement"]
+    OPTIMIZE["4. Optimizer<br/>Cost-based rewriting<br/>Predicate pushdown<br/>Join reordering"]
+    PHYSICAL["5. Physical Plan<br/>Convert to execution operators<br/>Choose join algorithms<br/>Choose scan types"]
+    EXECUTE["6. Executor<br/>Read data from storage<br/>Apply operators<br/>Return results"]
     RESULT["Result Set"]
 
     SQL --> PARSE --> BIND --> LOGICAL --> OPTIMIZE --> PHYSICAL --> EXECUTE --> RESULT
@@ -68,7 +68,7 @@ flowchart LR
         NN["CALL-500000 -> Row 500000"]
     end
 
-    Q["Query:\nWHERE call_id = 'CALL-00342'"] -->|"Index lookup\n3 comparisons\n(log2 of 500K ≈ 19)"| Index
+    Q["Query:<br/>WHERE call_id = 'CALL-00342'"] -->|"Index lookup<br/>3 comparisons<br/>(log2 of 500K ≈ 19)"| Index
     Index -->|"Direct row access"| Table
 
     style Q fill:#2c3e50,color:#fff
@@ -180,13 +180,13 @@ Step 3: Walk both sorted lists simultaneously, matching rows
 
 ```mermaid
 flowchart TD
-    Q["JOIN query"] --> CHECK{"Is one table\nsmall?"}
-    CHECK -->|"Yes\n(< ~10K rows)"| NL["Nested Loop\nwith index on large table"]
-    CHECK -->|"No\n(both large)"| EQ{"Equality join?\n(= condition)"}
-    EQ -->|"Yes"| HASH["Hash Join\n(build hash from smaller table)"]
-    EQ -->|"No\n(range or inequality)"| MERGE["Merge Join\n(sort both, walk in parallel)"]
+    Q["JOIN query"] --> CHECK{"Is one table<br/>small?"}
+    CHECK -->|"Yes<br/>(< ~10K rows)"| NL["Nested Loop<br/>with index on large table"]
+    CHECK -->|"No<br/>(both large)"| EQ{"Equality join?<br/>(= condition)"}
+    EQ -->|"Yes"| HASH["Hash Join<br/>(build hash from smaller table)"]
+    EQ -->|"No<br/>(range or inequality)"| MERGE["Merge Join<br/>(sort both, walk in parallel)"]
     
-    SORTED{"Both inputs\nalready sorted?"} --> MERGE
+    SORTED{"Both inputs<br/>already sorted?"} --> MERGE
     EQ -->|"Yes, and both sorted"| MERGE
 
     style HASH fill:#27ae60,color:#fff
@@ -308,16 +308,16 @@ Partitioning divides a large table into smaller physical segments. Each segment 
 ```mermaid
 flowchart TD
     subgraph Table["va_calls (partitioned by call_date)"]
-        P1["Partition: 2026-03\n150K rows"]
-        P2["Partition: 2026-02\n140K rows"]
-        P3["Partition: 2026-01\n130K rows"]
-        P4["Partition: 2025-12\n125K rows"]
+        P1["Partition: 2026-03<br/>150K rows"]
+        P2["Partition: 2026-02<br/>140K rows"]
+        P3["Partition: 2026-01<br/>130K rows"]
+        P4["Partition: 2025-12<br/>125K rows"]
         P5["... (older months)"]
     end
 
-    Q["Query:\nWHERE call_date\nBETWEEN '2026-03-01'\nAND '2026-03-31'"]
+    Q["Query:<br/>WHERE call_date<br/>BETWEEN '2026-03-01'<br/>AND '2026-03-31'"]
 
-    Q -->|"Reads ONLY\nMarch partition\n(150K rows)"| P1
+    Q -->|"Reads ONLY<br/>March partition<br/>(150K rows)"| P1
 
     style P1 fill:#27ae60,color:#fff
     style P2 fill:#ccc,color:#666

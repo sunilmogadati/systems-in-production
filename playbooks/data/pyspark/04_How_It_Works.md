@@ -55,12 +55,12 @@ Your code goes through four stages before any data moves:
 
 ```mermaid
 flowchart TB
-    A["Your PySpark Code"] --> B["Unresolved Logical Plan\n(What you asked for)"]
-    B --> C["Analyzed Logical Plan\n(Column names + types verified)"]
-    C --> D["Optimized Logical Plan\n(Catalyst rewrites your query)"]
-    D --> E["Physical Plan\n(HOW to execute: scan, hash join, sort, etc.)"]
-    E --> F["DAG of Stages\n(Grouped by shuffle boundaries)"]
-    F --> G["Tasks on Executors\n(Actual parallel execution)"]
+    A["Your PySpark Code"] --> B["Unresolved Logical Plan<br/>(What you asked for)"]
+    B --> C["Analyzed Logical Plan<br/>(Column names + types verified)"]
+    C --> D["Optimized Logical Plan<br/>(Catalyst rewrites your query)"]
+    D --> E["Physical Plan<br/>(HOW to execute: scan, hash join, sort, etc.)"]
+    E --> F["DAG of Stages<br/>(Grouped by shuffle boundaries)"]
+    F --> G["Tasks on Executors<br/>(Actual parallel execution)"]
 
     style A fill:#3498db,color:#fff
     style D fill:#e67e22,color:#fff
@@ -152,20 +152,20 @@ Recall from Chapter 02: a shuffle moves data between machines over the network. 
 flowchart LR
     subgraph Narrow["Narrow Transformation (filter)"]
         direction TB
-        NP1["Partition 1"] --> NP1Out["Partition 1\n(filtered)"]
-        NP2["Partition 2"] --> NP2Out["Partition 2\n(filtered)"]
-        NP3["Partition 3"] --> NP3Out["Partition 3\n(filtered)"]
+        NP1["Partition 1"] --> NP1Out["Partition 1<br/>(filtered)"]
+        NP2["Partition 2"] --> NP2Out["Partition 2<br/>(filtered)"]
+        NP3["Partition 3"] --> NP3Out["Partition 3<br/>(filtered)"]
     end
 
     subgraph Wide["Wide Transformation (groupBy)"]
         direction TB
-        WP1["Partition 1\nA,B,C"] --> WPOut1["Partition A\nall A's"]
-        WP2["Partition 2\nA,B,C"] --> WPOut1
-        WP3["Partition 3\nA,B,C"] --> WPOut1
-        WP1 --> WPOut2["Partition B\nall B's"]
+        WP1["Partition 1<br/>A,B,C"] --> WPOut1["Partition A<br/>all A's"]
+        WP2["Partition 2<br/>A,B,C"] --> WPOut1
+        WP3["Partition 3<br/>A,B,C"] --> WPOut1
+        WP1 --> WPOut2["Partition B<br/>all B's"]
         WP2 --> WPOut2
         WP3 --> WPOut2
-        WP1 --> WPOut3["Partition C\nall C's"]
+        WP1 --> WPOut3["Partition C<br/>all C's"]
         WP2 --> WPOut3
         WP3 --> WPOut3
     end
@@ -241,13 +241,13 @@ result.show()
 
 ```mermaid
 flowchart TB
-    A["You call result.show()"] --> B["Catalyst builds optimized plan:\npushes year=2025 filter into Parquet scan\n(reads only 2025 partitions)"]
-    B --> C["Stage 1: Scan + Filter\n(narrow, no shuffle)\nEach executor reads + filters its partitions"]
+    A["You call result.show()"] --> B["Catalyst builds optimized plan:<br/>pushes year=2025 filter into Parquet scan<br/>(reads only 2025 partitions)"]
+    B --> C["Stage 1: Scan + Filter<br/>(narrow, no shuffle)<br/>Each executor reads + filters its partitions"]
     C --> D["Shuffle: redistribute by 'service' key"]
-    D --> E["Stage 2: Aggregate\n(count per service per partition)"]
+    D --> E["Stage 2: Aggregate<br/>(count per service per partition)"]
     E --> F["Shuffle: redistribute for global sort"]
     F --> G["Stage 3: Sort descending"]
-    G --> H["Driver collects top 20 rows\nand prints to console"]
+    G --> H["Driver collects top 20 rows<br/>and prints to console"]
 ```
 
 Three stages. Two shuffles. The filter was pushed into the Parquet scan (predicate pushdown), so Spark never reads data from years other than 2025. The Catalyst optimizer did this automatically.

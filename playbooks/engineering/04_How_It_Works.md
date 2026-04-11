@@ -475,20 +475,20 @@ A production RAG endpoint combines everything from this chapter:
 
 ```mermaid
 flowchart TD
-    C[Client] -->|POST /ask\nBearer token\nJSON body| LB[Load Balancer]
-    LB --> AUTH[Auth Middleware\nVerify JWT]
+    C[Client] -->|POST /ask<br/>Bearer token<br/>JSON body| LB[Load Balancer]
+    LB --> AUTH[Auth Middleware<br/>Verify JWT]
     AUTH -->|401 if invalid| C
-    AUTH --> VAL[Pydantic Validation\nQueryRequest model]
+    AUTH --> VAL[Pydantic Validation<br/>QueryRequest model]
     VAL -->|422 if invalid| C
     VAL --> SVC[Service Layer]
-    SVC --> EMB[Embed Query\nasync, with retry]
-    EMB --> VS[Vector Store Search\nconnection pool]
-    VS --> LLM[LLM Generation\nasync, circuit breaker]
-    LLM --> RES[Build Response\nPydantic model]
-    RES --> LOG[Log request\nstructured JSON]
+    SVC --> EMB[Embed Query<br/>async, with retry]
+    EMB --> VS[Vector Store Search<br/>connection pool]
+    VS --> LLM[LLM Generation<br/>async, circuit breaker]
+    LLM --> RES[Build Response<br/>Pydantic model]
+    RES --> LOG[Log request<br/>structured JSON]
     LOG -->|200 OK| C
 
-    SVC -->|500 on failure| ERR[Error Handler\nStructured error response]
+    SVC -->|500 on failure| ERR[Error Handler<br/>Structured error response]
     ERR --> C
 ```
 

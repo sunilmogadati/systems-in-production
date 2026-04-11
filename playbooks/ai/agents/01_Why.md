@@ -142,9 +142,9 @@ Every agent, from the simplest to the most complex, follows the same pattern:
 
 ```mermaid
 flowchart LR
-    O["Observe\n(gather information)"] --> D["Decide\n(reason about what to do)"]
-    D --> A["Act\n(call a tool or take an action)"]
-    A --> L["Learn\n(observe the result)"]
+    O["Observe<br/>(gather information)"] --> D["Decide<br/>(reason about what to do)"]
+    D --> A["Act<br/>(call a tool or take an action)"]
+    A --> L["Learn<br/>(observe the result)"]
     L --> O
 
     style O fill:#e2e3f1,stroke:#333
