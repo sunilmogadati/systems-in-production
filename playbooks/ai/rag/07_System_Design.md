@@ -234,18 +234,177 @@ Your documents change. Indexes must stay current.
 
 ### Incremental Update Implementation
 
+The core challenge: your vector DB has chunks from version 1 of a document. The document changes. You need version 2's chunks in the DB and version 1's chunks gone. If both versions coexist, retrieval returns contradictory information.
+
+#### Chunk ID Strategy
+
+Every chunk needs a deterministic, trackable ID:
+
 ```
-1. Hash each document at ingestion time (SHA-256 of content)
-2. Store the hash alongside the chunks in metadata
-3. On re-index:
-   a. For each document, compute new hash
-   b. If hash matches stored hash → skip (no change)
-   c. If hash differs → delete old chunks, embed new chunks
-   d. If document is new → embed and add
-   e. If document is deleted → remove its chunks
+chunk_id = f"{document_id}:{chunk_index}"
+
+Examples:
+  "runbook-order-service:0"
+  "runbook-order-service:1"
+  "runbook-order-service:2"
+  "incident-INC-1005:0"
 ```
 
-**The critical detail:** When a document changes, you must delete ALL its old chunks before adding new ones. If you only add new chunks, the database will contain both old and new versions, and retrieval will return contradictory information.
+This lets you find and delete ALL chunks belonging to a specific document.
+
+#### Detecting Changes
+
+| Method | How It Works | Best For |
+|---|---|---|
+| **Content hash** (SHA-256) | Hash the document content. Compare with stored hash. Different = changed. | File-based sources (PDFs, markdown, configs) |
+| **Modification timestamp** | Compare file's `last_modified` with stored timestamp | GCS, S3, file systems |
+| **Webhooks** | Source system notifies you when a document changes | Confluence, Google Docs, Notion, GitHub |
+| **Polling + diff** | Periodically scan source, compare with last known state | Databases, APIs without webhooks |
+
+#### The Update Algorithm
+
+```mermaid
+flowchart TD
+    A[Sync job starts] --> B[List all documents in source]
+    B --> C[For each document]
+    C --> D{Document exists in vector DB?}
+    D -->|No| E[New document: chunk, embed, insert]
+    D -->|Yes| F{Content hash changed?}
+    F -->|No| G[Skip - no changes]
+    F -->|Yes| H[Delete ALL old chunks for this document]
+    H --> I[Re-chunk the updated document]
+    I --> J[Embed new chunks]
+    J --> K[Insert new chunks with new hash]
+    B --> L[List all document IDs in vector DB]
+    L --> M{Any document IDs in DB not in source?}
+    M -->|Yes| N[Delete orphaned chunks - document was deleted from source]
+    M -->|No| O[Done]
+    E --> O
+    G --> O
+    K --> O
+    N --> O
+```
+
+#### Handling Document Adds
+
+```python
+def add_document(db, document, embedding_fn, chunk_fn):
+    """Add a new document to the vector DB."""
+    doc_id = document.id
+    content_hash = hashlib.sha256(document.content.encode()).hexdigest()
+    
+    chunks = chunk_fn(document)
+    
+    for i, chunk in enumerate(chunks):
+        chunk_id = f"{doc_id}:{i}"
+        embedding = embedding_fn(chunk.text)
+        db.upsert(
+            id=chunk_id,
+            embedding=embedding,
+            metadata={
+                "document_id": doc_id,
+                "chunk_index": i,
+                "content_hash": content_hash,
+                "source": document.source,
+                "indexed_at": datetime.utcnow().isoformat()
+            },
+            document=chunk.text
+        )
+```
+
+#### Handling Document Updates
+
+```python
+def update_document(db, document, embedding_fn, chunk_fn):
+    """Update a document: delete old chunks, insert new ones."""
+    doc_id = document.id
+    new_hash = hashlib.sha256(document.content.encode()).hexdigest()
+    
+    # Check if content actually changed
+    existing = db.get(where={"document_id": doc_id}, limit=1)
+    if existing and existing[0].metadata.get("content_hash") == new_hash:
+        return  # No change, skip
+    
+    # Step 1: DELETE all old chunks for this document
+    db.delete(where={"document_id": doc_id})
+    
+    # Step 2: Re-chunk and re-embed
+    add_document(db, document, embedding_fn, chunk_fn)
+```
+
+**Why delete-then-insert, not upsert?** Because the number of chunks may change. Version 1 had 5 chunks. Version 2 has 7 chunks. If you only upsert chunks 0-6, chunk 4 from version 1 (now chunk_id `doc:4`) gets overwritten, but if version 2 removed content, you might have fewer chunks and orphaned IDs remain.
+
+#### Handling Document Deletes
+
+```python
+def delete_document(db, doc_id):
+    """Remove all chunks for a deleted document."""
+    db.delete(where={"document_id": doc_id})
+```
+
+Simple, but you need to DETECT that a document was deleted. The sync job must compare source document list with vector DB document list.
+
+#### The Orphaned Chunks Problem
+
+Orphaned chunks are chunks in the vector DB whose source document no longer exists or has been replaced. They cause:
+
+- **Stale answers:** RAG retrieves information that is no longer true
+- **Contradictory results:** Old and new versions of the same content both get retrieved
+- **Index bloat:** DB grows with dead data, slowing queries
+
+**Prevention:**
+
+| Strategy | How |
+|---|---|
+| **Delete before insert** | Always delete all chunks for a document before inserting updated chunks |
+| **Source-of-truth sync** | Periodically compare all document IDs in vector DB with all document IDs in source. Delete any that exist only in DB. |
+| **TTL metadata** | Store `indexed_at` timestamp. Periodically purge chunks older than X days if the document hasn't been re-indexed. |
+| **Generation tagging** | Tag each sync run with a generation number. After sync, delete all chunks with a previous generation number. |
+
+#### Concurrency: Queries During Updates
+
+What happens if someone queries while you're updating the index?
+
+| Approach | Tradeoff |
+|---|---|
+| **No protection** | User might get a mix of old and new chunks. Usually acceptable for small updates. |
+| **Blue-green index** | Maintain two indexes. Build the new one while serving from the old. Swap when ready. Zero-downtime but 2x storage. |
+| **Versioned collections** | ChromaDB/Pinecone support collections. Create `docs_v2`, switch queries to it, delete `docs_v1`. |
+| **Lock during update** | Block queries during re-indexing. Only acceptable for small indexes with fast re-index times. |
+
+For most production systems, **blue-green** or **versioned collections** are the right approach. The user never sees a partially-updated index.
+
+#### Full Sync Job Pattern
+
+```python
+def sync_knowledge_base(db, source, embedding_fn, chunk_fn):
+    """Full sync: add new, update changed, delete removed."""
+    
+    source_docs = source.list_all_documents()
+    source_ids = {doc.id for doc in source_docs}
+    
+    db_ids = set(db.get_unique_values("document_id"))
+    
+    # Documents to delete (in DB but not in source)
+    for doc_id in db_ids - source_ids:
+        delete_document(db, doc_id)
+        print(f"Deleted: {doc_id}")
+    
+    # Documents to add or update
+    for doc in source_docs:
+        new_hash = hashlib.sha256(doc.content.encode()).hexdigest()
+        existing = db.get(where={"document_id": doc.id}, limit=1)
+        
+        if not existing:
+            add_document(db, doc, embedding_fn, chunk_fn)
+            print(f"Added: {doc.id}")
+        elif existing[0].metadata.get("content_hash") != new_hash:
+            update_document(db, doc, embedding_fn, chunk_fn)
+            print(f"Updated: {doc.id}")
+        # else: no change, skip
+```
+
+This is the pattern used by Glean (40+ integrations, incremental sync), Cursor (re-index on file save), and any production RAG system that needs to stay current.
 
 ---
 
