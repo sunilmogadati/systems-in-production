@@ -1,6 +1,6 @@
 # Systems in Production
 
-**How to build intelligent systems that work in the real world — across Cloud, Data, and AI.**
+**How to build, operate, and continuously improve intelligent systems — across Cloud, Data, and AI.**
 
 Start with one notebook. Get your first win in 30 minutes.
 
