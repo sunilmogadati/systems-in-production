@@ -191,40 +191,29 @@ Retrieval-Augmented Generation searches runbooks, post-mortems, and documentatio
 
 The agent ties all components together. It receives an alert and executes a diagnostic workflow:
 
-```
-Alert received: "order-service error rate spike"
-    |
-    v
-Query DB: "Any deployments in last 2 hours?"
-    --> Found: DEP-777 (v2.4.1, 2 hours ago)
-    |
-    v
-Check logs: "Error patterns in order-service?"
-    --> "Failed to acquire database connection from pool" (150 occurrences)
-    |
-    v
-Check metrics: "Connection pool and CPU trends?"
-    --> Active connections: 248/250 (near exhaustion)
-    --> CPU: 85% (elevated)
-    |
-    v
-Search runbook via RAG: "order-service connection pool"
-    --> "Root cause: missing connection timeout in ORM config.
-         Fix: set connection_max_lifetime=300s"
-    |
-    v
-Correlate: "Has this happened before?"
-    --> INC-1005 (March 5, same root cause, classified P3, resolved in 2 hours)
-    |
-    v
-CREATE TICKET:
-    Title: "Order-service DB connection pool exhaustion (recurring)"
-    Severity: P1 (escalated from pattern match)
-    Root cause: connection_max_lifetime not set after v2.4.1 deploy
-    Related: INC-1005 (March 5), DEP-777 (today)
-    Recommended action: Set connection_max_lifetime=300s, restart pods
-    Note: This is the same root cause as INC-1005.
-          Previous fix was overwritten by today's deployment.
+```mermaid
+sequenceDiagram
+    participant Alert as Alert System
+    participant Agent as AI Agent
+    participant DB as Database
+    participant Logs as Log Store
+    participant Metrics as Metrics Store
+    participant RAG as RAG Knowledge Base
+    participant Ticket as Ticket System
+
+    Alert->>Agent: order-service error rate spike
+    Agent->>DB: Any deployments in last 2 hours?
+    DB-->>Agent: DEP-777 (v2.4.1, 2 hours ago)
+    Agent->>Logs: Error patterns in order-service?
+    Logs-->>Agent: "Failed to acquire DB connection" (150x)
+    Agent->>Metrics: Connection pool and CPU trends?
+    Metrics-->>Agent: Connections: 248/250, CPU: 85%
+    Agent->>RAG: order-service connection pool fix?
+    RAG-->>Agent: Set connection_max_lifetime=300s
+    Agent->>DB: Has this happened before?
+    DB-->>Agent: INC-1005 (March 5, same root cause)
+    Agent->>Ticket: Create P1 ticket
+    Note over Ticket: Title: DB connection pool exhaustion (recurring)<br/>Root cause: connection_max_lifetime not set after v2.4.1<br/>Related: INC-1005, DEP-777<br/>Action: Set connection_max_lifetime=300s, restart pods
 ```
 
 ---

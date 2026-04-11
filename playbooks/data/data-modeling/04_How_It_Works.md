@@ -276,20 +276,20 @@ Everything in this chapter leads to one fundamental distinction: transactional s
 
 ```mermaid
 flowchart LR
-    subgraph "OLTP (Source)"
+    subgraph OLTP["OLTP (Source)"]
         A1[Phone System] --> DB1[(PostgreSQL<br/>Normalized<br/>3NF)]
         A2[Order System] --> DB1
         A3[CRM] --> DB1
     end
 
-    DB1 -->|"ETL / ELT<br/>Pipeline"| subgraph2
-
-    subgraph subgraph2 ["OLAP (Warehouse)"]
+    subgraph OLAP["OLAP (Warehouse)"]
         DB2[(BigQuery<br/>Star Schema<br/>Denormalized)]
         DB2 --> R1[Dashboards]
         DB2 --> R2[Reports]
         DB2 --> R3[ML Features]
     end
+
+    DB1 -->|"ETL / ELT<br/>Pipeline"| DB2
 ```
 
 The data engineer's core job is building the pipeline between these two worlds — and the data model is the architecture of the OLAP side.
