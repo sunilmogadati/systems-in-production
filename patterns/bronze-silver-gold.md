@@ -138,6 +138,186 @@ Gold tables are designed for consumption, not for correctness (that is Silver's 
 
 ---
 
+## Handling Incremental Changes (Adds, Updates, Deletes)
+
+The hello-world version of Bronze-Silver-Gold uses full reload: drop the table, recreate from scratch. That works for small data. In production, source data changes continuously: new records arrive, existing records get updated, some get deleted. Each layer handles this differently.
+
+### How Changes Flow Through the Pipeline
+
+```mermaid
+flowchart LR
+    subgraph Source
+        NEW["New record"]
+        UPD["Updated record"]
+        DEL["Deleted record"]
+    end
+
+    subgraph Bronze
+        B_APP["Append new"]
+        B_APP2["Append update<br/>(both versions exist)"]
+        B_MARK["Append delete marker<br/>(soft delete)"]
+    end
+
+    subgraph Silver
+        S_INS["INSERT new"]
+        S_MERGE["MERGE update<br/>(overwrite old)"]
+        S_DEL["Remove or flag<br/>as deleted"]
+    end
+
+    subgraph Gold
+        G_INS["Rebuild affected<br/>dimensions + facts"]
+    end
+
+    NEW --> B_APP --> S_INS --> G_INS
+    UPD --> B_APP2 --> S_MERGE --> G_INS
+    DEL --> B_MARK --> S_DEL --> G_INS
+```
+
+### Bronze: Append-Only, Never Modify
+
+Bronze is an immutable log. You NEVER update or delete records in Bronze.
+
+| Change Type | What Happens in Bronze | Why |
+|---|---|---|
+| **New record** | Append it | Standard ingestion |
+| **Updated record** | Append the new version (old version stays) | Both versions exist. Silver decides which to keep. |
+| **Deleted record** | Append a delete marker (soft delete flag, or a CDC record with `op=DELETE`) | Bronze never physically deletes. The delete is itself a record of what happened. |
+
+**Why append-only?** Because Bronze is your insurance. If Silver has a bug, you reprocess from Bronze. If you delete from Bronze, you lose the ability to go back.
+
+**How to identify new records:**
+
+| Method | How It Works | Best For |
+|---|---|---|
+| **Timestamp-based** | `WHERE updated_at > last_ingestion_time` | Source tables with reliable timestamps |
+| **CDC (Change Data Capture)** | Debezium, GCP Datastream, AWS DMS read the database transaction log | High-volume sources, captures deletes |
+| **Full extract + diff** | Extract everything, compare with last Bronze load, keep only changes | Sources without timestamps or CDC |
+| **File-based** | New file arrives = new data (date-partitioned files) | Batch file drops (CSV, Parquet from partners) |
+
+CDC is the gold standard because it captures inserts, updates, AND deletes directly from the database log. You don't miss anything, and you don't need to scan the entire source table.
+
+### Silver: MERGE (Upsert) and Soft Deletes
+
+Silver is where changes get applied. The pattern is MERGE: match on a business key, update if changed, insert if new.
+
+**For updates (MERGE):**
+
+```sql
+-- BigQuery / Snowflake
+MERGE INTO silver.customers AS target
+USING bronze.customers_daily AS source
+ON target.customer_id = source.customer_id
+WHEN MATCHED AND source.updated_at > target.updated_at
+    THEN UPDATE SET
+        target.name = source.name,
+        target.email = source.email,
+        target.updated_at = source.updated_at
+WHEN NOT MATCHED
+    THEN INSERT (customer_id, name, email, updated_at)
+    VALUES (source.customer_id, source.name, source.email, source.updated_at)
+```
+
+**For deletes — two approaches:**
+
+| Approach | How | When to Use |
+|---|---|---|
+| **Soft delete** | Add `is_deleted = TRUE` and `deleted_at` columns. MERGE sets the flag. Record stays in Silver. | Need to keep history. Regulatory requirements. Most common in production. |
+| **Hard delete** | `DELETE FROM silver.customers WHERE customer_id IN (select deleted_ids from bronze_cdc)` | No regulatory requirement to retain. Storage costs matter. |
+
+**Soft delete is almost always better.** You can always filter `WHERE is_deleted = FALSE` in Gold. You can never get back a hard-deleted record.
+
+**PySpark equivalent (Delta Lake):**
+
+```python
+from delta.tables import DeltaTable
+
+silver = DeltaTable.forPath(spark, "gs://bucket/silver/customers/")
+
+silver.alias("target").merge(
+    daily_changes.alias("source"),
+    "target.customer_id = source.customer_id"
+).whenMatchedUpdate(
+    condition="source.operation = 'UPDATE'",
+    set={"name": "source.name", "email": "source.email", "updated_at": "source.updated_at"}
+).whenMatchedUpdate(
+    condition="source.operation = 'DELETE'",
+    set={"is_deleted": "true", "deleted_at": "source.event_time"}
+).whenNotMatchedInsert(
+    values={"customer_id": "source.customer_id", "name": "source.name", 
+            "email": "source.email", "is_deleted": "false"}
+).execute()
+```
+
+**Why Delta Lake or Iceberg for Silver?** Plain Parquet files can't do MERGE. You'd have to read all files, apply changes in memory, and rewrite. Delta Lake and Iceberg handle this natively with transaction logs.
+
+### Gold: Rebuild Affected Partitions
+
+Gold tables (dimensions and facts) are typically rebuilt, not merged. When Silver changes:
+
+**Dimensions (slow-changing):**
+
+| SCD Type | What Happens | When to Use |
+|---|---|---|
+| **Type 1** (overwrite) | `MERGE` updates the dimension row. Old value is lost. | Current state only. "What is the customer's address NOW?" |
+| **Type 2** (versioned) | Old row gets `end_date = today`. New row inserted with `start_date = today`. Both exist. | Need history. "What was the address when they placed order #4592?" |
+| **Type 3** (previous column) | Add `previous_value` column alongside current value | Only need one level of history |
+
+**Facts (event-based):**
+
+Facts are usually append-only (one row per event). A call happened, an order was placed. You don't update a call that already happened.
+
+But there are exceptions:
+- **Late-arriving facts:** An order arrives after the daily pipeline ran. Insert it into the correct partition.
+- **Corrected facts:** A financial transaction was recorded wrong. Mark the old one as voided, insert the correction.
+- **Retroactive changes:** A returned order changes the revenue number. Update the fact or insert a negative adjustment row.
+
+**The rebuild pattern:**
+
+```sql
+-- Rebuild only today's partition of the fact table
+-- (don't rebuild the entire table for a daily change)
+DELETE FROM gold.fact_orders WHERE order_date = CURRENT_DATE();
+
+INSERT INTO gold.fact_orders
+SELECT ... FROM silver.orders
+JOIN gold.dim_customer ...
+JOIN gold.dim_product ...
+WHERE order_date = CURRENT_DATE();
+```
+
+**Rebuild the affected partition, not the entire table.** For a table with 50M rows and 365 days of data, rebuilding one day's partition (137K rows) takes seconds. Rebuilding everything takes minutes to hours.
+
+### The Full Incremental Pipeline
+
+```mermaid
+flowchart TD
+    subgraph "Daily Pipeline"
+        A["Extract changes from source<br/>(CDC or timestamp-based)"] --> B["Append to Bronze<br/>(never modify Bronze)"]
+        B --> C["MERGE into Silver<br/>(apply inserts, updates, soft deletes)"]
+        C --> D["Update Gold dimensions<br/>(SCD Type 1 or 2)"]
+        D --> E["Rebuild today's Gold fact partition"]
+        E --> F["Run quality gates<br/>(row counts, orphan checks)"]
+        F -->|Pass| G["Dashboards and ML refreshed"]
+        F -->|Fail| H["Alert oncall, hold stale data"]
+    end
+```
+
+### Full Reload vs Incremental: When to Choose
+
+| Factor | Full Reload | Incremental (MERGE) |
+|---|---|---|
+| **Data size** | < 1M rows | > 1M rows |
+| **Source has reliable timestamps** | Not required | Required (or use CDC) |
+| **Source supports CDC** | Not required | Ideal |
+| **Storage format** | Any (Parquet, CSV, BigQuery) | Delta Lake or Iceberg for file-based Silver (need MERGE support) |
+| **Pipeline complexity** | Low (drop + recreate) | Higher (MERGE logic, delete handling, partition management) |
+| **Recovery** | Simple (rerun everything) | Complex (need to handle partial failures) |
+| **Cost at scale** | Expensive (reprocess everything daily) | Cheap (process only changes) |
+
+**Start with full reload. Switch to incremental when full reload takes too long or costs too much.** For most teams, that happens around 1-10M rows.
+
+---
+
 ## When to Use This Pattern
 
 **Use it for:**
