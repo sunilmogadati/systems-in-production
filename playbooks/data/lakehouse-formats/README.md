@@ -22,6 +22,7 @@
 | Notebook | Open in Colab |
 |---|---|
 | [Delta Lake Hello World](../../../implementation/notebooks/Delta_Lake_Hello_World.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Delta_Lake_Hello_World.ipynb) |
+| [GCP Lakehouse](../../../implementation/notebooks/GCP_Lakehouse.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Lakehouse.ipynb) |
 
 ## Get Help
 
