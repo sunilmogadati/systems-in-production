@@ -28,15 +28,13 @@ graph LR
 | Factor | ETL | ELT |
 |---|---|---|
 | **Transform happens** | Outside the warehouse (Spark, Python) | Inside the warehouse (SQL) |
-| **Best when** | Data needs heavy processing (joins across systems, ML features, complex logic) | Warehouse is powerful enough (BigQuery, Snowflake, Redshift) |
-| **Cost** | Pay for compute cluster (Dataproc/EMR) | Pay for warehouse queries |
+| **Best when** | Data needs heavy processing (joins across systems, ML features, complex logic) | Warehouse is powerful enough (BigQuery, Snowflake, Redshift, Synapse) |
+| **Cost** | Pay for compute cluster (Dataproc, EMR, HDInsight) | Pay for warehouse queries |
 | **Complexity** | Higher (manage Spark clusters) | Lower (just SQL) |
 | **Skill required** | Python/PySpark + SQL | SQL only |
-| **Example** | PySpark on Dataproc reads GCS, cleans data, writes to BigQuery | Load CSVs straight into BigQuery Bronze, transform with SQL into Silver/Gold |
+| **Example** | PySpark on a managed cluster reads raw files, cleans data, writes to warehouse | Load CSVs straight into the warehouse Bronze layer, transform with SQL into Silver/Gold |
 
-**The modern trend is ELT.** Cloud warehouses like BigQuery and Snowflake are powerful enough to handle transformations that used to require Spark. Load the raw data first, then transform with SQL.
-
-**Your GCP pipeline is ELT:** You load raw files into BigQuery (Bronze), then use BigQuery SQL to build Silver and Gold. The warehouse does the work.
+**The modern trend is ELT.** Cloud warehouses (BigQuery, Snowflake, Redshift, Synapse) are powerful enough to handle transformations that used to require Spark. Load the raw data first, then transform with SQL.
 
 **When you still need ETL:** When the data volume is too large for the warehouse, when you need Python/PySpark logic that SQL can't express, or when you're joining data from multiple systems before it reaches the warehouse.
 
@@ -49,18 +47,18 @@ The choice of ETL vs ELT determines where Bronze, Silver, and Gold physically ex
 ```mermaid
 graph TD
     subgraph "ELT: Everything in the warehouse"
-        ELT_B["BigQuery<br/>raw dataset<br/>(Bronze)"] -->|"SQL"| ELT_S["BigQuery<br/>silver dataset<br/>(Silver)"]
-        ELT_S -->|"SQL"| ELT_G["BigQuery<br/>gold dataset<br/>(Gold)"]
+        ELT_B["Warehouse<br/>raw schema<br/>(Bronze)"] -->|"SQL"| ELT_S["Warehouse<br/>silver schema<br/>(Silver)"]
+        ELT_S -->|"SQL"| ELT_G["Warehouse<br/>gold schema<br/>(Gold)"]
     end
 
     subgraph "ETL: Transform in Spark, load result"
-        ETL_B["GCS<br/>Bronze files"] -->|"PySpark"| ETL_S["GCS<br/>Silver files<br/>(Parquet/Delta)"]
-        ETL_S -->|"bq load"| ETL_G["BigQuery<br/>Gold tables"]
+        ETL_B["Object Storage<br/>Bronze files"] -->|"PySpark"| ETL_S["Object Storage<br/>Silver files<br/>(Parquet/Delta)"]
+        ETL_S -->|"Load"| ETL_G["Warehouse<br/>Gold tables"]
     end
 
-    subgraph "Hybrid: Spark writes, BigQuery reads"
-        H_B["GCS<br/>Bronze files"] -->|"PySpark"| H_S["GCS<br/>Delta table<br/>(Silver)"]
-        H_S -->|"BigLake"| H_G["BigQuery<br/>reads Silver<br/>+ builds Gold"]
+    subgraph "Hybrid: Spark writes, warehouse reads"
+        H_B["Object Storage<br/>Bronze files"] -->|"PySpark"| H_S["Object Storage<br/>Delta/Iceberg table<br/>(Silver)"]
+        H_S -->|"External table"| H_G["Warehouse<br/>reads Silver<br/>+ builds Gold"]
     end
 
     style ELT_S fill:#c0c0c0
@@ -70,11 +68,20 @@ graph TD
 
 | Pattern | Bronze | Silver | Gold | Silver is a... |
 |---|---|---|---|---|
-| **ELT** (your GCP pipeline) | BigQuery `raw` dataset | BigQuery `silver` dataset | BigQuery `gold` dataset | BigQuery schema |
-| **ETL** | GCS folder | GCS folder (Parquet) | BigQuery tables | folder in cloud storage |
-| **Hybrid** | GCS folder | GCS Delta table | BigQuery via BigLake | Delta table in cloud storage |
+| **ELT** | Warehouse `raw` schema | Warehouse `silver` schema | Warehouse `gold` schema | A schema/dataset in the warehouse |
+| **ETL** | Object storage folder | Object storage folder (Parquet) | Warehouse tables | A folder in cloud storage |
+| **Hybrid** | Object storage folder | Delta/Iceberg table in object storage | Warehouse via external table | A table format in cloud storage |
 
-**Why this matters:** When someone says "write to Silver," ask: "Silver in BigQuery or Silver in GCS?" The answer depends on the pipeline pattern. The concept is the same — cleaned, validated data — but the technology is different.
+**On each cloud:**
+
+| Concept | GCP | AWS | Azure |
+|---|---|---|---|
+| Object storage | GCS | S3 | ADLS (Azure Data Lake Storage) |
+| Warehouse | BigQuery | Redshift or Athena | Synapse Analytics |
+| External table | BigLake | Glue Catalog + Athena | Synapse external tables |
+| Managed Spark | Dataproc | EMR | HDInsight or Synapse Spark |
+
+**Why this matters:** When someone says "write to Silver," ask: "Silver in the warehouse or Silver in object storage?" The answer depends on the pipeline pattern. The concept is the same — cleaned, validated data — but the technology is different.
 
 ---
 
@@ -161,7 +168,7 @@ WHERE table_name = 'calls';
 |---|---|---|
 | Timestamp | `updated_at`, `created_at` | Records with reliable timestamps |
 | Auto-increment ID | `call_id`, `order_id` | Append-only tables (no updates) |
-| File arrival time | `ingested_at` | File-based ingestion (CSV drops in GCS) |
+| File arrival time | `ingested_at` | File-based ingestion (CSV drops in object storage) |
 | Offset | Kafka offset, Pub/Sub ack ID | Streaming sources |
 
 **When it works:**
@@ -236,10 +243,10 @@ graph TD
     E["Optional: Records in target<br/>NOT in source"] --> F["DELETE<br/>Record no longer exists"]
 ```
 
-**How it works (BigQuery SQL):**
+**How it works (standard SQL — works on BigQuery, Redshift, Snowflake, Synapse):**
 
 ```sql
-MERGE INTO gold.calls AS target
+MERGE INTO silver.calls AS target
 USING staging.calls_incoming AS source
 ON target.call_id = source.call_id
 
@@ -344,11 +351,22 @@ graph TD
 
 ---
 
+## Apply It
+
+| Cloud | Notebook | What You'll Build |
+|---|---|---|
+| No cloud | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb) | All 6 patterns in pure Python |
+| GCP | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) | BigQuery MERGE, GCS ingestion |
+| AWS | Coming soon | Redshift/Athena MERGE, S3 ingestion |
+| Azure | Coming soon | Synapse MERGE, ADLS ingestion |
+
+---
+
 ## Quick Links
 
 | Chapter | Topic |
 |---|---|
-| [01 - Why](01_Why.md) | Why ETL patterns matter |
+| [01 - Why](01_Why.md) | Why ETL/ELT patterns matter |
 | [02 - Concepts](02_Concepts.md) | This page |
 | [03 - Hello World](03_Hello_World.md) | Your first incremental load in 10 minutes |
 | [04 - How It Works](04_How_It_Works.md) | CDC mechanics under the hood |

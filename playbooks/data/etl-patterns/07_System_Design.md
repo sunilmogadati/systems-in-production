@@ -168,12 +168,63 @@ graph TD
 
 ---
 
+## Azure Architecture
+
+```mermaid
+graph TD
+    subgraph "Sources"
+        S1["Azure SQL<br/>(calls, orders)"]
+        S2["ADLS Gen2<br/>(CSV file drops)"]
+        S3["External API"]
+    end
+
+    subgraph "Capture Layer"
+        C1["Data Factory<br/>(CDC pipelines)"]
+        C2["Azure Functions<br/>(blob trigger)"]
+        C3["Logic Apps<br/>(scheduled API pull)"]
+    end
+
+    subgraph "Buffer"
+        Q["Event Hubs<br/>(streaming)"]
+    end
+
+    subgraph "Process"
+        P1["Azure Functions / Stream Analytics<br/>(consumer)"]
+        P2["Data Factory / Synapse Pipelines<br/>(batch orchestrator)"]
+    end
+
+    subgraph "Target"
+        T1["Synapse Analytics<br/>(warehouse)"]
+    end
+
+    S1 --> C1 --> Q
+    S2 --> C2 --> Q
+    S3 --> C3 --> Q
+    Q --> P1 --> T1
+    T1 --> P2
+```
+
+### Azure Service Mapping
+
+| Component | Azure Service | GCP Equivalent | AWS Equivalent |
+|---|---|---|---|
+| CDC tool | **Data Factory** (CDC mode) | Datastream | DMS |
+| Message queue | **Event Hubs** or **Service Bus** | Pub/Sub | Kinesis / MSK |
+| Stream consumer | **Azure Functions** or **Stream Analytics** | Dataflow | Lambda / Glue Streaming |
+| Batch orchestrator | **Data Factory** or **Synapse Pipelines** | Cloud Composer | MWAA / Step Functions |
+| Warehouse | **Synapse Analytics** | BigQuery | Redshift / Athena |
+| Object storage | **ADLS Gen2** (Azure Data Lake Storage) | GCS | S3 |
+| Managed Spark | **HDInsight** or **Synapse Spark** | Dataproc | EMR |
+| Event trigger | **Azure Functions** (blob trigger) | Cloud Functions | Lambda (S3 event) |
+
+---
+
 ## Streaming vs Batch: When to Use Which
 
 ```mermaid
 graph TD
     A["How fresh does data need to be?"] --> B{"Seconds?"}
-    B -->|"Yes"| C["Streaming CDC<br/>Datastream → Pub/Sub → Dataflow → BigQuery"]
+    B -->|"Yes"| C["Streaming CDC<br/>CDC tool → Message queue → Stream consumer → Warehouse"]
     B -->|"No"| D{"Minutes?"}
     D -->|"Yes"| E["Micro-batch<br/>Query-based CDC every 5 minutes"]
     D -->|"No"| F{"Hours?"}
@@ -201,21 +252,42 @@ Most production systems use both patterns:
 ```mermaid
 graph TD
     subgraph "Real-Time Path (CDC)"
-        RT1["High-change tables<br/>(calls, orders)"] --> RT2["Datastream"] --> RT3["Pub/Sub"] --> RT4["Dataflow"] --> RT5["BigQuery Silver<br/>(near real-time)"]
+        RT1["High-change tables<br/>(calls, orders)"] --> RT2["CDC Tool"] --> RT3["Message Queue"] --> RT4["Stream Consumer"] --> RT5["Warehouse Silver<br/>(near real-time)"]
     end
 
     subgraph "Batch Path (Incremental)"
-        B1["Low-change tables<br/>(campaigns, products)"] --> B2["Cloud Scheduler<br/>(daily)"] --> B3["Dataproc PySpark"] --> B4["BigQuery Silver<br/>(daily refresh)"]
+        B1["Low-change tables<br/>(campaigns, products)"] --> B2["Scheduler<br/>(daily)"] --> B3["Managed Spark"] --> B4["Warehouse Silver<br/>(daily refresh)"]
     end
 
     subgraph "Gold Layer (Batch)"
-        RT5 --> G["Cloud Composer<br/>(hourly/daily)"]
+        RT5 --> G["Orchestrator<br/>(hourly/daily)"]
         B4 --> G
-        G --> G1["BigQuery Gold<br/>(star schema marts)"]
+        G --> G1["Warehouse Gold<br/>(star schema marts)"]
     end
 ```
 
 **The pattern:** Stream the high-volume, frequently changing data (calls, orders). Batch the slow-changing reference data (campaigns, products, agents). Build Gold marts on a schedule regardless.
+
+### Hybrid Architecture by Cloud
+
+| Component | GCP | AWS | Azure |
+|---|---|---|---|
+| CDC Tool | Datastream | DMS | Data Factory CDC |
+| Message Queue | Pub/Sub | Kinesis / MSK | Event Hubs |
+| Stream Consumer | Dataflow | Lambda / Glue | Functions / Stream Analytics |
+| Managed Spark | Dataproc | EMR | HDInsight / Synapse Spark |
+| Orchestrator | Cloud Composer | MWAA | Data Factory Pipelines |
+| Warehouse | BigQuery | Redshift / Athena | Synapse Analytics |
+
+---
+
+## Apply It
+
+| Cloud | Notebook | What You'll Build |
+|---|---|---|
+| GCP | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Pipeline_Automation.ipynb) | Full GCP architecture with Cloud Functions + Dataproc |
+| AWS | Coming soon | DMS + Kinesis + EMR + Redshift |
+| Azure | Coming soon | Data Factory + Event Hubs + Synapse |
 
 ---
 

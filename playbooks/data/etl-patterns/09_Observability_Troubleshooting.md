@@ -206,7 +206,7 @@ ON target.call_id = source.call_id
 graph TD
     subgraph "Pipeline"
         P1["Airflow DAG"] --> P2["PySpark Job"]
-        P2 --> P3["BigQuery MERGE"]
+        P2 --> P3["Warehouse MERGE"]
     end
 
     subgraph "Logging"
@@ -237,6 +237,18 @@ graph TD
 | Volume < 50% of average | Medium | Slack alert, check source |
 | MERGE takes > 10x normal | Low | Investigate partitioning |
 | DLQ depth > 1,000 records | Medium | Review and reprocess or escalate |
+
+---
+
+## Monitoring Tools by Cloud
+
+| Capability | GCP | AWS | Azure |
+|---|---|---|---|
+| Logging | Cloud Logging | CloudWatch Logs | Azure Monitor Logs |
+| Metrics/dashboards | Cloud Monitoring | CloudWatch Metrics | Azure Monitor |
+| Alerting | Cloud Monitoring alerts | CloudWatch Alarms / SNS | Azure Monitor Alerts |
+| Spark UI | Dataproc → Spark UI | EMR → Spark History Server | HDInsight → Spark UI |
+| Warehouse query stats | BigQuery INFORMATION_SCHEMA | Redshift STL/SVL views | Synapse DMVs |
 
 ---
 

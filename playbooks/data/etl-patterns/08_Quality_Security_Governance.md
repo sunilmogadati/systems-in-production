@@ -40,7 +40,7 @@ import os
 from google.cloud import storage
 
 def validate_bronze(bucket_name, file_path, min_rows=100):
-    """Validate a file in GCS before processing."""
+    """Validate a file in object storage before processing."""
     client = storage.Client()
     bucket = client.bucket(bucket_name)
     blob = bucket.blob(file_path)
@@ -279,7 +279,7 @@ def log_pipeline_run(client, dag_name, task_name, table_name,
                      error_message=None, duration_seconds=None):
     # WHY: Use parameterized queries in production to prevent SQL injection.
     # This example uses f-strings for readability. In production, use
-    # BigQuery's query parameters: client.query(sql, job_config=config)
+    # Use your warehouse's parameterized query feature in production.
     sql = f"""
     INSERT INTO pipeline.run_log 
     (dag_name, task_name, table_name, records_read, records_written,
@@ -323,6 +323,18 @@ DELETE FROM pipeline.dlq WHERE record_json LIKE CONCAT('%', @customer_hash, '%')
 ```
 
 **Don't forget Bronze.** If Bronze contains raw PII and you need GDPR compliance, you must either delete from Bronze too or ensure Bronze has a data retention policy that automatically purges old data.
+
+---
+
+## Governance Tools by Cloud
+
+| Capability | GCP | AWS | Azure |
+|---|---|---|---|
+| Data quality checks | Dataplex | Deequ / Glue Data Quality | Synapse Data Quality |
+| Data catalog | Data Catalog | Glue Data Catalog | Microsoft Purview |
+| Column-level security | BigQuery policy tags | Lake Formation | Synapse column-level security |
+| PII detection | DLP API | Macie | Purview (sensitivity labels) |
+| Schema registry | Schema Registry (Pub/Sub) | Glue Schema Registry | Azure Schema Registry |
 
 ---
 

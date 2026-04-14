@@ -17,11 +17,16 @@
 | 09 | [Observability Troubleshooting](09_Observability_Troubleshooting.md) |
 | 10 | [Decision Guide](10_Decision_Guide.md) |
 
+All chapters teach cloud-agnostic theory with standard SQL and PySpark. Cloud-specific implementation is in the notebooks below.
+
 ## Hands-On
 
-| Notebook | Open in Colab |
-|---|---|
-| [ETL/ELT Patterns](../../../implementation/notebooks/ETL_ELT_Patterns.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb) |
+| Notebook | Cloud | Open in Colab |
+|---|---|---|
+| [ETL/ELT Patterns](../../../implementation/notebooks/ETL_ELT_Patterns.ipynb) | None (pure Python) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb) |
+| [GCP Full Pipeline](../../../implementation/notebooks/GCP_Full_Pipeline.ipynb) | GCP | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) |
+| AWS Pipeline | AWS | Coming soon |
+| Azure Pipeline | Azure | Coming soon |
 
 ## Get Help
 

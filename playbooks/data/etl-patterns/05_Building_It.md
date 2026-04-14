@@ -8,7 +8,7 @@
 
 An incremental pipeline for call center data that:
 
-1. Loads only new/changed records from Bronze (GCS) into Silver (BigQuery)
+1. Loads only new/changed records from Bronze (object storage) into Silver (warehouse)
 2. Uses MERGE to handle both new calls and updated calls
 3. Routes bad records to a Dead Letter Queue (DLQ) instead of dropping them
 4. Tracks watermarks for each source table
@@ -16,7 +16,7 @@ An incremental pipeline for call center data that:
 
 ```mermaid
 graph TD
-    A["GCS Bronze<br/>calls.json (raw)"] --> B["Read new records<br/>(since watermark)"]
+    A["Object Storage Bronze<br/>calls.json (raw)"] --> B["Read new records<br/>(since watermark)"]
     B --> C{"Validate"}
     C -->|"Pass"| D["Staging Table<br/>(clean records)"]
     C -->|"Fail"| E["DLQ Table<br/>(quarantine)"]
@@ -33,7 +33,7 @@ graph TD
 
 ## Step 1: Set Up the Infrastructure
 
-### Create datasets and tables in BigQuery
+### Create datasets and tables (standard SQL — works on BigQuery, Redshift, Snowflake, Synapse)
 
 ```sql
 -- Create datasets for each layer
@@ -93,6 +93,10 @@ from datetime import datetime
 spark = SparkSession.builder.appName("calls_incremental").getOrCreate()
 
 # --- Configuration ---
+# Cloud-specific path — change for your platform:
+#   GCP:   gs://your-bucket/bronze/calls/
+#   AWS:   s3://your-bucket/bronze/calls/
+#   Azure: abfss://container@account.dfs.core.windows.net/bronze/calls/
 BRONZE_PATH = "gs://your-bucket/bronze/calls/"
 WATERMARK_TABLE = "pipeline.watermarks"
 SILVER_TABLE = "silver.calls"
@@ -251,9 +255,14 @@ WHEN NOT MATCHED THEN
             source.created_at, source.updated_at, CURRENT_TIMESTAMP())
 """
 
-# WHY: MERGE runs in BigQuery, not Spark. PySpark wrote the staging table,
-# but the actual MERGE is a BigQuery SQL operation. We use the BigQuery
-# Python client to execute it.
+# WHY: MERGE runs in the warehouse, not Spark. PySpark wrote the staging table,
+# but the actual MERGE is a SQL operation executed in the warehouse.
+#
+# GCP:   from google.cloud import bigquery; client = bigquery.Client()
+# AWS:   import boto3; client = boto3.client('athena')
+# Azure: import pyodbc  (or use Azure Synapse REST API)
+#
+# Example using BigQuery:
 from google.cloud import bigquery
 client = bigquery.Client()
 job = client.query(merge_sql)
@@ -261,7 +270,7 @@ job.result()  # Wait for completion
 print(f"MERGE complete: {job.num_dml_affected_rows} rows affected")
 ```
 
-**Key detail:** The MERGE condition includes `AND target.call_date = source.call_date` for partition pruning. Without it, BigQuery scans the entire table. With it, it scans only the relevant date partitions.
+**Key detail:** The MERGE condition includes `AND target.call_date = source.call_date` for partition pruning. Without it, the warehouse scans the entire table. With it, it scans only the relevant date partitions. This applies to BigQuery, Redshift, Snowflake, and Synapse.
 
 **The `source.updated_at > target.updated_at` guard** prevents older versions of a record from overwriting newer ones. If a late-arriving event shows up with an older timestamp, it won't clobber the current data.
 
@@ -294,7 +303,7 @@ print(f"Watermark updated. Good: {good_count}, DLQ: {bad_count}")
 
 ```mermaid
 graph TD
-    A["GCS Bronze<br/>calls.json"] --> B["Read since watermark<br/>(2026-04-13 00:00)"]
+    A["Object Storage Bronze<br/>calls.json"] --> B["Read since watermark<br/>(2026-04-13 00:00)"]
     B --> C["Validate<br/>(5 checks)"]
     C -->|"985 pass"| D["Staging Table"]
     C -->|"15 fail"| E["DLQ<br/>(with reasons)"]
@@ -335,6 +344,29 @@ SELECT COUNT(*) AS silver_count FROM silver.calls;
 SELECT COUNT(*) AS dlq_count FROM pipeline.dlq WHERE source_table = 'calls';
 -- silver_count + dlq_count should equal total records processed
 ```
+
+---
+
+## Cloud Service Mapping
+
+The pipeline above uses generic concepts. Here's what each piece maps to on each cloud:
+
+| Pipeline Component | GCP | AWS | Azure |
+|---|---|---|---|
+| Object storage (Bronze) | GCS | S3 | ADLS Gen2 |
+| Warehouse (Silver/Gold) | BigQuery | Redshift or Athena | Synapse Analytics |
+| Managed Spark | Dataproc | EMR | HDInsight or Synapse Spark |
+| MERGE SQL | BigQuery SQL | Redshift SQL / Athena SQL | Synapse SQL |
+| Warehouse Python client | `google.cloud.bigquery` | `boto3` (Athena) / `psycopg2` (Redshift) | `pyodbc` / Azure SDK |
+
+## Apply It
+
+| Cloud | Notebook | What You'll Build |
+|---|---|---|
+| No cloud | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb) | Full pipeline in pure Python |
+| GCP | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) | BigQuery + GCS + Dataproc |
+| AWS | Coming soon | Redshift/Athena + S3 + EMR |
+| Azure | Coming soon | Synapse + ADLS + HDInsight |
 
 ---
 

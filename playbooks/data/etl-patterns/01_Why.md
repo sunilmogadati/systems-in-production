@@ -112,9 +112,22 @@ By the end of this playbook, you'll know:
 
 ## Who This Is For
 
-This playbook is for data engineers building pipelines on cloud platforms (Google Cloud Platform, Amazon Web Services, or Azure). The examples use a call center dataset (calls, orders, payments, campaigns) and show both PySpark and BigQuery SQL.
+This playbook is for data engineers building pipelines on any cloud platform. The theory and patterns are cloud-agnostic. The examples use standard SQL and PySpark with a call center dataset (calls, orders, payments, campaigns).
 
 If you're running a full refresh pipeline today and it's starting to hurt — this is where you start.
+
+---
+
+## Apply It
+
+The concepts in this playbook work on any cloud. Pick your platform:
+
+| Cloud | Notebook | Services Used |
+|---|---|---|
+| No cloud (learn concepts) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb) | Pure Python/pandas |
+| GCP | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) | BigQuery, Dataproc, GCS |
+| AWS | Coming soon | Redshift/Athena, EMR, S3 |
+| Azure | Coming soon | Synapse, HDInsight, ADLS |
 
 ---
 
