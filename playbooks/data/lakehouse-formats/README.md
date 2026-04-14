@@ -17,6 +17,12 @@
 | 09 | [Observability Troubleshooting](09_Observability_Troubleshooting.md) |
 | 10 | [Decision Guide](10_Decision_Guide.md) |
 
+## Hands-On
+
+| Notebook | Open in Colab |
+|---|---|
+| [Delta Lake Hello World](../../../implementation/notebooks/Delta_Lake_Hello_World.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Delta_Lake_Hello_World.ipynb) |
+
 ## Get Help
 
 [Community](https://www.skool.com/deliverymomentum) | [Book a 1:1](https://calendly.com/sunil-mogadati/connect)
