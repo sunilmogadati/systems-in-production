@@ -42,6 +42,40 @@ graph LR
 
 **The patterns below (full refresh, incremental, CDC, MERGE, DLQ) apply to BOTH ETL and ELT.** The pattern is about how much data you move and how you handle changes — not about where the transformation runs.
 
+### Where Does Each Layer Live?
+
+The choice of ETL vs ELT determines where Bronze, Silver, and Gold physically exist:
+
+```mermaid
+graph TD
+    subgraph "ELT: Everything in the warehouse"
+        ELT_B["BigQuery<br/>raw dataset<br/>(Bronze)"] -->|"SQL"| ELT_S["BigQuery<br/>silver dataset<br/>(Silver)"]
+        ELT_S -->|"SQL"| ELT_G["BigQuery<br/>gold dataset<br/>(Gold)"]
+    end
+
+    subgraph "ETL: Transform in Spark, load result"
+        ETL_B["GCS<br/>Bronze files"] -->|"PySpark"| ETL_S["GCS<br/>Silver files<br/>(Parquet/Delta)"]
+        ETL_S -->|"bq load"| ETL_G["BigQuery<br/>Gold tables"]
+    end
+
+    subgraph "Hybrid: Spark writes, BigQuery reads"
+        H_B["GCS<br/>Bronze files"] -->|"PySpark"| H_S["GCS<br/>Delta table<br/>(Silver)"]
+        H_S -->|"BigLake"| H_G["BigQuery<br/>reads Silver<br/>+ builds Gold"]
+    end
+
+    style ELT_S fill:#c0c0c0
+    style ETL_S fill:#c0c0c0
+    style H_S fill:#c0c0c0
+```
+
+| Pattern | Bronze | Silver | Gold | Silver is a... |
+|---|---|---|---|---|
+| **ELT** (your GCP pipeline) | BigQuery `raw` dataset | BigQuery `silver` dataset | BigQuery `gold` dataset | BigQuery schema |
+| **ETL** | GCS folder | GCS folder (Parquet) | BigQuery tables | folder in cloud storage |
+| **Hybrid** | GCS folder | GCS Delta table | BigQuery via BigLake | Delta table in cloud storage |
+
+**Why this matters:** When someone says "write to Silver," ask: "Silver in BigQuery or Silver in GCS?" The answer depends on the pipeline pattern. The concept is the same — cleaned, validated data — but the technology is different.
+
 ---
 
 ## Pattern 1: Full Refresh

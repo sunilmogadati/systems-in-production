@@ -127,6 +127,51 @@ This is where data engineering happens. The raw data gets:
 
 **The key rule:** Never silently drop data. Quarantine it, log it, alert on it. You can always decide to delete later. You can never get back data you already dropped.
 
+### Where Does Silver Actually Live?
+
+Silver is a concept — a layer of cleaned data. But WHERE it lives depends on your pipeline pattern:
+
+```mermaid
+graph TD
+    subgraph "Pattern 1: ELT (transform inside warehouse)"
+        A1["GCS<br/>Bronze (raw files)"] -->|"bq load"| B1["BigQuery raw dataset<br/>(Bronze tables)"]
+        B1 -->|"SQL transform"| C1["BigQuery silver dataset<br/>(Silver tables)"]
+        C1 -->|"SQL aggregate"| D1["BigQuery gold dataset<br/>(Gold tables)"]
+        
+        style C1 fill:#c0c0c0
+    end
+```
+
+```mermaid
+graph TD
+    subgraph "Pattern 2: ETL (transform outside warehouse)"
+        A2["GCS<br/>Bronze (raw files)"] -->|"PySpark"| B2["GCS silver folder<br/>(cleaned Parquet/Delta)"]
+        B2 -->|"bq load or BigLake"| C2["BigQuery<br/>(Gold tables)"]
+        
+        style B2 fill:#c0c0c0
+    end
+```
+
+```mermaid
+graph TD
+    subgraph "Pattern 3: Hybrid (Delta Lake + BigLake)"
+        A3["GCS<br/>Bronze (raw files)"] -->|"PySpark"| B3["GCS Delta table<br/>(Silver — ACID, versioned)"]
+        B3 -->|"BigLake reads directly"| C3["BigQuery<br/>(queries Silver + builds Gold)"]
+        
+        style B3 fill:#c0c0c0
+    end
+```
+
+| Pattern | Where Silver lives | Transform runs in | When to use |
+|---|---|---|---|
+| **ELT** | BigQuery dataset (`silver`) | BigQuery SQL | Warehouse can handle the transform. Most common today. |
+| **ETL** | GCS folder (`gs://bucket/silver/`) | PySpark on Dataproc | Heavy processing, multi-source joins, ML features |
+| **Hybrid** | GCS Delta table, BigQuery reads via BigLake | PySpark writes, BigQuery reads | Need ACID on files + SQL analytics on same data |
+
+**In this material, we use ELT** — Silver is a BigQuery dataset. The transform is SQL running inside BigQuery. If you see `silver.calls`, that's a BigQuery table, not a file in GCS.
+
+When the processing is too heavy for SQL (complex joins, ML feature engineering, or the data is too large), you move the Silver step to PySpark and Silver becomes files in GCS. The concept doesn't change — only the location does.
+
 ### Gold: "Answer business questions"
 
 Pre-computed answers to the questions people actually ask. Star schema tables optimized for analysis.
