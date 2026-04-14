@@ -1,4 +1,4 @@
-# ETL Patterns - Observability & Troubleshooting
+# ETL/ELT Patterns - Observability & Troubleshooting
 
 **What to monitor, what breaks, and how to fix it. A debugging playbook for every common pipeline failure.**
 

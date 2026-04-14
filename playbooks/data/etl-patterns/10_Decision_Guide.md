@@ -1,4 +1,4 @@
-# ETL Patterns - Decision Guide
+# ETL/ELT Patterns - Decision Guide
 
 **Which pattern for which situation. A decision tree, a comparison matrix, and the one rule that covers 80% of cases.**
 

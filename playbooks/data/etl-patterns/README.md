@@ -1,6 +1,6 @@
-# ETL Patterns Playbook
+# ETL/ELT Patterns Playbook
 
-**How data gets from source to warehouse — and stays current. Full refresh, incremental, CDC, merge/upsert, dead letter queues.**
+**How data gets from source to warehouse — and stays current. ETL vs ELT, full refresh, incremental, CDC, merge/upsert, dead letter queues.**
 
 ## Chapters
 
@@ -16,6 +16,12 @@
 | 08 | [Quality Security Governance](08_Quality_Security_Governance.md) |
 | 09 | [Observability Troubleshooting](09_Observability_Troubleshooting.md) |
 | 10 | [Decision Guide](10_Decision_Guide.md) |
+
+## Hands-On
+
+| Notebook | Open in Colab |
+|---|---|
+| [ETL/ELT Patterns](../../../implementation/notebooks/ETL_ELT_Patterns.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb) |
 
 ## Get Help
 

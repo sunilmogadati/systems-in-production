@@ -1,6 +1,8 @@
-# ETL Patterns - Hello World
+# ETL/ELT Patterns - Hello World
 
 **Your first incremental load. Then your first MERGE. Both in under 20 minutes.**
+
+> Hands-on notebook: [ETL/ELT Patterns](../../../implementation/notebooks/ETL_ELT_Patterns.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb)
 
 ---
 
