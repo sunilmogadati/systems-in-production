@@ -215,6 +215,21 @@ If this returns a result, the pipeline ran but no new data arrived — the sourc
 
 ---
 
+## Orchestrator Mapping
+
+The backfill and scheduling patterns above use Airflow. Here's where Airflow runs on each cloud:
+
+| Cloud | Managed Airflow | Alternative |
+|---|---|---|
+| GCP | Cloud Composer | Cloud Scheduler + Cloud Functions |
+| AWS | MWAA (Managed Workflows for Apache Airflow) | Step Functions |
+| Azure | Azure Data Factory (orchestration mode) | Azure Functions + Logic Apps |
+| Self-hosted | Docker Compose or Kubernetes | — |
+
+The DAG code is identical across all managed Airflow services. Only the operator imports change (e.g., `BigQueryInsertJobOperator` vs `RedshiftSQLOperator`).
+
+---
+
 ## Quick Links
 
 | Chapter | Topic |

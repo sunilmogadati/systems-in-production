@@ -94,7 +94,7 @@ graph TD
 | **Before + After values** | Yes | No (only current state) | Depends on trigger logic |
 | **Source impact** | None (reads a log file) | Medium (runs queries) | High (fires on every write) |
 | **Setup complexity** | High (log access, permissions) | Low (just a SQL query) | Medium (create triggers) |
-| **Tools** | Debezium, Datastream, DMS | Custom scripts, Airbyte | Custom triggers |
+| **Tools** | Debezium, GCP Datastream, AWS DMS, Azure Data Factory | Custom scripts, Airbyte | Custom triggers |
 | **Best for** | Production, real-time | Simple incremental, prototyping | Legacy systems without log access |
 
 **Recommendation:** Use log-based CDC for production. Use query-based for prototyping or when you can't access the transaction log. Avoid trigger-based unless there's no alternative — triggers add overhead to every write operation on the source database.
@@ -206,6 +206,17 @@ WHEN NOT MATCHED THEN INSERT ...;
 ```
 
 Adding the partition column to the ON clause tells the query engine to scan only the matching partition, not the entire table. This is the difference between minutes and seconds.
+
+---
+
+## CDC Tools by Cloud
+
+| Cloud | Managed CDC Service | Open Source Alternative |
+|---|---|---|
+| GCP | Datastream | Debezium on GKE |
+| AWS | Database Migration Service (DMS) | Debezium on ECS/EKS |
+| Azure | Azure Data Factory (Change Data Capture) | Debezium on AKS |
+| Any | — | Debezium (runs anywhere) |
 
 ---
 

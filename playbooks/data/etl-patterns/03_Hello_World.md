@@ -17,7 +17,7 @@ We'll use the call center dataset: `calls.csv` with columns `call_id`, `customer
 
 ---
 
-## Part 1: Incremental Load (BigQuery SQL)
+## Part 1: Incremental Load (Standard SQL)
 
 ### Step 1: Create the watermark table
 
@@ -88,7 +88,7 @@ Run the incremental load script again.
 
 ---
 
-## Part 2: Merge / Upsert (BigQuery SQL)
+## Part 2: Merge / Upsert (Standard SQL)
 
 Incremental load handles new records. But what about updated records? A call that started as `status: 'in-progress'` is now `status: 'resolved'`. The `call_id` already exists in the target.
 
@@ -170,6 +170,17 @@ This is the foundation. Every production pipeline uses some version of this. The
 - **DLQ** — what happens when a record fails validation during the merge
 - **CDC** — how to get those change events in real time instead of batch
 - **Idempotency** — how to make the merge safe to re-run
+
+---
+
+## Apply It
+
+| Cloud | Notebook | What You'll Build |
+|---|---|---|
+| No cloud | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb) | Incremental + MERGE + DLQ in pure Python |
+| GCP | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) | MERGE in BigQuery SQL |
+| AWS | Coming soon | MERGE in Redshift/Athena SQL |
+| Azure | Coming soon | MERGE in Synapse SQL |
 
 ---
 

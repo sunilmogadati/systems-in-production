@@ -102,6 +102,19 @@ graph LR
 
 ---
 
+## Apply It
+
+These patterns work on any cloud. Pick your platform and start building:
+
+| Cloud | Notebook | What You'll Build |
+|---|---|---|
+| No cloud | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb) | All patterns in pure Python — learn before cloud |
+| GCP | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Full_Pipeline.ipynb) | BigQuery + GCS + Dataproc |
+| AWS | Coming soon | Redshift/Athena + S3 + EMR |
+| Azure | Coming soon | Synapse + ADLS + HDInsight |
+
+---
+
 ## Quick Links
 
 | Chapter | Topic |
