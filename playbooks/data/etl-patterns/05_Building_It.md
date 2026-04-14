@@ -1,4 +1,4 @@
-# ETL Patterns - Building It
+# ETL/ELT Patterns - Building It
 
 **Build a complete incremental pipeline with merge/upsert and a dead letter queue. Every step runs on the call center dataset.**
 

@@ -1,4 +1,4 @@
-# ETL Patterns - Production Patterns
+# ETL/ELT Patterns - Production Patterns
 
 **What happens after "it works on my laptop." Late-arriving data, out-of-order events, backfill, and making pipelines safe to re-run.**
 

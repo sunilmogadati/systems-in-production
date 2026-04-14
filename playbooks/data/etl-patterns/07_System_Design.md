@@ -1,4 +1,4 @@
-# ETL Patterns - System Design
+# ETL/ELT Patterns - System Design
 
 **Architecture for CDC at scale. How the pieces connect on GCP and AWS. When to stream and when to batch.**
 

@@ -1,4 +1,4 @@
-# ETL Patterns - Quality, Security, Governance
+# ETL/ELT Patterns - Quality, Security, Governance
 
 **Validating data at every stage. Masking Personally Identifiable Information (PII). Catching schema drift before it breaks the pipeline. Building an audit trail.**
 

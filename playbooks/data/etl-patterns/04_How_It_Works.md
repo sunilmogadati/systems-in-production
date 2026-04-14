@@ -1,4 +1,4 @@
-# ETL Patterns - How It Works
+# ETL/ELT Patterns - How It Works
 
 **What happens under the hood. How CDC reads the transaction log, how watermarks track position, and how MERGE decides what to insert vs update.**
 

@@ -1,6 +1,46 @@
-# ETL Patterns - Concepts
+# ETL/ELT Patterns - Concepts
 
 **Every pattern in plain English. What it does, when it works, when it breaks, and how to pick the right one.**
+
+> Hands-on notebook: [ETL/ELT Patterns](../../../implementation/notebooks/ETL_ELT_Patterns.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ETL_ELT_Patterns.ipynb)
+
+---
+
+## First: ETL vs ELT
+
+Before the patterns, understand the two approaches to WHERE the transformation happens.
+
+**ETL (Extract-Transform-Load):** Extract data from the source, transform it OUTSIDE the warehouse (in Spark, Python, or a staging area), then load the clean result into the warehouse.
+
+**ELT (Extract-Load-Transform):** Extract data from the source, load it RAW into the warehouse, then transform it INSIDE the warehouse using SQL.
+
+```mermaid
+graph LR
+    subgraph "ETL"
+        E1["Extract<br/>(source)"] --> T1["Transform<br/>(Spark / Python)"] --> L1["Load<br/>(warehouse)"]
+    end
+
+    subgraph "ELT"
+        E2["Extract<br/>(source)"] --> L2["Load RAW<br/>(warehouse)"] --> T2["Transform<br/>(SQL in warehouse)"]
+    end
+```
+
+| Factor | ETL | ELT |
+|---|---|---|
+| **Transform happens** | Outside the warehouse (Spark, Python) | Inside the warehouse (SQL) |
+| **Best when** | Data needs heavy processing (joins across systems, ML features, complex logic) | Warehouse is powerful enough (BigQuery, Snowflake, Redshift) |
+| **Cost** | Pay for compute cluster (Dataproc/EMR) | Pay for warehouse queries |
+| **Complexity** | Higher (manage Spark clusters) | Lower (just SQL) |
+| **Skill required** | Python/PySpark + SQL | SQL only |
+| **Example** | PySpark on Dataproc reads GCS, cleans data, writes to BigQuery | Load CSVs straight into BigQuery Bronze, transform with SQL into Silver/Gold |
+
+**The modern trend is ELT.** Cloud warehouses like BigQuery and Snowflake are powerful enough to handle transformations that used to require Spark. Load the raw data first, then transform with SQL.
+
+**Your GCP pipeline is ELT:** You load raw files into BigQuery (Bronze), then use BigQuery SQL to build Silver and Gold. The warehouse does the work.
+
+**When you still need ETL:** When the data volume is too large for the warehouse, when you need Python/PySpark logic that SQL can't express, or when you're joining data from multiple systems before it reaches the warehouse.
+
+**The patterns below (full refresh, incremental, CDC, MERGE, DLQ) apply to BOTH ETL and ELT.** The pattern is about how much data you move and how you handle changes — not about where the transformation runs.
 
 ---
 

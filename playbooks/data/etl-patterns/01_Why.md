@@ -1,4 +1,4 @@
-# ETL Patterns - Why They Matter
+# ETL/ELT Patterns - Why They Matter
 
 **Your pipeline works today. But data doubles every year. The pattern you pick now decides whether you spend your nights sleeping or debugging.**
 
