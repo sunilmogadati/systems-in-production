@@ -8,8 +8,9 @@
 | [Cloud Pipeline](cloud/) | Bronze → Silver → Gold architecture, GCS/S3/ADLS, automation, orchestration |
 | [ETL/ELT Patterns](etl-elt/) | Full refresh, incremental, CDC, MERGE/upsert, dead letter queues |
 | [Lakehouse Formats](lakehouse/) | Delta Lake, Apache Iceberg, Hudi — ACID transactions on files |
+| [Data Quality](data-quality/) | Automated quality gates — Great Expectations, dbt tests, Soda, Dataplex, Glue DQ |
 
-**Suggested order:** Ingestion → Cloud Pipeline → ETL/ELT Patterns → Lakehouse Formats
+**Suggested order:** Ingestion → Cloud Pipeline → ETL/ELT Patterns → Lakehouse Formats → Data Quality
 
 All theory is cloud-agnostic. Cloud-specific implementation is in the notebooks.
 
