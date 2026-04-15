@@ -22,7 +22,7 @@ flowchart LR
     style E fill:#c0c0c0,color:#000
 ```
 
-See [Cloud Pipeline Concepts](../cloud-pipeline/02_Concepts.md) for how this fits into the full Bronze-Silver-Gold architecture.
+See [Cloud Pipeline Concepts](../pipelines/cloud/02_Concepts.md) for how this fits into the full Bronze-Silver-Gold architecture.
 
 ---
 

@@ -284,6 +284,6 @@ Model passes metrics. Subgroups checked. SHAP makes sense. Experiment tracked. M
 
 **Hands-on notebook:** [ML Fundamentals on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) — the executable pipeline that these decision guides reference.
 
-**Architecture reference:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md) — the system these decisions were applied to.
+**Architecture reference:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md) — the system these decisions were applied to.
 
 **Back to start:** [01 — Why This Matters](01_Why.md) — the story that frames everything.

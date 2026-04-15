@@ -21,11 +21,11 @@
 
 | Notebook | Open in Colab |
 |---|---|
-| [Data Modeling](../../../implementation/notebooks/Data_Modeling.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb) |
+| [Data Modeling](../../../../implementation/notebooks/Data_Modeling.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb) |
 
 ## Related
 
-[Star Schema Design](../star-schema-design/) — deep dive into dimensional modeling
+[Star Schema Design](../star-schema/) — deep dive into dimensional modeling
 
 ## Get Help
 

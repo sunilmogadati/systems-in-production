@@ -171,7 +171,7 @@ incoming_df.write \
 spark.read.format("delta").load(DELTA_PATH).printSchema()
 ```
 
-**Prevention:** Add schema drift detection before processing (see [ETL Patterns - Chapter 8](../etl-patterns/08_Quality_Security_Governance.md)). Log warnings for additions, halt for removals or type changes.
+**Prevention:** Add schema drift detection before processing (see [ETL Patterns - Chapter 8](../etl-elt/08_Quality_Security_Governance.md)). Log warnings for additions, halt for removals or type changes.
 
 ---
 

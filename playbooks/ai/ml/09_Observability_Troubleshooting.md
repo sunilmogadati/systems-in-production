@@ -251,6 +251,6 @@ graph TD
 
 **Hands-on notebook:** [ML Fundamentals on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) — SHAP explanations and model evaluation that form the basis of production debugging.
 
-**Architecture reference:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md) — the system this observability layer monitors.
+**Architecture reference:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md) — the system this observability layer monitors.
 
 **Next:** [10 — Decision Guide](10_Decision_Guide.md) — Quick-reference cards for every decision: Do I need ML? Which algorithm? Which metric? Is the model production-ready?

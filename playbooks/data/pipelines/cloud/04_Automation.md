@@ -2,7 +2,7 @@
 
 **How to make your pipeline run without you. Event-driven triggers that fire when data arrives.**
 
-> These concepts apply to any cloud (GCP, AWS, Azure). Examples use GCP as the primary, with AWS equivalents noted. Hands-on notebook: [GCP Pipeline Automation](../../../implementation/notebooks/GCP_Pipeline_Automation.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Pipeline_Automation.ipynb)
+> These concepts apply to any cloud (GCP, AWS, Azure). Examples use GCP as the primary, with AWS equivalents noted. Hands-on notebook: [GCP Pipeline Automation](../../../../implementation/notebooks/GCP_Pipeline_Automation.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/GCP_Pipeline_Automation.ipynb)
 
 ---
 

@@ -20,7 +20,7 @@ Key tables:
 | `payments` | Payment attempts: amount, method, status | ~66 |
 | `dnis_sources` | Phone number to campaign mapping | ~10 |
 
-See [Source Tables](../star-schema-design/02a_Source_Tables.md) for full schema definitions.
+See [Source Tables](../star-schema/02a_Source_Tables.md) for full schema definitions.
 
 These queries work in PostgreSQL, BigQuery, Snowflake, or any standard SQL engine. Minor syntax adjustments noted where needed.
 

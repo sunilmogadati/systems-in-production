@@ -335,6 +335,6 @@ The 10 steps map directly to what interviewers evaluate:
 
 **Hands-on notebook:** [ML Fundamentals on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb) — the model that this system serves.
 
-**Architecture reference:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md) — the full system context.
+**Architecture reference:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md) — the full system context.
 
 **Next:** [08 — Quality, Security, Governance](08_Quality_Security_Governance.md) — Data quality, model fairness, security threats, regulatory requirements, and the governance structures that keep ML systems trustworthy.

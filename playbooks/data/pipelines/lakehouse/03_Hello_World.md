@@ -2,7 +2,7 @@
 
 **Write a Delta table, update a record, and time-travel to the previous version. All in PySpark, no cluster needed.**
 
-> Hands-on notebook: [Delta Lake Hello World](../../../implementation/notebooks/Delta_Lake_Hello_World.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Delta_Lake_Hello_World.ipynb)
+> Hands-on notebook: [Delta Lake Hello World](../../../../implementation/notebooks/Delta_Lake_Hello_World.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Delta_Lake_Hello_World.ipynb)
 
 ---
 

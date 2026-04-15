@@ -199,7 +199,7 @@ Perplexity and Glean both reformulate queries before retrieval. This is sometime
 
 ## What This Means for Your System
 
-If you are building RAG for a production diagnostics system (see [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)), the lessons map directly:
+If you are building RAG for a production diagnostics system (see [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)), the lessons map directly:
 
 | Production Pattern | How It Applies to Diagnostics |
 |---|---|
@@ -239,4 +239,4 @@ If you are building RAG for a production diagnostics system (see [Production Dia
 
 **Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb)
 
-**Production architecture:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)
+**Production architecture:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)

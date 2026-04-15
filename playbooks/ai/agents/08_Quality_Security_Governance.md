@@ -368,4 +368,4 @@ Security protects the system from attacks. Governance ensures the system operate
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
-**Production architecture:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)
+**Production architecture:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)

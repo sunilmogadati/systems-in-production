@@ -314,4 +314,4 @@ target.alias("t").merge(
 
 **Reference notebook:** [Python for DE on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_NumPy_Pandas.ipynb)
 
-**Related:** [Cloud Pipeline Scale chapter](../cloud-pipeline/06_Scale.md)
+**Related:** [Cloud Pipeline Scale chapter](../pipelines/cloud/06_Scale.md)

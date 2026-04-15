@@ -131,7 +131,7 @@ In our Production Diagnostic Intelligence System:
 
 When an alert fires at 2 AM, the agent queries the RAG system: "What's the fix for order-service connection pool exhaustion?" RAG finds the runbook section and past incident reports. The agent includes this in its diagnostic ticket.
 
-See the full architecture: [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)
+See the full architecture: [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
 
 ---
 

@@ -33,10 +33,9 @@ Follow this sequence. Each step builds on the previous one.
 ### Step 2: Data Foundation
 | Playbook | What You Get | Time |
 |---|---|---|
-| **[SQL](data/sql/)** | How to query, transform, and model data | 1-2 days |
-| **[Data Modeling](data/data-modeling/)** | How to structure data for querying and ML | 1 day |
-| **[Cloud Pipelines](data/cloud-pipeline/)** | How data moves from source to warehouse (Bronze, Silver, Gold) | 1-2 days |
+| **[Data Design](data/data-design/)** | SQL, data modeling, star schema — how to structure and query data | 2-3 days |
 | **[PySpark](data/pyspark/)** | Distributed data processing at scale | 1-2 days |
+| **[Pipelines](data/pipelines/)** | Cloud pipelines, ETL/ELT patterns, lakehouse formats | 2-3 days |
 
 ### Step 3: Intelligence Layer
 | Playbook | What You Get | Time |
@@ -54,7 +53,6 @@ Follow this sequence. Each step builds on the previous one.
 ### Reference
 | Resource | What It Is |
 |---|---|
-| **[Star Schema Design](data/star-schema-design/)** | Deep dive into dimensional modeling |
 | **[Data to Model Pipeline](Data_to_Model_Pipeline.md)** | How DE feeds ML |
 
 ---

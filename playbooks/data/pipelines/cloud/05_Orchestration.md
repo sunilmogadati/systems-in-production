@@ -2,7 +2,7 @@
 
 **How to run pipeline steps in the right order, handle failures, and make it all repeatable.**
 
-> These concepts apply to any cloud (GCP, AWS, Azure). Examples use GCP as the primary, with AWS equivalents noted. Hands-on notebook: [Cloud Pipeline Orchestration](../../../implementation/notebooks/Cloud_Pipeline_Orchestration.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Cloud_Pipeline_Orchestration.ipynb)
+> These concepts apply to any cloud (GCP, AWS, Azure). Examples use GCP as the primary, with AWS equivalents noted. Hands-on notebook: [Cloud Pipeline Orchestration](../../../../implementation/notebooks/Cloud_Pipeline_Orchestration.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Cloud_Pipeline_Orchestration.ipynb)
 
 ---
 

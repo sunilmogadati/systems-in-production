@@ -677,4 +677,4 @@ flowchart TB
 
 **Hands-on notebook:** [RAG from Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb)
 
-**Production architecture:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)
+**Production architecture:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
