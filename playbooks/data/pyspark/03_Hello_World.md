@@ -198,7 +198,7 @@ gcloud dataproc batches submit pyspark \
     --region=us-central1
 ```
 
-See [Cloud Pipeline Concepts](../cloud-pipeline/02_Concepts.md) for Dataproc setup details.
+See [Cloud Pipeline Concepts](../pipelines/cloud/02_Concepts.md) for Dataproc setup details.
 
 ---
 

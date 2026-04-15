@@ -16,7 +16,7 @@ The star schema is the default pattern for analytical data models. One fact tabl
 
 **Use when:** This is the default. Start here unless you have a specific reason not to.
 
-> For a complete deep dive on star schema — design decisions, DDL, load patterns, and the call center implementation — see [Star Schema Design](../star-schema-design/).
+> For a complete deep dive on star schema — design decisions, DDL, load patterns, and the call center implementation — see [Star Schema Design](../star-schema/).
 
 ---
 
@@ -395,7 +395,7 @@ If the relationship is truly one-to-many (one campaign has many calls, but each 
 
 **Hands-on notebook:** [Data Modeling on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb)
 
-**Deep dive on star schema:** [Star Schema Design](../star-schema-design/)
+**Deep dive on star schema:** [Star Schema Design](../star-schema/)
 
 ---
 

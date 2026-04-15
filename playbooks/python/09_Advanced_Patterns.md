@@ -4,6 +4,9 @@
 
 ---
 
+**Hands-on notebook:** [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Advanced.ipynb) Advanced Patterns
+
+
 ## Decorators: What They Are and How to Read Them
 
 A decorator is a function that wraps another function with additional behavior. The `@` syntax is shorthand for wrapping:

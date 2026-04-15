@@ -17,10 +17,11 @@ Most notebooks run directly on Colab (no setup). A few advanced topics (RAG, Age
 | You Are | Start With | Your First Win |
 |---|---|---|
 | **Brand new to programming** | [Python Basics](playbooks/python/01_Why.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) Write your first Python code, see it run |
+| **Want the guided path to AI** | [Python for AI Workshop](implementation/notebooks/Python_for_AI_Workshop.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI_Workshop.ipynb) Zero to ML model in 2 hours |
 | **Know Python, new to AI** | [ML Playbook ch 01](playbooks/ai/ml/01_Why.md) then [ch 03](playbooks/ai/ml/03_Hello_World.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Linear_Regression.ipynb) Train your first ML model in 5 lines |
 | **Know Python, want to build AI apps** | [RAG Playbook ch 01](playbooks/ai/rag/01_Why.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb) Build AI that answers from your documents |
 | **Want to build data pipelines** | [SQL Playbook ch 01](playbooks/data/sql/01_Why.md) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) Query real data in minutes |
-| **Want to see production architecture** | [Architecture](systems/production-diagnostics/architecture.md) | [Start reading](systems/production-diagnostics/architecture.md) See how a real diagnostic system is designed |
+| **Want to see production architecture** | [CSI Architecture](systems/continuous-system-intelligence/architecture.md) | [Start reading](systems/continuous-system-intelligence/architecture.md) See how a real system is continuously observed, diagnosed, and improved |
 | **Want to see what breaks in production** | [Failures](failures/) | [Start reading](failures/why-flat-tables-break.md) Learn from real production failures |
 | **Know Java/C#, need Python fast** | [Java Bridge](implementation/notebooks/Python_Java_Bridge.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb) Translate what you know to Python |
 
@@ -95,9 +96,8 @@ Each playbook has 10 chapters: Why, Concepts, Hello World, How It Works, Buildin
 | Step | Playbook | Notebooks | Level |
 |---|---|---|---|
 | **Python** | [10 chapters](playbooks/python/) | [7 notebooks](playbooks/python/README.md) (Basics through Advanced) | No background needed |
-| **SQL** | [10 chapters](playbooks/data/sql/) | [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) | No background needed |
-| **Data Modeling** | [10 chapters](playbooks/data/data-modeling/) + [Star Schema](playbooks/data/star-schema-design/) | [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) | Good if you know basic SQL |
-| **Cloud Pipelines** | [6 chapters](playbooks/data/cloud-pipeline/) | [GCP Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) + [Automation](implementation/notebooks/GCP_Pipeline_Automation.ipynb) | Good if you know basic SQL |
+| **Data Design** | [SQL](playbooks/data/data-design/sql/) + [Modeling](playbooks/data/data-design/modeling/) + [Star Schema](playbooks/data/data-design/star-schema/) | [Advanced SQL](implementation/notebooks/Advanced_SQL.ipynb) + [Data Modeling](implementation/notebooks/Data_Modeling.ipynb) | No background needed |
+| **Pipelines** | [Cloud](playbooks/data/pipelines/cloud/) + [ETL/ELT](playbooks/data/pipelines/etl-elt/) + [Lakehouse](playbooks/data/pipelines/lakehouse/) | [GCP Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb) + [ETL/ELT](implementation/notebooks/ETL_ELT_Patterns.ipynb) + [Delta Lake](implementation/notebooks/Delta_Lake_Hello_World.ipynb) | Good if you know basic SQL |
 | **PySpark** | [10 chapters](playbooks/data/pyspark/) | [PySpark](implementation/notebooks/PySpark.ipynb) | Good if you know basic Python |
 | **Machine Learning** | [10 chapters](playbooks/ai/ml/) (21 algorithms) | [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb) + [Linear Regression](implementation/notebooks/Linear_Regression.ipynb) + [Logistic Regression](implementation/notebooks/Logistic_Regression.ipynb) | Good if you know basic Python |
 | **Deep Learning** | [10 chapters](playbooks/ai/deep-learning/) | [PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb) + [CNN](implementation/notebooks/Deep_Learning_CNN.ipynb) | Come here after ML |
@@ -109,8 +109,8 @@ Each playbook has 10 chapters: Why, Concepts, Hello World, How It Works, Buildin
 
 ## How Real Systems Are Built
 
-### [See a real system](systems/production-diagnostics/architecture.md)
-A production diagnostic system that collects data from databases, logs, documents, and APIs, then diagnoses issues and recommends actions. Full architecture with Mermaid diagrams.
+### [See a real system](systems/continuous-system-intelligence/architecture.md)
+Continuous System Intelligence (CSI) — continuously observe, diagnose, and improve production systems across code, data, product, and business. Full architecture with Mermaid diagrams.
 
 ### [Understand the patterns](patterns/)
 Reusable architecture patterns: [Bronze-Silver-Gold](patterns/bronze-silver-gold.md), [multi-system reconciliation](patterns/multi-system-reconciliation.md), [AI-derived features](patterns/ai-derived-features.md), [feedback loops](patterns/feedback-loops.md), [event-driven diagnostics](patterns/event-driven-diagnostics.md).
@@ -131,6 +131,7 @@ Click any Colab badge to open and run. No setup needed.
 
 | Notebook | Open in Colab |
 |---|---|
+| [**Python for AI Workshop**](implementation/notebooks/Python_for_AI_Workshop.ipynb) — zero to ML in 2 hours | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI_Workshop.ipynb) |
 | [Python Basics](implementation/notebooks/Python_Basics.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) |
 | [Data Structures](implementation/notebooks/Python_Data_Structures.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Data_Structures.ipynb) |
 | [Functions and Classes](implementation/notebooks/Python_Functions_Classes.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Functions_Classes.ipynb) |

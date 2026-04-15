@@ -352,7 +352,7 @@ These numbers vary significantly by model, task complexity, and tool costs. The 
 
 ## The 10-Step System Design Framework: Production Diagnostic Agent
 
-Applying the 10-step system design framework to the agent from [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md).
+Applying the 10-step system design framework to the agent from [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md).
 
 ### Step 1: Requirements
 
@@ -466,4 +466,4 @@ See Chapter 09 for full observability design. Summary: trace every step, track c
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
-**Production architecture:** [Production Diagnostics Architecture](../../../systems/production-diagnostics/architecture.md)
+**Production architecture:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)

@@ -4,6 +4,9 @@
 
 ---
 
+**Hands-on notebook:** [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Functions_Classes.ipynb) Functions and Classes
+
+
 ## Why Classes Matter in AI/DE (Even If You Rarely Write Them)
 
 ```mermaid

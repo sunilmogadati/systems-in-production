@@ -97,9 +97,11 @@ model = RandomForestClassifier().fit(X, y)
 print(f"Accuracy: {model.score(X, y):.2%}")
 ```
 
-Deep dive: [Python for AI on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb)
+Guided workshop: [Python for AI Workshop on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI_Workshop.ipynb) -- zero to ML model in 2 hours
 
-For Java developers: [Python for AI Java Dev Guide on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb)
+Deep dive: [Python Basics on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb)
+
+For Java developers: [Python for Java Developers on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Java_Bridge.ipynb)
 
 ---
 

@@ -21,7 +21,7 @@
 
 | Notebook | Open in Colab |
 |---|---|
-| [Advanced SQL](../../../implementation/notebooks/Advanced_SQL.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) |
+| [Advanced SQL](../../../../implementation/notebooks/Advanced_SQL.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Advanced_SQL.ipynb) |
 
 ## Get Help
 

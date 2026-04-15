@@ -4,6 +4,9 @@
 
 ---
 
+**Hands-on notebook:** [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_File_IO.ipynb) File I/O
+
+
 ## Format Comparison: When to Use What
 
 | Format | Type | Read Speed | File Size | Schema? | Human Readable? | Best For |

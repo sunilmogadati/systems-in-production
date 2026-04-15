@@ -21,6 +21,7 @@
 
 | Notebook | Open in Colab |
 |---|---|
+| [**Python for AI Workshop**](../../implementation/notebooks/Python_for_AI_Workshop.ipynb) — zero to ML in 2 hours | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_for_AI_Workshop.ipynb) |
 | [Python Basics](../../implementation/notebooks/Python_Basics.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Basics.ipynb) |
 | [Data Structures](../../implementation/notebooks/Python_Data_Structures.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Data_Structures.ipynb) |
 | [Functions and Classes](../../implementation/notebooks/Python_Functions_Classes.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Functions_Classes.ipynb) |

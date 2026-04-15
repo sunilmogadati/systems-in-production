@@ -46,7 +46,7 @@ What this means in practice:
 
 ## Where PySpark Fits: The Silver Transform Engine
 
-In a Bronze-Silver-Gold data pipeline (see [Cloud Pipeline Concepts](../cloud-pipeline/02_Concepts.md)), PySpark is the workhorse of the Silver layer:
+In a Bronze-Silver-Gold data pipeline (see [Cloud Pipeline Concepts](../pipelines/cloud/02_Concepts.md)), PySpark is the workhorse of the Silver layer:
 
 ```mermaid
 flowchart LR

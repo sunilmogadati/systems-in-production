@@ -4,6 +4,9 @@
 
 ---
 
+**Hands-on notebook:** [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Functions_Classes.ipynb) Functions and Classes
+
+
 ## Quick Reference: Control Flow
 
 You already know these from other languages. Here is the Python syntax:

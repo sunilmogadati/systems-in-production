@@ -10,33 +10,52 @@ That is what CSI does.
 
 ## The Five Modes
 
-Most systems only do Mode 1 (something broke, fix it). CSI operates across all five:
+Most systems only do Mode 1 (something broke, fix it). CSI operates across all five — not as separate tracks, but as different depths of the same continuous loop. Detect is one pass through the loop in real time. Evolve is the loop running over months.
 
-| Mode | Question | Example | Who Cares |
-|---|---|---|---|
-| **Detect** | What is wrong right now? | Error rate spike after deploy | DevOps, SRE |
-| **Predict** | What will go wrong soon? | Memory leak will crash in 3 days | DevOps, Engineering |
-| **Optimize** | What works but could work better? | This query can be 10x faster with an index | Data Engineering, DBA |
-| **Grow** | What could drive more business? | Users who see recommendations convert 2x | Product, Business |
-| **Evolve** | What should change for the future? | Monolith should split auth into a microservice | CTO, Architecture |
+| Depth | Mode | Question | Example | Loop Horizon | Who Cares |
+|---|---|---|---|---|---|
+| Surface | **Detect** | What is wrong right now? | Error rate spike after deploy | This alert, right now | DevOps, SRE |
+| Near | **Predict** | What will go wrong soon? | Memory leak will crash in 3 days | This week's trajectory | DevOps, Engineering |
+| Mid | **Optimize** | What works but could work better? | This query can be 10x faster with an index | This quarter's performance | Data Engineering, DBA |
+| Deep | **Grow** | What could drive more business? | Users who see recommendations convert 2x | This year's business outcomes | Product, Business |
+| Strategic | **Evolve** | What should change for the future? | Monolith should split auth into a microservice | Next year's architecture | CTO, Architecture |
 
 ---
 
 ## System Architecture
 
+### Diagram 1: Core Platform
+
+What exists, what flows where. The infrastructure that all five modes share.
+
 ```mermaid
 graph TD
-    subgraph "Data Sources"
-        LOGS["Application Logs"]
-        DB["Databases<br/>(incidents, metrics, services)"]
-        DEPLOY["Deployment Records<br/>(versions, rollbacks)"]
-        DOCS["Runbooks & Docs<br/>(Confluence, post-mortems)"]
-        API["APIs & Alerts<br/>(monitoring, ticketing)"]
-        CODE["Code Repositories<br/>(source code, configs)"]
-        GIT["Git History<br/>(commits, PRs, blame)"]
+    subgraph "Data Sources — Operational"
+        LOGS["Application Logs<br/>(errors, traces, request logs)"]
+        INFRA["Infrastructure Monitoring<br/>(CPU, memory, disk, latency)"]
+        INCIDENTS["Incident Management<br/>(PagerDuty, ServiceNow, Jira)"]
+        DEPLOY["Deployment Records<br/>(versions, rollbacks, pipelines)"]
+        APPDB["Application Databases<br/>(query performance, connections,<br/>schema, index usage)"]
+        SVCCAT["Service Registry / CMDB<br/>(services, teams, SLAs, ownership)"]
+        ARCH["Application Architecture<br/>(components, microservices,<br/>batch processes, external interfaces,<br/>API contracts, data flows)"]
+    end
+
+    subgraph "Data Sources — Product & Business"
         USAGE["Usage Analytics<br/>(clicks, sessions, drop-offs)"]
         BIZ["Business Metrics<br/>(revenue, conversion, churn)"]
+        FEEDBACK["User Feedback<br/>(support tickets, NPS, reviews)"]
+    end
+
+    subgraph "Data Sources — Knowledge"
+        DOCS["Runbooks & Docs<br/>(Confluence, post-mortems)"]
+        CODE["Code Repositories<br/>(source code, configs,<br/>commits, PRs, blame)"]
+        OSGIT["Public GitHub Repos<br/>(open source dependencies,<br/>reference implementations,<br/>community patterns)"]
         MARKET["Market & Research<br/>(competitors, standards, trends)"]
+    end
+
+    subgraph "Active Collection"
+        APICALL["API Integration Layer<br/>Pull from monitoring, ticketing,<br/>cloud APIs on schedule or on demand"]
+        APIPROBE["API Probing<br/>Replay application API calls<br/>(external services, payment gateways,<br/>partner APIs) to test health,<br/>latency, contract changes"]
     end
 
     subgraph "Data Pipeline"
@@ -52,10 +71,10 @@ graph TD
     end
 
     subgraph "Reasoning Layer"
-        AGENT["AI Agent<br/>Orchestrates all components<br/>Evaluates impact<br/>Prioritizes recommendations"]
+        AGENT["AI Agent<br/>Correlates findings across<br/>ML, DL, RAG, and Gold data<br/>Applies judgment (real or noise?)<br/>Evaluates business impact<br/>Prioritizes and decides action"]
     end
 
-    subgraph "Consumer Layer"
+    subgraph "Outputs"
         DASH["Dashboards & Reports"]
         AIANA["AI Analytics<br/>(chat with your data)"]
         TICKET["Diagnostic Tickets<br/>(what broke, why, how to fix)"]
@@ -63,15 +82,30 @@ graph TD
         BACKLOG["Prioritized Backlog<br/>(ranked by ROI, risk,<br/>effort, strategic fit)"]
     end
 
+    %% Passive ingestion — data pushed or streamed to CSI
     LOGS --> BRONZE
-    DB --> BRONZE
     DEPLOY --> BRONZE
+    CODE --> BRONZE
+
+    %% Active collection — CSI pulls via API calls
+    INFRA --> APICALL
+    INCIDENTS --> APICALL
+    APPDB --> APICALL
+    SVCCAT --> APICALL
+    USAGE --> APICALL
+    BIZ --> APICALL
+    FEEDBACK --> APICALL
+    APICALL --> BRONZE
+
+    %% API probing — CSI replays application API calls
+    ARCH --> APIPROBE
+    APIPROBE --> BRONZE
+
+    %% Knowledge sources — searched by meaning
+    ARCH --> RAG
     DOCS --> RAG
-    API --> BRONZE
     CODE --> RAG
-    GIT --> BRONZE
-    USAGE --> BRONZE
-    BIZ --> BRONZE
+    OSGIT --> RAG
     MARKET --> RAG
 
     BRONZE --> SILVER
@@ -93,9 +127,45 @@ graph TD
     AGENT --> BACKLOG
 ```
 
+### Diagram 2: The Feedback Loop
+
+CSI is continuous because it feeds on its own outcomes. Incidents, metrics, and usage are both inputs and outputs — the system observes the results of its own recommendations.
+
+```mermaid
+graph LR
+    subgraph "The Production System"
+        PROD["Production<br/>(code, infra, product, business)"]
+    end
+
+    subgraph "CSI Loop"
+        OBSERVE["Observe<br/>Collect signals"]
+        UNDERSTAND["Understand<br/>Pipeline + Intelligence +<br/>Knowledge"]
+        REASON["Reason<br/>Diagnose, evaluate,<br/>prioritize"]
+        ACT["Act<br/>Tickets, recommendations,<br/>backlog items"]
+    end
+
+    PROD -- "signals: logs, metrics,<br/>incidents, usage, business data" --> OBSERVE
+    OBSERVE --> UNDERSTAND
+    UNDERSTAND --> REASON
+    REASON --> ACT
+    ACT -- "changes: fixes deployed,<br/>features shipped, architecture<br/>evolved, processes improved" --> PROD
+```
+
+**What flows both ways:**
+
+| Signal | As Input (Observe) | As Output (Act) |
+|---|---|---|
+| **Incidents** | Historical incidents to learn patterns from | New diagnostic tickets with root cause and fix |
+| **Business metrics** | Revenue, conversion, churn as signals to analyze | Metrics change because CSI recommended action |
+| **Usage analytics** | User behavior patterns, drop-offs, friction | Behavior shifts after UX improvements CSI recommended |
+| **Infrastructure metrics** | CPU, memory, latency, cost as health signals | Resource usage changes after scaling/optimization |
+| **Code** | Source code, complexity, test coverage to assess | Code changes from CSI-generated suggestions |
+
 ---
 
 ## The Six Processing Layers
+
+The layers are not a one-way pipeline. The sixth layer (Assist) produces artifacts that change the production system — which generates new signals that flow back into the first layer (Observe). This is the engine that makes CSI continuous.
 
 ```mermaid
 graph LR
@@ -104,11 +174,13 @@ graph LR
     E --> R["4. Recommend<br/>Propose changes"]
     R --> P["5. Prioritize<br/>Rank by ROI"]
     P --> A["6. Assist<br/>Generate artifacts"]
+    A -- "artifacts change<br/>the system" --> PROD["Production<br/>System"]
+    PROD -- "new signals" --> O
 ```
 
 | Layer | What It Does | Input | Output |
 |---|---|---|---|
-| **Observe** | Collect signals from all sources | Logs, metrics, code, usage, business data, market intel | Structured data in Bronze/Silver/Gold |
+| **Observe** | Collect signals from all sources | Logs, metrics, incidents, usage, business data, code, market intel | Structured data in Bronze/Silver/Gold |
 | **Diagnose** | Find issues, bottlenecks, anomalies, patterns | Gold layer + ML + DL models | Issue list with root causes |
 | **Evaluate** | Estimate business impact, user friction, cost, risk | Issues + business metrics + usage analytics | Impact assessment per issue |
 | **Recommend** | Propose changes: feature, workflow, UX, schema, infrastructure, security | Impact assessment + RAG (docs, research, past fixes) | Concrete recommendations |
@@ -126,12 +198,14 @@ graph LR
 | **Business metrics** | Revenue, conversion, churn, CSAT | "Campaign X has 2x conversion on Tuesdays. Increase Tuesday budget." |
 | **Defect history** | Recurring bugs, time to resolve | "Same payment retry bug reported 7 times in 3 months. Root cause: missing idempotency key." |
 | **Database state** | Query performance, schema, index usage | "Table orders has no index on customer_id. Adding one speeds the dashboard query from 8s to 200ms." |
-| **Code repository** | Complexity, test coverage, dependency age | "Auth module has 0% test coverage and hasn't been updated in 14 months. Security risk." |
-| **Git history** | Change frequency, hotspots, ownership | "This file changes 3x per week and causes incidents 40% of the time. Needs refactoring." |
+| **Code repositories** | Source code, complexity, test coverage, dependency age, change frequency, hotspots, ownership | "Auth module has 0% test coverage and hasn't been updated in 14 months. Security risk." / "This file changes 3x per week and causes incidents 40% of the time. Needs refactoring." |
 | **Industry research** | Standards, regulatory changes, best practices | "NIST released updated AI governance framework. Your RAG system needs an evaluation pipeline." |
 | **Competitor analysis** | Features, UX patterns, pricing | "Competitor launched one-click reorder. Your reorder flow takes 6 steps." |
 | **User feedback** | Support tickets, reviews, NPS comments | "15 support tickets this month mention 'can't find order history.' Consider adding it to main nav." |
 | **Infrastructure metrics** | CPU, memory, cost, scaling | "Paying $2,400/month for a cluster that peaks at 30% utilization. Downsize to save $1,600." |
+| **Application architecture** | Component dependencies, batch schedules, external interfaces, API contracts | "Payment-service calls 3 external APIs synchronously. If any one times out, the whole checkout blocks. Add async fallback." |
+| **Public GitHub repos** | Open source dependencies, versions, vulnerabilities, community patterns | "Your Redis client library is 3 major versions behind. The version you're on has a known connection leak under load." |
+| **API probing** | External service health, latency, contract changes, error rates | "Payment gateway API response time increased from 200ms to 1.2s in the last hour. Their status page shows no incident — may be rate limiting or regional." |
 
 ---
 
@@ -251,9 +325,9 @@ Retrieval-Augmented Generation searches across runbooks, post-mortems, documenta
 
 ---
 
-### 6. AI Agent (Reasoning and Orchestration)
+### 6. AI Agent (Reasoning and Judgment)
 
-The agent ties all components together. It can operate in any of the five modes.
+The Intelligence Layer produces findings — ML predictions, DL anomalies, RAG-retrieved knowledge. The agent reasons over those combined outputs: correlating signals that belong to the same problem, filtering noise from real issues, evaluating business impact, and deciding what action to take. It operates in any of the five modes.
 
 **Mode 1 — Detect (reactive diagnostic):**
 

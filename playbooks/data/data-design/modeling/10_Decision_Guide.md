@@ -254,7 +254,7 @@ Before declaring a data model ready for production use, verify every item on thi
 
 **Hands-on notebook:** [Data Modeling on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb)
 
-**Deep dive on star schema:** [Star Schema Design](../star-schema-design/)
+**Deep dive on star schema:** [Star Schema Design](../star-schema/)
 
 ---
 

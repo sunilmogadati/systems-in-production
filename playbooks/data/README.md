@@ -1,17 +1,13 @@
 # Data Playbooks
 
-**How to get, clean, model, store, and move data in production systems.**
+**How to design, build, and operate data systems in production.**
 
-| Playbook | What You Learn |
+| Area | What's Inside |
 |---|---|
-| [SQL](sql/) | Query, transform, and model data |
-| [Data Modeling](data-modeling/) | Structure data for querying and ML |
-| [Star Schema Design](star-schema-design/) | Dimensional modeling deep dive |
-| [Cloud Pipelines](cloud-pipeline/) | Bronze, Silver, Gold on GCP (with AWS equivalents) |
-| [PySpark](pyspark/) | Distributed processing at scale |
-| [ETL/ELT Patterns](etl-patterns/) | ETL vs ELT, full refresh, incremental, CDC, merge/upsert, dead letter queues |
-| [Lakehouse Formats](lakehouse-formats/) | Delta Lake, Apache Iceberg, Hudi — ACID transactions on files |
+| [Data Design](data-design/) | SQL, data modeling, star schema — how to structure and query data |
+| [PySpark](pyspark/) | Distributed data processing at scale |
+| [Pipelines](pipelines/) | Cloud pipelines, ETL/ELT patterns, lakehouse formats — how to move and transform data |
 
-**Suggested order:** SQL → Data Modeling → Cloud Pipelines → PySpark → ETL Patterns → Lakehouse Formats
+**Suggested path:** Data Design → PySpark → Pipelines
 
 [Community](https://www.skool.com/deliverymomentum) | [Book a 1:1](https://calendly.com/sunil-mogadati/connect)

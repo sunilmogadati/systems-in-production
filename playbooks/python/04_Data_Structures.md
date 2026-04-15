@@ -4,6 +4,9 @@
 
 ---
 
+**Hands-on notebook:** [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Python_Data_Structures.ipynb) Data Structures
+
+
 ## The Four Core Collections
 
 If you know Java or JavaScript, each Python collection has a direct equivalent:

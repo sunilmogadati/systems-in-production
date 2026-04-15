@@ -313,7 +313,7 @@ The data engineer's core job is building the pipeline between these two worlds â
 
 **Hands-on notebook:** [Data Modeling on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb)
 
-**Deep dive on star schema:** [Star Schema Design](../star-schema-design/)
+**Deep dive on star schema:** [Star Schema Design](../star-schema/)
 
 ---
 
