@@ -4,11 +4,12 @@
 
 | Topic | What You Learn |
 |---|---|
+| [Ingestion](ingestion/) | How data enters the pipeline — OLTP databases, APIs, streams, NoSQL, files |
 | [Cloud Pipeline](cloud/) | Bronze → Silver → Gold architecture, GCS/S3/ADLS, automation, orchestration |
 | [ETL/ELT Patterns](etl-elt/) | Full refresh, incremental, CDC, MERGE/upsert, dead letter queues |
 | [Lakehouse Formats](lakehouse/) | Delta Lake, Apache Iceberg, Hudi — ACID transactions on files |
 
-**Suggested order:** Cloud Pipeline → ETL/ELT Patterns → Lakehouse Formats
+**Suggested order:** Ingestion → Cloud Pipeline → ETL/ELT Patterns → Lakehouse Formats
 
 All theory is cloud-agnostic. Cloud-specific implementation is in the notebooks.
 
