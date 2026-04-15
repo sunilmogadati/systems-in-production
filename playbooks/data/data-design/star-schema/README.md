@@ -14,6 +14,12 @@
 
 
 
+## Hands-On
+
+| Notebook | Open in Colab |
+|---|---|
+| [Data Modeling](../../../../implementation/notebooks/Data_Modeling.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Data_Modeling.ipynb) |
+
 ## Get Help
 
 [Community](https://www.skool.com/deliverymomentum) | [Book a 1:1](https://calendly.com/sunil-mogadati/connect)
