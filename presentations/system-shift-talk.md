@@ -172,7 +172,7 @@ All run on Google Colab (no setup, no cost). All on GitHub.
 
 > Speaker notes: "Before you can diagnose anything, your data has to be structured. This models incidents, deployments, metrics, and services into clean relationships. Without this, you're running queries against flat tables with 300 columns." 2-3 min max.
 
-**Demo link:** [Star Schema Design on GitHub](https://github.com/sunilmogadati/systems-in-production/tree/main/playbooks/data/star-schema-design)
+**Demo link:** [Star Schema Design on GitHub](https://github.com/sunilmogadati/systems-in-production/tree/main/playbooks/data/data-design/star-schema)
 
 ---
 
@@ -411,7 +411,7 @@ github.com/sunilmogadati/systems-in-production
 
 Open these before the presentation:
 
-1. **Star Schema Design:** https://github.com/sunilmogadati/systems-in-production/tree/main/playbooks/data/star-schema-design
+1. **Star Schema Design:** https://github.com/sunilmogadati/systems-in-production/tree/main/playbooks/data/data-design/star-schema
 2. **ML Fundamentals:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/ML_Fundamentals.ipynb
 3. **RAG from Scratch:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/RAG_from_Scratch.ipynb
 4. **GCP Pipeline:** https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Cloud_Pipeline_Reference.ipynb

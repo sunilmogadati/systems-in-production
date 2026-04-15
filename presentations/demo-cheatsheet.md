@@ -15,7 +15,7 @@ Say: "Let me show you a system I'm building. It collects data from databases, ap
 
 **What it is in the system:** How you structure incidents, deployments, metrics, and services so they can be queried together.
 
-**Open:** https://github.com/sunilmogadati/systems-in-production/tree/main/playbooks/data/star-schema-design
+**Open:** https://github.com/sunilmogadati/systems-in-production/tree/main/playbooks/data/data-design/star-schema
 
 **Show:**
 - Open `01_Why.md` - scroll to the 3 AM scenario
