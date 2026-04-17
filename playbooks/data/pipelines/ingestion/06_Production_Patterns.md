@@ -365,6 +365,16 @@ def validate_batch(data_path, ctl_path, toc_path):
 
 **Modern equivalent:** If building from scratch, you could replace CTL/TOC with a manifest file (like Delta Lake's transaction log) or use cloud-native event notifications (GCS Pub/Sub notification only fires after the full object is written). But in enterprises with existing on-prem systems, CTL/TOC is the interface contract between teams — changing it requires coordination across 10+ teams.
 
+### CTL/TOC Validation by Cloud
+
+| Where to Run Validation | GCP | AWS | Azure |
+|---|---|---|---|
+| **Event trigger** (detect file arrival) | Cloud Functions (GCS `finalize` event) | Lambda (S3 `ObjectCreated` event) | Azure Functions (Blob trigger) |
+| **Read CTL/TOC from storage** | `google.cloud.storage` Python client | `boto3` S3 client | `azure.storage.blob` Python client |
+| **Orchestrator sensor** (wait for CTL) | `GCSObjectExistenceSensor` (Airflow) | `S3KeySensor` (Airflow) | `WasbBlobSensor` (Airflow) |
+| **Checksum verification** | `gsutil hash -m` or Python `hashlib` | `aws s3api head-object` (ETag) or Python `hashlib` | `azcopy` or Python `hashlib` |
+| **Quarantine bad files** | Move to `gs://bucket/quarantine/` | Move to `s3://bucket/quarantine/` | Move to `quarantine/` container |
+
 ---
 
 ## Quick Links

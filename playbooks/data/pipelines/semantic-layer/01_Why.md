@@ -28,6 +28,26 @@ When "monthly active users" is defined in a Tableau calculated field, a Looker e
 
 The root cause is that **business definitions are being encoded at the consumption layer** instead of being declared once and consumed everywhere.
 
+```mermaid
+graph TD
+    subgraph "Without Semantic Layer"
+        W1["Tableau"] -->|"own SQL"| WH1["Warehouse"]
+        W2["PowerBI"] -->|"own DAX"| WH1
+        W3["Notebook"] -->|"own Python"| WH1
+        W1 -.-> D1["Revenue = $47.2M"]
+        W2 -.-> D2["Revenue = $51.8M"]
+        W3 -.-> D3["Revenue = $49.1M"]
+    end
+
+    subgraph "With Semantic Layer"
+        T1["Tableau"] --> SL["Semantic Layer<br/>Revenue = bookings - returns<br/>(defined ONCE)"]
+        T2["PowerBI"] --> SL
+        T3["Notebook"] --> SL
+        SL --> WH2["Warehouse"]
+        SL -.-> D4["Revenue = $47.2M<br/>(everywhere, always)"]
+    end
+```
+
 ---
 
 ## What a Semantic Layer Actually Does
