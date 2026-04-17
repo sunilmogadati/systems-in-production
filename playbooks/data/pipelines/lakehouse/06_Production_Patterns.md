@@ -87,8 +87,8 @@ Two pipelines writing to the same Delta table at the same time. What happens?
 
 ```mermaid
 sequenceDiagram
-    participant PA as Pipeline A<br/>(calls for April 12)
-    participant PB as Pipeline B<br/>(calls for April 13)
+    participant PA as Pipeline A (April 12 calls)
+    participant PB as Pipeline B (April 13 calls)
     participant Delta as Delta Table
 
     PA->>Delta: Read version 5
@@ -105,8 +105,8 @@ Both succeed because they touch different partitions. Delta detects this automat
 
 ```mermaid
 sequenceDiagram
-    participant PA as Pipeline A<br/>(updates for April 13)
-    participant PB as Pipeline B<br/>(also updates for April 13)
+    participant PA as Pipeline A (updates April 13)
+    participant PB as Pipeline B (also updates April 13)
     participant Delta as Delta Table
 
     PA->>Delta: Read version 5
