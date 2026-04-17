@@ -9,8 +9,11 @@
 | [ETL/ELT Patterns](etl-elt/) | Full refresh, incremental, CDC, MERGE/upsert, dead letter queues |
 | [Lakehouse Formats](lakehouse/) | Delta Lake, Apache Iceberg, Hudi — ACID transactions on files |
 | [Data Quality](data-quality/) | Automated quality gates — Great Expectations, dbt tests, Soda, Dataplex, Glue DQ |
+| [Hybrid](hybrid/) | On-prem → cloud data movement, scheduling handoffs, network architecture |
+| [Compliance](compliance/) | Regulated data — SAFE Room, DLP, PHI/PII, HIPAA/PCI-DSS/GDPR controls |
+| [Semantic Layer](semantic-layer/) | Starburst, dbt Semantic Layer, LookML — where business definitions live |
 
-**Suggested order:** Ingestion → Cloud Pipeline → ETL/ELT Patterns → Lakehouse Formats → Data Quality
+**Suggested order:** Ingestion → Cloud Pipeline → ETL/ELT Patterns → Lakehouse Formats → Data Quality → Hybrid → Compliance → Semantic Layer
 
 All theory is cloud-agnostic. Cloud-specific implementation is in the notebooks.
 

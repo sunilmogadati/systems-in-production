@@ -226,6 +226,147 @@ if consumer_lag.total_seconds() > 300:
 
 ---
 
+## Enterprise File Transfer: CTL/TOC Pattern
+
+In enterprise environments (especially insurance, healthcare, and finance), data doesn't move as a bare file. It moves as a **three-file package**:
+
+```mermaid
+graph LR
+    subgraph "Sender produces 3 files"
+        DATA["data_20260415.parquet<br/>(the actual records)"]
+        CTL["data_20260415.ctl<br/>(control file — batch metadata)"]
+        TOC["data_20260415.toc<br/>(table of contents — schema)"]
+    end
+
+    subgraph "Receiver validates before processing"
+        CHECK{"CTL check:<br/>row count matches?<br/>checksum matches?<br/>status = 'ready'?"}
+    end
+
+    DATA --> CHECK
+    CTL --> CHECK
+    TOC --> CHECK
+    CHECK -->|"All pass"| PROCESS["Process data file"]
+    CHECK -->|"Any fail"| REJECT["Reject batch<br/>alert sender"]
+```
+
+### What's In Each File
+
+**CTL (Control File):** Metadata about the batch — proves the transfer is complete.
+
+```json
+{
+    "batch_id": "CLAIMS_20260415_001",
+    "source_system": "MEDECON",
+    "file_name": "claims_20260415.parquet",
+    "record_count": 145832,
+    "file_size_bytes": 23847291,
+    "md5_checksum": "a3f2b8c91d4e5f6a7b8c9d0e1f2a3b4c",
+    "created_at": "2026-04-15T02:15:00Z",
+    "status": "READY",
+    "extract_window": {
+        "from": "2026-04-14T00:00:00Z",
+        "to": "2026-04-15T00:00:00Z"
+    }
+}
+```
+
+**TOC (Table of Contents):** Schema definition — what columns are in the data file and what types they are.
+
+```json
+{
+    "file_name": "claims_20260415.parquet",
+    "columns": [
+        {"name": "claim_id", "type": "STRING", "nullable": false},
+        {"name": "member_id", "type": "STRING", "nullable": false},
+        {"name": "diagnosis_code", "type": "STRING", "nullable": true},
+        {"name": "procedure_code", "type": "STRING", "nullable": true},
+        {"name": "paid_amount", "type": "DECIMAL(10,2)", "nullable": true},
+        {"name": "service_date", "type": "DATE", "nullable": false},
+        {"name": "processed_date", "type": "TIMESTAMP", "nullable": false}
+    ],
+    "schema_version": "3.2",
+    "delimiter": null,
+    "encoding": "UTF-8"
+}
+```
+
+### Validation Logic
+
+```python
+import json
+import hashlib
+import os
+
+def validate_batch(data_path, ctl_path, toc_path):
+    """
+    Validate a 3-file batch before processing.
+    Returns True if all checks pass. Raises on failure.
+    
+    WHERE THIS RUNS: As the first step in your ingestion DAG,
+    before any data loading. Cloud Function (file trigger) or
+    Airflow PythonOperator.
+    """
+    # --- Load CTL ---
+    with open(ctl_path) as f:
+        ctl = json.load(f)
+    
+    # Check 1: Status is READY (sender finished writing)
+    if ctl["status"] != "READY":
+        raise ValueError(f"CTL status is '{ctl['status']}', expected 'READY'. "
+                        f"File may still be uploading.")
+    
+    # Check 2: Data file exists and matches expected size
+    actual_size = os.path.getsize(data_path)
+    if actual_size != ctl["file_size_bytes"]:
+        raise ValueError(f"File size mismatch: expected {ctl['file_size_bytes']}, "
+                        f"got {actual_size}. Transfer may be incomplete.")
+    
+    # Check 3: Checksum matches (proves file not corrupted in transit)
+    with open(data_path, "rb") as f:
+        actual_md5 = hashlib.md5(f.read()).hexdigest()
+    if actual_md5 != ctl["md5_checksum"]:
+        raise ValueError(f"Checksum mismatch: expected {ctl['md5_checksum']}, "
+                        f"got {actual_md5}. File corrupted during transfer.")
+    
+    # Check 4: Row count matches (after loading into DataFrame)
+    import pandas as pd
+    df = pd.read_parquet(data_path)
+    if len(df) != ctl["record_count"]:
+        raise ValueError(f"Row count mismatch: CTL says {ctl['record_count']}, "
+                        f"file has {len(df)}.")
+    
+    # --- Load TOC and validate schema ---
+    with open(toc_path) as f:
+        toc = json.load(f)
+    
+    expected_columns = {col["name"] for col in toc["columns"]}
+    actual_columns = set(df.columns)
+    
+    missing = expected_columns - actual_columns
+    if missing:
+        raise ValueError(f"Schema mismatch: columns missing from data file: {missing}")
+    
+    extra = actual_columns - expected_columns
+    if extra:
+        print(f"WARNING: Extra columns in data file (not in TOC): {extra}")
+    
+    print(f"Batch {ctl['batch_id']} validated: {ctl['record_count']} records, "
+          f"checksum OK, schema OK")
+    return True
+```
+
+### Why This Pattern Still Exists
+
+| Alternative | Why Enterprises Keep CTL/TOC |
+|---|---|
+| "Parquet has schema in the footer" | True, but CTL adds record count + checksum that Parquet doesn't have. Auditors want explicit proof of completeness. |
+| "GCS writes are atomic" | True for single files. But multi-file uploads (data + metadata) are NOT atomic. CTL's "READY" flag signals that all files are uploaded. |
+| "Just validate after loading" | CTL validates BEFORE loading. If the file is bad, you never load it. This matters when loading into BigQuery costs money per byte scanned. |
+
+**Modern equivalent:** If building from scratch, you could replace CTL/TOC with a manifest file (like Delta Lake's transaction log) or use cloud-native event notifications (GCS Pub/Sub notification only fires after the full object is written). But in enterprises with existing on-prem systems, CTL/TOC is the interface contract between teams — changing it requires coordination across 10+ teams.
+
+---
+
 ## Quick Links
 
 | Chapter | Topic |
