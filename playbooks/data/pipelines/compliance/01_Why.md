@@ -18,6 +18,32 @@ Policies tell humans what they should do. Architecture determines what the syste
 
 This playbook treats compliance as a system design concern. Every pattern, every code example, every cloud service mapping answers one question: **how does the pipeline itself prevent regulated data from reaching the wrong place?**
 
+```mermaid
+graph TD
+    subgraph "Policy Only (what most orgs have)"
+        P["PDF compliance policy<br/>in SharePoint"] -.->|"hope"| PIPE1["Pipeline<br/>(no enforcement)"]
+        PIPE1 --> LEAK["PHI leaks to<br/>analytics layer"]
+    end
+
+    subgraph "Architecture-Enforced (what works)"
+        A["Compliance rules<br/>encoded in pipeline"] --> PIPE2["Pipeline<br/>(enforces at every stage)"]
+        PIPE2 --> SAFE["PHI masked before<br/>it reaches analysts"]
+    end
+```
+
+```mermaid
+graph LR
+    subgraph "The Three Regulated Domains"
+        HIPAA["HIPAA<br/>Healthcare<br/>PHI: diagnosis codes,<br/>member IDs, SSNs"]
+        PCI["PCI-DSS<br/>Payments<br/>PCI: card numbers,<br/>CVVs, expiry dates"]
+        GDPR["GDPR / CCPA<br/>Personal Data<br/>PII: names, emails,<br/>IP addresses, location"]
+    end
+
+    HIPAA --> PIPE["Your Pipeline<br/>Must handle all three"]
+    PCI --> PIPE
+    GDPR --> PIPE
+```
+
 ## The Three Regulated Domains
 
 Data pipelines in regulated industries encounter three major frameworks. Each protects a different category of data, imposes different technical requirements, and carries different penalties.

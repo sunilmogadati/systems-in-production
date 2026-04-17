@@ -147,6 +147,72 @@ Every other consideration — cost, team skills, cloud provider — is secondary
 
 ---
 
+## How the Same Metric Looks in Each Tool
+
+One metric — "Paid Claims Amount" — defined in 4 different tools. Same logic, different syntax:
+
+### dbt Semantic Layer (YAML)
+
+```yaml
+# models/metrics/paid_claims.yml
+metrics:
+  - name: paid_claims_amount
+    type: simple
+    label: "Paid Claims Amount"
+    type_params:
+      measure: total_paid_amount
+    filter:
+      - "{{ Dimension('claim__status') }} = 'paid'"
+```
+
+### Starburst / Trino (SQL View)
+
+```sql
+-- Federated view accessible from any BI tool
+CREATE VIEW semantic.paid_claims_amount AS
+SELECT
+    service_month,
+    provider_id,
+    SUM(paid_amount) AS paid_claims_amount
+FROM gold.fact_claims
+WHERE status = 'paid'
+GROUP BY service_month, provider_id;
+```
+
+### LookML (Looker)
+
+```lookml
+# views/claims.view.lkml
+measure: paid_claims_amount {
+  type: sum
+  sql: ${paid_amount} ;;
+  filters: [status: "paid"]
+  value_format_name: usd
+  description: "Total paid claims amount (excludes denied/pending)"
+}
+```
+
+### Cube.dev (JavaScript)
+
+```javascript
+// schema/Claims.js
+cube('Claims', {
+  sql: () => `SELECT * FROM gold.fact_claims`,
+  measures: {
+    paidClaimsAmount: {
+      type: 'sum',
+      sql: 'paid_amount',
+      filters: [{ sql: `${CUBE}.status = 'paid'` }],
+      format: 'currency',
+    },
+  },
+});
+```
+
+**The point:** Same metric, same filter, same result. The syntax differs but the business definition is identical. Pick the tool that fits your stack — the metric definition transfers.
+
+---
+
 ## Quick Links
 
 | Resource | Link |

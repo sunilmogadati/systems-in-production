@@ -208,6 +208,60 @@ Regulators do not ask "did you protect the data?" They ask "prove it." Proof mea
 
 ---
 
+## Code Examples: Patterns in Practice
+
+### DLP Scan (Python — detect PHI/PII patterns before processing)
+
+```python
+import re
+
+# WHY: Run this BEFORE loading into the analytics project.
+# If any field matches a PHI/PII pattern, quarantine the batch.
+
+PHI_PATTERNS = {
+    "SSN": r"\b\d{3}-\d{2}-\d{4}\b",
+    "Phone": r"\b\d{3}[-.]?\d{3}[-.]?\d{4}\b",
+    "ICD-10": r"\b[A-Z]\d{2}(\.\d{1,4})?\b",          # Diagnosis codes
+    "CPT": r"\b\d{5}\b",                                # Procedure codes (5-digit)
+    "Credit Card": r"\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b",
+    "Email": r"\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b",
+}
+
+def scan_for_sensitive_data(df, patterns=PHI_PATTERNS):
+    """Scan a DataFrame for PHI/PII patterns. Returns findings."""
+    findings = []
+    for col in df.select_dtypes(include=["object"]).columns:
+        sample = df[col].dropna().head(1000).astype(str)
+        for pattern_name, regex in patterns.items():
+            matches = sample.str.contains(regex, regex=True).sum()
+            if matches > 0:
+                findings.append({
+                    "column": col,
+                    "pattern": pattern_name,
+                    "matches": int(matches),
+                    "sample_size": len(sample),
+                })
+    return findings
+```
+
+### Masking (SQL — standard syntax for any warehouse)
+
+```sql
+-- Mask SSN: keep last 4 digits
+SELECT
+    claim_id,
+    CONCAT('XXX-XX-', RIGHT(ssn, 4)) AS ssn_masked,
+    -- Hash member_id for joining without exposing the real ID
+    SHA256(CAST(member_id AS STRING)) AS member_id_hash,
+    -- Redact diagnosis code (keep category, mask specifics)
+    LEFT(diagnosis_code, 3) AS diagnosis_category,
+    paid_amount,
+    service_date
+FROM staging.claims;
+```
+
+---
+
 ## Quick Links
 
 | Resource | Link |

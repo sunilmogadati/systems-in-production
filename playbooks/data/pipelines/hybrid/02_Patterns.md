@@ -250,6 +250,59 @@ Extraction scripts that run on-prem are deployed through the on-prem CI/CD pipel
 
 ---
 
+## Code Examples: Patterns in Practice
+
+### File Transfer (Bash — encrypted, with checksum verification)
+
+```bash
+#!/bin/bash
+# WHERE THIS RUNS: On-prem Linux server, triggered by AutoSys/Control-M
+# WHAT IT DOES: Transfers data + CTL + TOC to cloud storage with encryption
+
+SOURCE_DIR="/data/extract/claims"
+# GCP: gs://bucket/bronze/claims/
+# AWS: s3://bucket/bronze/claims/
+# Azure: https://account.blob.core.windows.net/bronze/claims/
+DEST="gs://landing-bucket/bronze/claims/"
+
+DATE=$(date +%Y%m%d)
+
+# Transfer with checksum verification (gsutil checks MD5 automatically)
+gsutil -m cp \
+    ${SOURCE_DIR}/claims_${DATE}.parquet \
+    ${SOURCE_DIR}/claims_${DATE}.ctl \
+    ${SOURCE_DIR}/claims_${DATE}.toc \
+    ${DEST}
+
+# Verify transfer (compare source and destination checksums)
+gsutil hash -m ${DEST}claims_${DATE}.parquet
+echo "Transfer complete: $(date)"
+```
+
+### Airflow Sensor (Python — wait for file to land in cloud)
+
+```python
+# WHERE THIS RUNS: In your Airflow DAG (Cloud Composer / MWAA)
+# WHAT IT DOES: Waits for the on-prem extraction to land the CTL file
+# WHY CTL, NOT DATA: CTL is written LAST. If CTL exists, all files are complete.
+
+from airflow.providers.google.cloud.sensors.gcs import GCSObjectExistenceSensor
+# AWS: from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
+# Azure: from airflow.providers.microsoft.azure.sensors.wasb import WasbBlobSensor
+
+wait_for_file = GCSObjectExistenceSensor(
+    task_id="wait_for_claims_ctl",
+    bucket="landing-bucket",
+    object=f"bronze/claims/claims_{{{{ ds_nodash }}}}.ctl",  # Airflow date template
+    mode="reschedule",   # WHY: release the worker while waiting (don't block a slot)
+    poke_interval=300,   # Check every 5 minutes
+    timeout=14400,       # Give up after 4 hours (trigger SLA alert)
+    dag=dag,
+)
+```
+
+---
+
 ## Quick Links
 
 | Resource | Link |
