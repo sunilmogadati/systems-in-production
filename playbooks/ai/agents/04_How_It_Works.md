@@ -83,7 +83,7 @@ sequenceDiagram
     User->>Framework: "What is 15% of 340?"
     Framework->>LLM: System prompt + user question
     LLM->>Framework: "Thought: ... Action: calculator Action Input: 340 * 0.15"
-    Note over Framework: Parses "Action: calculator"<br/>Parses "Action Input: 340 * 0.15"
+    Note over Framework: Parses Action: calculator, Input: 340 * 0.15
     Framework->>Tool: calculator("340 * 0.15")
     Tool->>Framework: "51.0"
     Framework->>LLM: Previous messages + "Observation: 51.0"

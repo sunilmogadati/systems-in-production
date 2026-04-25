@@ -260,10 +260,10 @@ sequenceDiagram
     App->>Emb: Convert question to vector
     Emb-->>App: [0.82, -0.15, 0.67, ...]
     App->>VDB: Find top 3 similar chunks
-    VDB-->>App: Chunk A (similarity 0.94)<br/>Chunk B (similarity 0.91)<br/>Chunk C (similarity 0.87)
-    App->>App: Assemble prompt<br/>(instructions + chunks + question)
+    VDB-->>App: Top 3 chunks (similarity 0.94, 0.91, 0.87)
+    App->>App: Assemble prompt (instructions + chunks + question)
     App->>LLM: Send assembled prompt
-    LLM-->>App: "The March 8 outage was caused by<br/>connection pool exhaustion due to a<br/>missing connection_max_lifetime setting."
+    LLM-->>App: "Root cause: connection pool exhaustion (missing connection_max_lifetime)"
     App-->>U: Answer + source citations
 ```
 

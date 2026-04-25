@@ -353,7 +353,10 @@ sequenceDiagram
     Agent->>DB: Has this happened before?
     DB-->>Agent: INC-1005 (March 5, same root cause)
     Agent->>Ticket: Create P1 ticket
-    Note over Ticket: Title: DB connection pool exhaustion (recurring)<br/>Root cause: connection_max_lifetime not set after v2.4.1<br/>Related: INC-1005, DEP-777<br/>Action: Set connection_max_lifetime=300s, restart pods
+    Note over Ticket: P1: DB connection pool exhaustion (recurring).
+    Note over Ticket: Root cause: connection_max_lifetime not set after v2.4.1.
+    Note over Ticket: Related: INC-1005, DEP-777.
+    Note over Ticket: Action: Set connection_max_lifetime=300s, restart pods.
 ```
 
 **Mode 3 — Optimize (proactive improvement):**
@@ -377,7 +380,8 @@ sequenceDiagram
     Agent->>RAG: Best practices for address input?
     RAG-->>Agent: Autocomplete reduces abandonment by 30%
     Agent->>Backlog: Add 2 recommendations
-    Note over Backlog: 1. Add index on orders.customer_id (effort: low, impact: high)<br/>2. Add address autocomplete to checkout (effort: medium, impact: high)
+    Note over Backlog: 1. Add index on orders.customer_id (low effort, high impact).
+    Note over Backlog: 2. Add address autocomplete to checkout (medium effort, high impact).
 ```
 
 ---
