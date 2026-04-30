@@ -212,6 +212,271 @@ This loop is the heartbeat of deep learning. You will write it in the notebook. 
 
 ---
 
+## The Math, Step by Step — A Worked Example
+
+Up to now, analogies and tables. Now we work the actual math, with **real numbers**, on a network small enough to compute by hand. Two training steps. Every gradient calculated explicitly. **If you can follow the numbers in this section, you understand deep learning.** Everything else is more layers, more parameters, more clever architectures.
+
+> **New to partial derivatives, the chain rule, or gradient descent?** Skim the relevant sections of [Math for AI](../math-for-ai.md) first (5–10 min) — that document covers the abstract framing once, so every playbook can reference it instead of re-explaining. Then come back here and watch the math turn into real numbers.
+
+> **Hands-on companion.** This walkthrough has a runnable notebook: [Deep Learning From Scratch on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_From_Scratch.ipynb) — pure NumPy, every gradient computed by hand, every number you see here verified in code.
+
+### The Tiny House Price Dataset
+
+Predict house prices from square footage. Three houses:
+
+| House | Sqft | Price | x = sqft/1000 | y = price/100000 |
+|---|---:|---:|---:|---:|
+| A | 1,000 | $200,000 | 1.0 | 2.0 |
+| B | 2,000 | $350,000 | 2.0 | 3.5 |
+| C | 3,000 | $450,000 | 3.0 | 4.5 |
+
+### Step 1: Scale the Inputs
+
+Real-world numbers (1,500 sqft, $350,000) live on different scales. Feed those raw into a network and the gradients explode, the loss goes to NaN (Not a Number), training fails on batch one.
+
+```
+x = sqft / 1000
+y = price / 100000
+```
+
+After scaling, both `x` and `y` live near 1 — a comfortable range for the network. **Without scaling, no architecture saves you.** This is the most common reason "my training won't start" in beginner code.
+
+> **Scaling vs Standardization.** Scaling: divide by a constant (`x / 1000`). Standardization: subtract the mean, divide by the standard deviation (`(x − μ) / σ`). Both keep gradients well-behaved. Scaling is simpler when you know the natural range of the data; standardization is the default when you do not.
+
+### Step 2: The Network — Two Hidden Neurons
+
+Slightly bigger than the smallest possible: **2 hidden neurons** instead of 1. Why? Two neurons can already learn non-linear interactions, which makes the example feel like a real network.
+
+```
+Input x
+   ↓
+Hidden Layer (2 neurons with ReLU)
+   ↓
+Output Layer (1 neuron, no activation — regression)
+   ↓
+y_pred
+```
+
+The math:
+
+```
+Hidden neuron 1:    z₁ = w₁·x + b₁          h₁ = ReLU(z₁)
+Hidden neuron 2:    z₂ = w₂·x + b₂          h₂ = ReLU(z₂)
+Output:             y_pred = v₁·h₁ + v₂·h₂ + c
+Loss:               L = 0.5·(y_pred − y)²
+```
+
+Seven learnable parameters: `w₁, b₁, w₂, b₂, v₁, v₂, c`. Training will adjust all seven. (The 0.5 in the loss is a convenience — it cancels cleanly in the derivative.)
+
+### Step 3: Initial Values
+
+Pick starting values. In real training, these are random small numbers. For a clean walkthrough we pick simple ones:
+
+```
+w₁ = 0.5     b₁ = 0.1
+w₂ = -0.4    b₂ = 1.0
+v₁ = 0.3     v₂ = 0.2
+c  = 0.5
+α  = 0.1     # learning rate
+```
+
+### Step 4: Cycle 1 — Train on House A (x=1.0, y=2.0)
+
+**Forward pass.** Compute the prediction.
+
+```
+z₁ = 0.5·1.0 + 0.1 = 0.6           h₁ = ReLU(0.6) = 0.6
+z₂ = -0.4·1.0 + 1.0 = 0.6          h₂ = ReLU(0.6) = 0.6
+y_pred = 0.3·0.6 + 0.2·0.6 + 0.5 = 0.18 + 0.12 + 0.5 = 0.8
+```
+
+The model says **$80,000** (0.8 × 100,000). Actual is **$200,000**. Off by $120,000.
+
+**Loss:**
+
+```
+L = 0.5·(0.8 − 2.0)² = 0.5·1.44 = 0.72
+```
+
+**Backward pass.** The seed of every gradient is `∂L/∂y_pred`. Since `L = 0.5·(y_pred − y)²`:
+
+```
+∂L/∂y_pred = y_pred − y = 0.8 − 2.0 = -1.2
+```
+
+This is the **error signal**. It is negative because `y_pred` was too low — increasing `y_pred` would decrease loss. Every gradient downstream uses this number.
+
+**Output layer gradients** (easy — `y_pred` is a direct linear combination):
+
+```
+∂L/∂v₁ = (∂L/∂y_pred) · h₁ = -1.2 · 0.6 = -0.72
+∂L/∂v₂ = (∂L/∂y_pred) · h₂ = -1.2 · 0.6 = -0.72
+∂L/∂c  = -1.2
+```
+
+**Hidden layer gradients** (chain rule walks through the layer). For `w₁`, the dependency chain is:
+
+```
+w₁  →  z₁  →  h₁  →  y_pred  →  L
+```
+
+```
+∂L/∂w₁ = (∂L/∂y_pred) · (∂y_pred/∂h₁) · (∂h₁/∂z₁) · (∂z₁/∂w₁)
+       =  -1.2          ·  v₁ = 0.3    ·  ReLU′ = 1   ·  x = 1.0
+       = -0.36
+```
+
+The plain-English version of that chain:
+
+> ∂L/∂w₁ = (how wrong we are) × (how much this neuron matters to the output) × (whether the neuron is firing) × (how much input affects the neuron)
+
+Same chain for the other hidden parameters:
+
+```
+∂L/∂b₁ = -1.2 · 0.3 · 1 · 1   = -0.36
+∂L/∂w₂ = -1.2 · 0.2 · 1 · 1.0 = -0.24
+∂L/∂b₂ = -1.2 · 0.2 · 1 · 1   = -0.24
+```
+
+**Update every weight:** `new = old − α · gradient`
+
+```
+w₁ = 0.5  − 0.1·(-0.36) = 0.536      v₁ = 0.3  − 0.1·(-0.72) = 0.372
+b₁ = 0.1  − 0.1·(-0.36) = 0.136      v₂ = 0.2  − 0.1·(-0.72) = 0.272
+w₂ = -0.4 − 0.1·(-0.24) = -0.376     c  = 0.5  − 0.1·(-1.2)  = 0.62
+b₂ = 1.0  − 0.1·(-0.24) = 1.024
+```
+
+That is one training step on one example. The weights have moved slightly in the direction that reduces loss for House A.
+
+> **Partial derivatives (∂) vs derivatives (d).** When the loss depends on only one variable, use `d` (regular derivative). When the loss depends on many variables and you only nudge one, use `∂` (partial). Neural networks always have many variables, so they always use `∂`. Same operation, different notation to remind you that other variables exist and are being held fixed.
+
+### Step 5: Cycle 2 — Train on House B (x=2.0, y=3.5)
+
+Same pattern, with the updated weights from Cycle 1.
+
+```
+z₁ = 0.536·2.0 + 0.136 = 1.208        h₁ = 1.208
+z₂ = -0.376·2.0 + 1.024 = 0.272       h₂ = 0.272
+y_pred = 0.372·1.208 + 0.272·0.272 + 0.62 ≈ 1.143
+```
+
+Prediction: **$114,300**. Actual: **$350,000**. Loss ≈ 2.78. Bigger than Cycle 1 — but that is normal early in training; House B is a harder example with the current weights. The optimizer still computes gradients and steps.
+
+After Cycle 2, the weights are:
+
+```
+w₁ ≈ 0.711   b₁ ≈ 0.224   w₂ ≈ -0.248   b₂ ≈ 1.088
+v₁ ≈ 0.657   v₂ ≈ 0.336   c  ≈ 0.856
+```
+
+### Step 6: Make a Prediction with the Trained Model
+
+After only two training steps, predict for a 2,500 sqft house (`x = 2.5`):
+
+```
+z₁ = 0.711·2.5 + 0.224 ≈ 2.002        h₁ ≈ 2.002
+z₂ = -0.248·2.5 + 1.088 ≈ 0.469       h₂ ≈ 0.469
+y_pred = 0.657·2.002 + 0.336·0.469 + 0.856 ≈ 2.328
+
+price ≈ 2.328 · 100,000 = $232,800
+```
+
+The prediction is poor — only two training steps. A real model trains for **thousands of steps over many epochs**, seeing each house dozens or hundreds of times. The mechanics never change. Just more iterations of the same five things: forward, loss, backward, update, repeat.
+
+### The Forward and Backward Pass — One Picture
+
+```mermaid
+graph TD
+    X[Input x]
+
+    X --> Z1[z₁ = w₁·x + b₁]
+    X --> Z2[z₂ = w₂·x + b₂]
+
+    Z1 --> H1[h₁ = ReLU&#40;z₁&#41;]
+    Z2 --> H2[h₂ = ReLU&#40;z₂&#41;]
+
+    H1 --> Y[y_pred = v₁·h₁ + v₂·h₂ + c]
+    H2 --> Y
+
+    Y --> L[L = 0.5·&#40;y_pred − y&#41;²]
+
+    L -.->|∂L/∂y_pred| Y
+    Y -.->|chain via v, ReLU′, x| H1
+    Y -.->|chain via v, ReLU′, x| H2
+    H1 -.-> U1[Update w₁, b₁]
+    H2 -.-> U2[Update w₂, b₂]
+    Y -.-> UO[Update v₁, v₂, c]
+
+    style X fill:#E3F2FD
+    style L fill:#FFEBEE
+    style U1 fill:#E8F5E9
+    style U2 fill:#E8F5E9
+    style UO fill:#E8F5E9
+```
+
+Solid arrows: forward pass (compute the prediction). Dashed arrows: backward pass (compute the gradient for every weight). The forward arrows define the prediction; the backward arrows define the learning. **This is backpropagation in one picture.**
+
+### Why This Generalizes
+
+In a 100-layer network, the chain stretches through 100 stages. The math does not change. Each layer contributes one term to the chain. PyTorch's `autograd` engine builds this graph automatically when you write `loss.backward()` — it traces the chain backward through every operation in the forward pass and computes every `∂L/∂w` for free.
+
+When you understand the chain rule, the line `loss.backward()` stops being magic.
+
+---
+
+## What Adds Up When You Add a Layer
+
+A common confusion: what does adding a *second hidden layer* actually buy you?
+
+**Layer 1** creates basic signals from the input — coarse "atomic" features the model discovers from the data.
+
+> Examples it might learn for house pricing: *large house*, *above 2000 sqft*, *premium location*, *old house*.
+
+**Layer 2** combines those signals into compound concepts.
+
+> *large + premium location*, *large + old house*, *small + good school district*.
+
+**Layer 3** combines compounds into concepts that map directly to outcomes.
+
+> *family-sized in a top school district* → strong positive price signal.
+
+A useful mental model:
+
+| Layer | Equivalent To |
+|---|---|
+| Layer 1 | Letters |
+| Layer 2 | Words |
+| Layer 3 | Meaning |
+
+Nobody told the network "these are letters" or "these are words." It learned that hierarchy because that hierarchy minimized the loss. **The architecture provides depth. The data and the task decide what each layer represents.**
+
+> **Why activation matters — a corollary.** Without activation functions between layers, `linear + linear + linear = linear`. Stack 100 linear layers and you still have one linear equation. The activation (ReLU, sigmoid, GELU) is what lets each layer be more than a re-weighting of the previous one. **No activation = no depth, no matter how many layers.**
+
+---
+
+## Features vs Layers — A Crisp Distinction
+
+A common confusion: **adding more features** vs **adding more layers**. They do different things.
+
+| | Adds | Why It Helps |
+|---|---|---|
+| **More features (more inputs)** | More information about each example | Lets the network see something it could not see before. If the model has no income data, no architecture can compensate. |
+| **More layers (deeper network)** | More interactions between features | Lets the network combine features in more nuanced ways. With one layer: "income matters." With many layers: "income matters, but only when combined with credit history, in this region, for buyers under 35." |
+
+**Features = information. Layers = interactions.** If the model is missing information, more layers will not help. If the model has the information but cannot capture the interactions, more layers will help.
+
+### Layers vs Epochs — Another Crisp Distinction
+
+Easy to confuse, very different:
+
+- **More layers** → more *expressive* model. Can represent more complex functions. Risk: overfitting.
+- **More epochs** → more *training time* on the same model. Same expressiveness, more thorough learning. Risk: also overfitting (eventually the model memorizes).
+
+Add layers when the model is too simple to capture the pattern (underfitting). Add epochs when the model has the right capacity but has not yet learned the pattern (loss is still decreasing).
+
+---
+
 ## When Do You Need Deep Learning? (And When Do You Not?)
 
 Not every problem needs a neural network. Reaching for deep learning when simpler tools suffice wastes time, money, and explainability.
@@ -266,6 +531,24 @@ graph TD
 
 ---
 
+## The Architecture Family — Choose Your Tool
+
+MLP and CNN are two members of a larger family. Each architecture is designed for a different shape of data. Master the foundations in this chapter, then go deep on the domain playbook that fits your problem.
+
+| Architecture | Designed For | Key Idea | Real-World Example | Domain Playbook |
+|---|---|---|---|---|
+| **MLP (Multi-Layer Perceptron)** | Tabular, structured data | Fully connected layers — every input connects to every output | Credit scoring, churn prediction | Covered in this chapter |
+| **CNN (Convolutional Neural Network)** | Images, spatial data | Filters scan local neighborhoods; the same filter works everywhere | Tesla Autopilot, Google retinal screening, medical imaging | [computer-vision/](../computer-vision/) |
+| **Vision Transformer (ViT)** | Images, large-data vision | Treats image patches as tokens; self-attention across patches | Modern image classification at scale | [computer-vision/](../computer-vision/) |
+| **RNN / LSTM** | Sequences (mostly legacy) | Hidden state carries information across time steps | Time-series forecasting, legacy speech recognition | [sequence-models/](../sequence-models/) |
+| **Transformer** | Text, sequences, modern foundation models | Self-attention — every position can attend to every other position | ChatGPT, Claude, GitHub Copilot, every modern LLM | [transformers/](../transformers/) |
+| **GAN (Generative Adversarial Network)** | Generation via adversarial training | Two networks compete: generator vs discriminator | StyleGAN faces, deepfake video, synthetic data | [generative/](../generative/) |
+| **U-Net** | Image segmentation, diffusion backbone | Encoder-decoder with skip connections | Medical image segmentation, the U-Net inside every diffusion model | [computer-vision/](../computer-vision/) (segmentation) and [generative/](../generative/) (diffusion) |
+| **Autoencoder / VAE** | Compression, generative latent spaces | Encoder compresses to a small latent, decoder reconstructs | Anomaly detection, image compression, VAE inside diffusion | [generative/](../generative/) |
+| **Diffusion** | High-quality image and video generation | Iteratively denoise pure noise into a sample | Stable Diffusion, Midjourney, OpenAI Sora | [generative/](../generative/) |
+
+> **The choice rule:** Match the architecture to the structure of the data. Spatial → CNN or ViT (see [computer-vision/](../computer-vision/)). Sequential, modern → Transformer (see [transformers/](../transformers/)). Generation → GAN, VAE, or Diffusion (see [generative/](../generative/)) depending on the use case. When in doubt, prototype with the simplest one first (MLP for tabular, ResNet for images, GPT-style decoder for text), then specialize.
+
 ---
 
 ## Glossary — Quick Reference
@@ -310,7 +593,8 @@ Every term below was explained in context above. This table is for quick lookup.
 | **ŷ** | y-hat | "why-hat" | What the model predicted — compare to y to measure error |
 | **σ** | sigma | "SIG-muh" | An activation function (the non-linear function applied after each neuron) |
 | **η** | eta | "AY-tuh" | The learning rate — how big a step the optimizer takes |
-| **∂** | partial derivative | "partial" or "del" | How much the loss changes when you nudge one weight — the gradient for that weight |
+| **d** | derivative | "dee" | Rate of change when L depends on only ONE variable. Plain calculus. |
+| **∂** | partial derivative | "partial" or "del" | Rate of change when L depends on MANY variables and you nudge ONE — the gradient for that weight, holding the others fixed. Neural networks always use ∂. |
 | **L** | loss | "loss" | One number measuring how wrong the model is — lower is better |
 | **Σ** | capital sigma | "SIG-muh" | Summation — "add all of these up" |
 | **→** | maps to | "maps to" or "becomes" | Input transforms into output |

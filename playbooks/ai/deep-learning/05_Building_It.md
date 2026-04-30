@@ -123,6 +123,8 @@ Regularization techniques, ordered by ease of implementation and typical impact:
 
 Do not reduce model size before trying regularization. A large model with dropout and augmentation almost always outperforms a small model without them.
 
+> **Hands-on companion.** [Deep Learning Regularization on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_Regularization.ipynb) — runnable comparisons of dropout, L2 weight decay, batch normalization, and data augmentation, with before/after loss curves showing the regularization effect on the same model.
+
 ---
 
 ## Decision 7: CNN Architecture Depth

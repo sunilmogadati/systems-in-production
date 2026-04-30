@@ -21,8 +21,11 @@
 
 | Notebook | Open in Colab |
 |---|---|
+| [Deep Learning From Scratch](../../../implementation/notebooks/Deep_Learning_From_Scratch.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_From_Scratch.ipynb) |
 | [Deep Learning / PyTorch](../../../implementation/notebooks/Deep_Learning_PyTorch.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_PyTorch.ipynb) |
-| [CNN Deep Dive](../../../implementation/notebooks/Deep_Learning_CNN.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_CNN.ipynb) |
+| [Regularization](../../../implementation/notebooks/Deep_Learning_Regularization.ipynb) | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_Regularization.ipynb) |
+
+For CNN-specific hands-on, see the [Computer Vision playbook](../computer-vision/) and its companion notebooks.
 
 ## Get Help
 
