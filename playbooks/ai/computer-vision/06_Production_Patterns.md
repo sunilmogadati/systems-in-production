@@ -14,7 +14,7 @@ Each pattern below is a real production system, with publicly available technica
 
 **The problem.** A car has 8 cameras. It needs to identify cars, pedestrians, traffic lights, lanes, road signs, drivable surface, and free space — simultaneously, at 36 frames per second, with under 100ms total system latency, on automotive-grade hardware.
 
-**The architecture.** Tesla calls it **HydraNet**. One shared CNN backbone (similar to ResNet) + ~50 task-specific heads.
+**The architecture.** Tesla calls it **HydraNet** (publicly disclosed at Tesla AI Day 2021/2022). One shared CNN backbone (similar to ResNet) plus many task-specific heads — one per perception task (lanes, vehicles, pedestrians, signs, drivable surface, and so on).
 
 ```mermaid
 graph TD
@@ -29,7 +29,7 @@ graph TD
     Backbone --> H3[Pedestrian detection head]
     Backbone --> H4[Traffic light head]
     Backbone --> H5[Sign recognition head]
-    Backbone --> Hn[~50 heads total]
+    Backbone --> Hn[... many task heads<br/>per perception task]
 
     H1 --> Plan[Planning system]
     H2 --> Plan
@@ -43,7 +43,7 @@ graph TD
 
 **The hard part is not the model.** It is:
 
-- **Data labeling at scale.** Tesla labels ~10,000 hours of new driving footage per week. They built a custom labeling tool with auto-labeling assistance.
+- **Data labeling at scale.** Tesla operates a large in-house labeling pipeline with auto-labeling assistance — Andrej Karpathy's Tesla AI Day talks describe the data engine and the labeling/auto-labeling tools they built. The exact scale is operational data Tesla does not consistently disclose.
 - **Edge case mining.** "Show me every frame where the model was uncertain about whether something was a person." Run that across the fleet's data, label hard cases, retrain.
 - **Shadow mode validation.** New models run in parallel with the deployed model on real cars without affecting driving behavior. Compare predictions. Find regressions before the new model takes over.
 - **Continuous deployment.** Software updates push new vision models OTA (Over The Air) every few weeks.

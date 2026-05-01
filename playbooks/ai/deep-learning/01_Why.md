@@ -113,7 +113,7 @@ Three things changed between 1995 and 2012, and all three had to change together
 
 ### 1. Big Data
 
-Neural networks need millions of examples to learn well. Until the 2000s, that much labeled data simply did not exist.
+Neural networks need millions of examples to learn well. Until the 2000s, that much labeled data did not exist.
 
 - **2009 — ImageNet** released by Fei-Fei Li at Stanford: 14 million labeled images across 22,000 categories. The first dataset large enough for deep learning to outperform hand-engineered features.
 - **The web** — by 2010, Wikipedia, Flickr, YouTube, and similar platforms had created accidental training corpuses larger than any dataset humans had ever deliberately assembled.
@@ -146,14 +146,14 @@ The pace from 2015 onward was not gradual. It was a step-function.
 
 | Year | Milestone | Why It Mattered |
 |---|---|---|
-| **2015** | First **GAN (Generative Adversarial Network)**-generated faces (Goodfellow et al.) | Recognizable as faces, but blurry and uncanny |
+| **2014** | **GAN (Generative Adversarial Network)** introduced (Goodfellow et al., NeurIPS 2014); follow-on work over the next 1–2 years produced the first recognizable generated faces | Early GAN samples were small (e.g., 64×64) and visibly synthetic |
 | **2018** | **StyleGAN** (Karras, Laine, Aila) | Photorealistic faces of people who do not exist |
 | **2020** | Real-time deepfake video | A person's face mapped onto another's body, in motion |
 | **2022** | **ChatGPT (GPT-3)** launches | Conversational language model crosses 100M users in 2 months — fastest consumer product adoption in history |
 | **2023** | **GPT-4** — the "wow" moment | Passes the bar exam, reads images, writes working code |
-| **2025** | **Liquid LFM2-2.6B beats GPT-4 on a phone** | A 2.6 billion parameter model running locally on a smartphone outperforms the original GPT-4 on instruction-following, formatting accuracy, and reasoning benchmarks |
+| **2024–2025** | **Small-but-strong on-device models** (e.g., Liquid LFM2 family, Microsoft Phi-3, Apple's on-device foundation models, Google's Gemini Nano) | Multi-billion-parameter models running locally on phones and laptops post results competitive with much larger cloud-only models from 1–2 years earlier on selected instruction-following, formatting, and reasoning benchmarks (vendor-reported; benchmark coverage varies) |
 
-The Liquid example matters because it inverts the prior assumption. From 2022-2024, the rule was "more parameters, more data, bigger data center." Now: smaller, smarter architectures running on consumer hardware can match or beat the giants. **Deep learning is moving from the data center to your pocket.**
+This shift matters because it inverts the prior assumption. From 2022–2024, the rule was "more parameters, more data, bigger data center." Now: smaller, smarter architectures running on consumer hardware can match the giants of a year or two ago on a wide range of tasks. **Deep learning is moving from the data center to your pocket.**
 
 This is the field you are entering. It is not stable. The specific architecture you learn today may be displaced in 18 months. The training methodology you learn this year may be obsolete next year. What stays stable: the foundations in this material — the perceptron, the loss function, the training loop, the diagnostics. Master those, and you can read any paper, ship any model, and adapt to whatever comes next.
 
@@ -197,7 +197,7 @@ See the full architecture: [CSI Architecture](../../../systems/continuous-system
 
 ### Sibling Domain Playbooks
 
-When the foundations are solid, dive into the domain that fits your data. Each is a full playbook (sibling of this one), not a single doc:
+When the foundations are solid, move into the domain that fits your data. Each is a full playbook (sibling of this one), not a single doc:
 
 | Domain | Architectures Covered | Playbook |
 |---|---|---|

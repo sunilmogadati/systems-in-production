@@ -43,7 +43,7 @@ graph TD
 
 **Production realities (publicly known):**
 
-- **Inference cost** — GPT-4 estimated at ~$0.03 per 1K input tokens, $0.12 per 1K output tokens. ChatGPT consumer (free) heavily subsidized.
+- **Inference cost** — token pricing changes frequently across model variants; see `openai.com/pricing` for current rates. Consumer ChatGPT (free tier) is heavily subsidized relative to API token cost.
 - **Routing** — different model variants serve different traffic tiers (GPT-3.5 for free users, GPT-4 for plus, custom routing for specific tasks)
 - **Latency** — ~1-3 seconds time-to-first-token; streaming hides perceived latency
 - **Scale** — billions of conversations / day at peak (2023+)
