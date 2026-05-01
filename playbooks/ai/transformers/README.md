@@ -59,4 +59,4 @@ For math refreshers, see [Math for AI](../math-for-ai.md). For terminology share
 | Audio / speech | Encoder-decoder | Whisper |
 | Reasoning | Decoder-only with extended inference compute | o1/o3, DeepSeek-R1, Claude 3.7+ extended thinking |
 
-[Sunil Mogadati](https://www.linkedin.com/in/sunilmogadati) | [Community](https://www.skool.com/deliverymomentum)
+[LinkedIn](https://linkedin.com/in/sunilmogadati) · [Community](https://www.skool.com/deliverymomentum) · [Engagement inquiries](https://calendly.com/sunil-mogadati/connect)

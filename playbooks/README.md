@@ -65,8 +65,10 @@ Every playbook links to its matching notebooks. Every notebook links back to its
 
 ---
 
-## Get Help
+## Connect
 
-**Community:** [DeliveryMomentum on Skool](https://www.skool.com/deliverymomentum) — ask questions, share what you're building, discuss real systems.
+**[LinkedIn](https://linkedin.com/in/sunilmogadati)** — professional updates and writing.
 
-**1:1:** [Book a conversation with Sunil](https://calendly.com/sunil-mogadati/connect) — 20 minutes, focused on your specific situation.
+**[Skool: Delivery Momentum](https://www.skool.com/deliverymomentum)** — discussion, real-system threads.
+
+**[Engagement inquiries](https://calendly.com/sunil-mogadati/connect)** — delivery recovery, embedded technical leadership.

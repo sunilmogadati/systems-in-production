@@ -45,4 +45,4 @@ For math refreshers, see [Math for AI](../math-for-ai.md).
 | [Generative_Autoencoder_From_Scratch.ipynb](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Generative_Autoencoder_From_Scratch.ipynb) | Autoencoder by hand in pure NumPy. Forward + backward through two networks, every gradient computed manually, PyTorch autograd verification, latent space visualization. **Start here.** |
 | [Deep_Learning_Autoencoders_GANs.ipynb](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_Autoencoders_GANs.ipynb) | PyTorch implementations of autoencoder, SimpleGAN, and DCGAN on MNIST. |
 
-[Sunil Mogadati](https://www.linkedin.com/in/sunilmogadati) | [Community](https://www.skool.com/deliverymomentum)
+[LinkedIn](https://linkedin.com/in/sunilmogadati) · [Community](https://www.skool.com/deliverymomentum) · [Engagement inquiries](https://calendly.com/sunil-mogadati/connect)
