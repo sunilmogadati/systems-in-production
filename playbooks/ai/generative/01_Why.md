@@ -10,7 +10,7 @@ A small fashion studio in Milan has three designers. They need to ship 200 new p
 
 In 2024, they trained a generative model on 5,000 of their past products and 50,000 inspiration images. Now they generate variations in seconds. The designers spend their time editing and selecting, not creating from scratch. The studio's output goes from 200 variations to 2,000 variations. Their hit rate per launch goes up because they can A/B-test ten times more concepts. They sell more without hiring anyone.
 
-A researcher in São Paulo studies a rare childhood blood disorder. There are only **47 known patients globally**. To train a diagnostic model, the standard advice — "you need at least 1,000 labeled examples per class" — is impossible. The disease itself does not produce 1,000 patients. So she generates synthetic blood smear images with a diffusion model conditioned on her real samples. The synthetic images are not used for diagnosis. They are used for **training the diagnostic model**. Combined with the 47 real images, the synthetic data lets her hit 94% sensitivity. Without synthetic data, the model would not exist; without the model, hospitals cannot screen.
+A researcher in São Paulo studies a rare childhood blood disorder — the kind where **only a few dozen patients are known worldwide** (illustrative; rare-disease cohorts are routinely this small). To train a diagnostic model, the standard advice — "you need at least 1,000 labeled examples per class" — is impossible. The disease itself does not produce 1,000 patients. So she generates synthetic blood smear images with a diffusion model conditioned on her real samples. The synthetic images are not used for diagnosis. They are used for **training the diagnostic model**. Combined with the small set of real images, the synthetic data lets her hit clinically useful sensitivity. Without synthetic data, the model would not exist; without the model, hospitals cannot screen.
 
 A pharmacist in rural Wisconsin uses a generative model trained on millions of pill images to verify what is in a patient's hand against the prescription. The model was trained on a database of every approved pill in North America — but real pharmacy lighting, hand positions, and partial views are nothing like the database photos. The training set was *augmented with generated images* — same pills, different lighting, different angles, different hand positions. The model now works in real-world conditions because the training data did.
 
@@ -110,7 +110,7 @@ Generative models existed since the 1990s. So why are they reshaping industries 
 
 ### 1. The Architectures Finally Work at Scale
 
-- **2014: Original GAN paper** by Ian Goodfellow. First credible neural generative model.
+- **2014: Original GAN paper** — Goodfellow, Pouget-Abadie, Mirza, Xu, Warde-Farley, Ozair, Courville, Bengio, *Generative Adversarial Nets*, NeurIPS 2014. First credible neural generative model.
 - **2015: DCGAN** stabilized GAN training enough to be useful.
 - **2018: StyleGAN** generated photorealistic faces.
 - **2020: DDPM (Denoising Diffusion Probabilistic Models)** put diffusion on the map.

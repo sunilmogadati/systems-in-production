@@ -8,7 +8,7 @@
 
 There is a hospital in eastern India where one radiologist serves 200,000 people. She trained for ten years to spot what most doctors cannot — a mass too small for the untrained eye, the early shadow of a tumor, the asymmetry that a non-specialist would miss. A patient comes in with chest pain. The X-ray takes two minutes. Her reading takes twenty. There is a queue of forty patients waiting. By 9 PM she is exhausted, and a tired radiologist misses things.
 
-In 2018, a team at Stanford trained a CNN (Convolutional Neural Network) on 100,000 chest X-rays. The model learned to identify pneumonia at the level of expert radiologists. Today, deployments of similar models in low-resource hospitals do the first read in seconds. The radiologist confirms or overrides. Her throughput triples. Her error rate drops because the model catches what she missed when tired, and she catches what the model missed when uncertain. Patients get treated faster.
+In 2017–2018, a team at Stanford trained a CNN (Convolutional Neural Network) on tens of thousands of chest X-rays (the CheXNet line of work, built on the publicly released NIH ChestX-ray dataset). The model learned to identify pneumonia at the level of expert radiologists on that benchmark. Today, deployments of similar models in low-resource hospitals do the first read in seconds. The radiologist confirms or overrides. Her throughput triples. Her error rate drops because the model catches what she missed when tired, and she catches what the model missed when uncertain. Patients get treated faster.
 
 A farmer in rural Kenya loses 40% of her cassava crop every year to a disease no one in her village can identify. The nearest agronomist serves a district of 500,000 people. She photographs a diseased leaf with her phone. A CNN trained on millions of plant images identifies *cassava brown streak virus*, recommends a treatment, and estimates how many days she has before it spreads. She saves what is left of the crop. Her children eat this winter.
 
@@ -18,7 +18,7 @@ A manufacturing line in Mexico produces 50,000 brake calipers per day. One in 5,
 
 ## What This Technology Delivers
 
-These are not future scenarios. They are deployed today. The Stanford pneumonia model is FDA-cleared (US Food and Drug Administration) and runs in dozens of hospitals. PlantVillage and similar agricultural systems serve millions of farmers via phone apps. Industrial vision systems from Cognex, Keyence, and the open-source ecosystem inspect billions of products per year on assembly lines worldwide.
+These are not future scenarios. They are deployed today. CNN-based chest-imaging models from multiple vendors (Aidoc, Lunit, Annalise.ai, and others) are FDA-cleared (US Food and Drug Administration) and run in hospital networks worldwide. PlantVillage and similar agricultural systems serve millions of farmers via phone apps. Industrial vision systems from Cognex, Keyence, and the open-source ecosystem inspect billions of products per year on assembly lines worldwide.
 
 Computer vision delivers something humans have always wanted but never had at scale: **the trained eye, available anywhere, working without fatigue, at a cost that approaches zero per inference**.
 
@@ -91,7 +91,7 @@ Computer vision did not become useful overnight. The arc:
 | Year | Milestone | Why It Mattered |
 |---|---|---|
 | **1995** | **LeNet** by Yann LeCun | First commercial CNN. Read handwritten checks for the US Postal Service and banks. ~99% accuracy on digits. |
-| **2012** | **AlexNet** wins ImageNet | First deep CNN to dominate the ImageNet competition. Cut the error rate in half overnight. The "deep learning works" moment. |
+| **2012** | **AlexNet** wins ImageNet | First deep CNN to dominate the ImageNet competition. Cut top-5 error from ~26% (the prior year's best, hand-engineered) to **15.3%** in a single year. The "deep learning works" moment. |
 | **2014** | **VGG** | Showed that depth + small (3x3) filters wins. Set the template every CNN paper used for years. |
 | **2015** | **ResNet** | **Skip connections** — the breakthrough that made networks 100+ layers deep trainable. Won ImageNet. The architecture is still a workhorse a decade later. |
 | **2017** | **MobileNet** | CNNs that run on phones. Made on-device CV practical. |

@@ -6,7 +6,7 @@
 
 ## Pattern 1: Google Translate — Multilingual at Web Scale
 
-**The problem.** Translate any text, between 130+ language pairs, in milliseconds, for billions of queries per day, with reasonable quality across dozens of dialects.
+**The problem.** Translate any text across 130+ supported languages, in milliseconds, for billions of queries per day, with reasonable quality across many dialects and script systems.
 
 **The architecture (publicly known).** Multiple model variants serving different traffic tiers:
 - **Neural Machine Translation (NMT)** with encoder-decoder transformers as the core

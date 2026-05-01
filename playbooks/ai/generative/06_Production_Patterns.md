@@ -61,7 +61,7 @@ graph TD
 
 **Lesson.** **Generative models are pipelines, not single networks.** Stable Diffusion is text encoder + diffusion U-Net + VAE + scheduler — all of which are independently optimized, can be swapped, and have their own failure modes. A "Stable Diffusion deployment" is really four-component management.
 
-**Sources.** Stable Diffusion v1 paper (Rombach et al., 2022). Stability AI release notes. Hugging Face `diffusers` library documentation.
+**Sources.** Stable Diffusion / latent diffusion paper — Rombach, Blattmann, Lorenz, Esser, Ommer, *High-Resolution Image Synthesis with Latent Diffusion Models*, CVPR 2022 ([arXiv:2112.10752](https://arxiv.org/abs/2112.10752)). Stability AI release notes. Hugging Face `diffusers` library documentation.
 
 ---
 
@@ -133,7 +133,7 @@ graph TD
 
 **Lesson.** **Video generation is not just image generation extended to time.** The architecture, training data (video clips with text descriptions), and inference cost are all fundamentally different from image generation. Most teams that "generate video" today actually generate frames and stitch — true generative video at quality is still the domain of the largest labs.
 
-**Sources.** OpenAI Sora technical report (2024). DiT paper (Peebles & Xie, 2022).
+**Sources.** OpenAI Sora technical report (2024). DiT paper — Peebles & Xie, *Scalable Diffusion Models with Transformers*, ICCV 2023 (arXiv preprint December 2022).
 
 ---
 
@@ -239,7 +239,7 @@ graph LR
 - **Meta, Google, OpenAI** — internal detection in trust & safety pipelines
 - **Bank fraud teams** — detection on KYC selfies (preventing GAN-generated identity documents)
 
-**Lesson.** **Detection is fundamentally reactive.** New generators always defeat existing detectors. C2PA-style provenance (signed at generation time) is more robust than post-hoc detection. Build for both.
+**Lesson.** **Detection is fundamentally reactive.** New generators routinely defeat existing detectors within months — every new model release shifts the artifact distribution detectors were trained on. C2PA-style provenance (cryptographic signatures attached at generation time, verified later) is structurally different: it does not try to identify generated content from pixels alone, it tracks *known* generated content forward. Provenance does not solve the problem (unsigned content still exists), but it converts the unwinnable forensics arms race into a tractable supply-chain problem. Build for both.
 
 ---
 

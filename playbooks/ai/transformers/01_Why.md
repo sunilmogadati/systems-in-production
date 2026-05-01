@@ -18,7 +18,7 @@ A teacher in São Paulo teaches a class of 35 high school students. Every studen
 
 ## What Transformers Actually Do
 
-A **transformer** is a neural network architecture introduced in 2017 ("Attention Is All You Need," Vaswani et al.) that replaced recurrence with **self-attention** — a mechanism where every position in a sequence directly computes weighted similarities to every other position, in parallel.
+A **transformer** is a neural network architecture introduced in 2017 (Vaswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, Polosukhin — *Attention Is All You Need*, NeurIPS 2017, [arXiv:1706.03762](https://arxiv.org/abs/1706.03762)) that replaced recurrence with **self-attention** — a mechanism where every position in a sequence directly computes weighted similarities to every other position, in parallel.
 
 This single change unlocked:
 

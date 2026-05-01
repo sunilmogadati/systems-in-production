@@ -54,7 +54,7 @@ A **shallow** network has 1-2 layers. It learns simple patterns — straight lin
 
 A **deep** network has many layers (5, 10, 100, even 1000+). Each layer builds on what the previous layer learned. Layer 1 sees pixels. Layer 2 sees edges. Layer 10 sees faces. Layer 50 recognizes your grandmother from any angle, in any lighting, wearing a hat she has never worn before.
 
-**DL (Deep Learning)** simply means: ML (Machine Learning) using neural networks with many layers.
+**DL (Deep Learning)** means: ML (Machine Learning) using neural networks with many layers.
 
 ---
 
