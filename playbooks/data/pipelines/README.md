@@ -17,6 +17,8 @@
 
 All theory is cloud-agnostic. Cloud-specific implementation is in the notebooks.
 
+> **Cloud coverage.** GCP is the canonical hands-on path today. AWS and Azure equivalents are scoped on the [roadmap](../../../ROADMAP.md). The concepts transfer directly across clouds — service names and IAM models change, the pipeline architecture does not.
+
 ## Hands-On
 
 | Notebook | Cloud | Open in Colab |

@@ -1,0 +1,39 @@
+Documentation, prose, and diagrams in this repository
+=====================================================
+
+The written documentation, prose explanations, and diagrams in this
+repository (Markdown files under `playbooks/`, `resources/`, `patterns/`,
+`failures/`, `architecture.md`, `README.md`, and any other prose files
+that are not source code) are licensed under:
+
+    Creative Commons Attribution 4.0 International (CC BY 4.0)
+    https://creativecommons.org/licenses/by/4.0/
+
+You are free to:
+
+  * Share — copy and redistribute the material in any medium or format
+  * Adapt — remix, transform, and build upon the material
+            for any purpose, even commercially.
+
+Under the following terms:
+
+  * Attribution — You must give appropriate credit, provide a link to
+    the license, and indicate if changes were made. You may do so in
+    any reasonable manner, but not in any way that suggests the
+    licensor endorses you or your use.
+
+Suggested attribution:
+
+    "Adapted from Sunil Mogadati, Systems in Production
+     (github.com/sunilmogadati/systems-in-production), CC BY 4.0."
+
+Source code, notebooks, and other software in this repository
+=============================================================
+
+Source code, Jupyter notebooks, and any other software components are
+licensed separately under the Apache License 2.0 — see `LICENSE`.
+
+This dual-license arrangement is common for repositories that combine
+written reference material with runnable code.
+
+Copyright 2026 Sunil Mogadati.

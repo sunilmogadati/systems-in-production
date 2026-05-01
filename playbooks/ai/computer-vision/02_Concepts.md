@@ -628,7 +628,7 @@ A **ViT (Vision Transformer, "V-I-T")** does not use convolutions at all. It:
 
 **When CNN wins:** small to medium datasets (under 1M images), edge deployment, when training compute is limited. CNN's spatial inductive bias acts like built-in regularization — it cannot help but learn local-then-global features. ViT has to *learn* that structure from data.
 
-In production today (2026), **CNNs and ViTs are both used.** ConvNeXt and other "modernized CNNs" perform competitively with ViTs at the top of leaderboards. The choice depends on dataset size, compute, and deployment target. See [`architectures/vision-transformers.md`](architectures/vision-transformers.md) (coming) for the full comparison.
+In production today (2026), **CNNs and ViTs are both used.** ConvNeXt and other "modernized CNNs" perform competitively with ViTs at the top of leaderboards. The choice depends on dataset size, compute, and deployment target. For the architecture deep-dive on the Transformer mechanics that ViT inherits, see [`../transformers/architectures/transformer.md`](../transformers/architectures/transformer.md).
 
 ---
 
