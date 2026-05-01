@@ -190,8 +190,8 @@ By the end, you will write the SQL that powers data pipelines, feeds ML models, 
 | 03 | [Hello World](03_Hello_World.md) |
 | 04 | [How It Works](04_How_It_Works.md) |
 | 05 | [Building It](05_Building_It.md) |
-| 06 | Production Patterns (coming soon) |
-| 07 | System Design (coming soon) |
-| 08 | Quality, Security, and Governance (coming soon) |
-| 09 | Observability and Troubleshooting (coming soon) |
-| 10 | Decision Guide (coming soon) |
+| 06 | [Production Patterns](06_Production_Patterns.md) |
+| 07 | [System Design](07_System_Design.md) |
+| 08 | [Quality, Security, and Governance](08_Quality_Security_Governance.md) |
+| 09 | [Observability and Troubleshooting](09_Observability_Troubleshooting.md) |
+| 10 | [Decision Guide](10_Decision_Guide.md) |

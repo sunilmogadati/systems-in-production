@@ -1,8 +1,25 @@
 # Systems in Production
 
-**A reference library for building, operating, and continuously improving intelligent systems — across Cloud, Data, and AI.**
+**Reference architectures and operating playbooks for intelligent systems in production — Cloud, Data, AI.**
 
 Production-grade playbooks, runnable notebooks, real architectures, real failure modes, and the decision-making behind them.
+
+---
+
+## Start Here
+
+Six entry points, depending on what you are trying to build or learn next. Each link lands on a 10-chapter playbook with a runnable notebook.
+
+| If you want to... | Start here |
+|---|---|
+| Ground an LLM in your organization's data (RAG done right, not the demo) | [RAG playbook](playbooks/ai/rag/) → [RAG from Scratch notebook](implementation/notebooks/RAG_from_Scratch.ipynb) |
+| Build an agent that uses tools and reasons across steps | [Agents playbook](playbooks/ai/agents/) → [Agents notebook](implementation/notebooks/Agents.ipynb) |
+| Move from Java / C# / typed-language background into Python for AI | [Python for Java/C# Developers](implementation/notebooks/Python_Java_Bridge.ipynb), then the [Python playbook](playbooks/python/) |
+| Connect data pipelines to ML models in a defensible way | [Data → Model pipeline](playbooks/Data_to_Model_Pipeline.md) + [Bronze-Silver-Gold pattern](patterns/bronze-silver-gold.md) |
+| See how production AI systems are actually architected | [systems/](systems/) (CSI architecture) + [patterns/](patterns/) + [failures/](failures/) |
+| Learn the architectures (CNN, RNN/LSTM, Transformer, GAN, U-Net) end to end | [AI playbooks index](playbooks/ai/) + [Architecture Reference Card](resources/architecture-reference.md) |
+
+For the full sequence (language → data → intelligence → engineering → production system), see *The Builder's Path* below.
 
 ---
 
@@ -239,3 +256,12 @@ All notebooks open in Colab. Most run without setup; a few (RAG, Agents) require
 I fix delivery problems that don't respond to more tools or more people. Embedded technical leadership — from the codebase to the boardroom.
 
 [LinkedIn](https://linkedin.com/in/sunilmogadati) · [GitHub](https://github.com/sunilmogadati)
+
+---
+
+## License
+
+Code and notebooks: [Apache License 2.0](LICENSE).
+Documentation, prose, and diagrams: [CC BY 4.0](LICENSE-content).
+
+You can use, adapt, and redistribute either, including commercially, with attribution.
