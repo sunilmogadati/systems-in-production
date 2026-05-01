@@ -71,4 +71,4 @@ For terminology shared with other architectures, see [Architecture Glossary](../
 | Summarization | LLM with prompts; encoder-decoder for structured output |
 | Multilingual systems | Multilingual transformers (mT5, XLM-R, multilingual LLMs) |
 
-[Sunil Mogadati](https://www.linkedin.com/in/sunilmogadati) | [Community](https://www.skool.com/deliverymomentum)
+[LinkedIn](https://linkedin.com/in/sunilmogadati) · [Community](https://www.skool.com/deliverymomentum) · [Engagement inquiries](https://calendly.com/sunil-mogadati/connect)

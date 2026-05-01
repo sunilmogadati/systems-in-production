@@ -42,4 +42,4 @@ For math refreshers, see [Math for AI](../math-for-ai.md).
 | [Computer_Vision_CNN.ipynb](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Computer_Vision_CNN.ipynb) | Full CNN in PyTorch on MNIST. Convolution, pooling, training loop, evaluation. |
 | [Deep_Learning_Regularization.ipynb](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Deep_Learning_Regularization.ipynb) | Dropout, L2, batch norm, augmentation — the regularizers that fight overfitting. Used by [04 — How It Works](04_How_It_Works.md). |
 
-[Sunil Mogadati](https://www.linkedin.com/in/sunilmogadati) | [Community](https://www.skool.com/deliverymomentum)
+[LinkedIn](https://linkedin.com/in/sunilmogadati) · [Community](https://www.skool.com/deliverymomentum) · [Engagement inquiries](https://calendly.com/sunil-mogadati/connect)

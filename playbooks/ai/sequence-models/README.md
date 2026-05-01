@@ -43,4 +43,4 @@ For math refreshers, see [Math for AI](../math-for-ai.md). For terminology share
 | [Deep Learning](../deep-learning/) | For backprop, training mechanics |
 | [NLP](../nlp/) (coming) | For language tasks that historically used RNN/LSTM |
 
-[Sunil Mogadati](https://www.linkedin.com/in/sunilmogadati) | [Community](https://www.skool.com/deliverymomentum)
+[LinkedIn](https://linkedin.com/in/sunilmogadati) · [Community](https://www.skool.com/deliverymomentum) · [Engagement inquiries](https://calendly.com/sunil-mogadati/connect)

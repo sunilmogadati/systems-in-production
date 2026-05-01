@@ -21,4 +21,4 @@ No dedicated notebook — semantic layer tools are platform-specific (Starburst,
 
 ## Get Help
 
-[Community](https://www.skool.com/deliverymomentum) | [Book a 1:1](https://calendly.com/sunil-mogadati/connect)
+[LinkedIn](https://linkedin.com/in/sunilmogadati) · [Community](https://www.skool.com/deliverymomentum) · [Engagement inquiries](https://calendly.com/sunil-mogadati/connect)

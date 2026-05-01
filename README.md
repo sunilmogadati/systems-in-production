@@ -222,11 +222,13 @@ All notebooks open in Colab. Most run without setup; a few (RAG, Agents) require
 
 ---
 
-## Community and Engagement
+## Connect
 
-**[Skool: Delivery Momentum](https://www.skool.com/deliverymomentum)** — discussion, real-system question threads, periodic deep dives.
+**[LinkedIn](https://linkedin.com/in/sunilmogadati)** — professional updates and writing.
 
-**[Book a 1:1 with Sunil](https://calendly.com/sunil-mogadati/connect)** — for delivery recovery engagements and technical leadership conversations.
+**[Skool: Delivery Momentum](https://www.skool.com/deliverymomentum)** — discussion, real-system threads.
+
+**[Engagement inquiries](https://calendly.com/sunil-mogadati/connect)** — delivery recovery, embedded technical leadership.
 
 ---
 
