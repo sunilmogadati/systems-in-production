@@ -1,45 +1,62 @@
 # Systems in Production
 
-**Reference architectures and operating playbooks for intelligent systems in production — Cloud, Data, AI.**
+**Production architecture IP and operating playbooks from 25+ years of building and recovering complex systems — Cloud, Data, AI.**
 
-Production-grade playbooks, runnable notebooks, real architectures, real failure modes, and the decision-making behind them.
-
----
-
-## Start Here
-
-Six entry points, depending on what you are trying to build or learn next. Each link lands on a 10-chapter playbook with a runnable notebook.
-
-| If you want to... | Start here |
-|---|---|
-| Ground an LLM in your organization's data (RAG done right, not the demo) | [RAG playbook](playbooks/ai/rag/) → [RAG from Scratch notebook](implementation/notebooks/RAG_from_Scratch.ipynb) |
-| Build an agent that uses tools and reasons across steps | [Agents playbook](playbooks/ai/agents/) → [Agents notebook](implementation/notebooks/Agents.ipynb) |
-| Move from Java / C# / typed-language background into Python for AI | [Python for Java/C# Developers](implementation/notebooks/Python_Java_Bridge.ipynb), then the [Python playbook](playbooks/python/) |
-| Connect data pipelines to ML models in a defensible way | [Data → Model pipeline](playbooks/Data_to_Model_Pipeline.md) + [Bronze-Silver-Gold pattern](patterns/bronze-silver-gold.md) |
-| See how production AI systems are actually architected | [systems/](systems/) (CSI architecture) + [patterns/](patterns/) + [failures/](failures/) |
-| Learn the architectures (CNN, RNN/LSTM, Transformer, GAN, U-Net) end to end | [AI playbooks index](playbooks/ai/) + [Architecture Reference Card](resources/architecture-reference.md) |
-
-For the full sequence (language → data → intelligence → engineering → production system), see *The Builder's Path* below.
+Real architectures. Real failure modes. Real decision-making. With runnable companion material for engineers ramping up on the foundations these systems are built on.
 
 ---
 
-## What's in This Repo
+## What this repo is
 
-| Section | Coverage |
-|---|---|
-| **[playbooks/](playbooks/)** | 10-chapter playbooks per domain (Why → Concepts → Hello World → How It Works → Building It → Production Patterns → System Design → Quality/Security → Observability → Decision Guide). |
-| **[implementation/notebooks/](implementation/notebooks/)** | Runnable Colab notebooks. Pure-NumPy from-scratch walkthroughs and full PyTorch / scikit-learn implementations. |
-| **[systems/](systems/)** | Real production system architectures with diagrams. CSI (a production diagnostic system) is the centerpiece. |
-| **[patterns/](patterns/)** | Reusable architectural patterns: Bronze-Silver-Gold, multi-system reconciliation, AI-derived features, feedback loops. |
-| **[decisions/](decisions/)** | Architecture decision records: batch vs streaming, star schema vs query source, SQL vs Spark vs BigQuery. |
-| **[failures/](failures/)** | What breaks at production scale and why. |
-| **[resources/](resources/)** | One-page reference cards. |
+This repo serves two purposes deliberately. They share a repository because production work and the foundations feeding it are not separable in practice — but they are written for different audiences and you should read them differently.
+
+**Thread 1 — Production Architecture and Delivery IP.** Case studies, architectural patterns, failure modes, and architecture decision records from production systems I have designed, recovered, or stabilized. This is the operator-level material — what engineering leaders need when delivery is stuck and the answer is not more tools or more people.
+
+**Thread 2 — Reference Notebooks and Playbooks.** A learning track for engineers ramping up on the AI, data, and engineering foundations these production systems sit on top of. From-scratch math-by-hand notebooks alongside full PyTorch / scikit-learn implementations. Open and adaptable under permissive licenses.
 
 ---
 
-## The Builder's Path
+## Thread 1 — Production Architecture and Delivery IP
 
-The full sequence for building intelligent production systems.
+### [Architectural Patterns](patterns/)
+
+Reusable patterns that recur across production systems:
+
+- [Bronze-Silver-Gold](patterns/bronze-silver-gold.md) — the tiered data refinement pattern
+- [Multi-system reconciliation](patterns/multi-system-reconciliation.md) — when truth lives in multiple databases
+- [AI-derived features](patterns/ai-derived-features.md) — feeding ML output back as features
+- [Feedback loops](patterns/feedback-loops.md) — closing the loop in production AI
+- [Event-driven diagnostics](patterns/event-driven-diagnostics.md) — emitting events for downstream observability
+
+### [Production Failures](failures/)
+
+What breaks at scale, and why:
+
+- [Why flat tables break](failures/why-flat-tables-break.md)
+- [Why ML fails with bad features](failures/why-ml-fails-with-bad-features.md)
+- [Why cross-system joins fail](failures/why-cross-system-joins-fail.md)
+
+### [Architecture Decisions](decisions/)
+
+Documented decision records:
+
+- [Batch vs streaming](decisions/batch-vs-streaming.md)
+- [Star schema vs query source](decisions/star-schema-vs-query-source.md)
+- [SQL vs Spark vs BigQuery](decisions/sql-vs-spark-vs-bigquery.md)
+
+### Delivery Case Notes
+
+`case-notes/` — anonymized delivery recovery stories from real engagements. Added as engagements close and material is cleared for public write-up.
+
+---
+
+## Thread 2 — Reference Notebooks and Playbooks
+
+Each playbook follows the same 10-chapter structure (Why → Concepts → Hello World → How It Works → Building It → Production Patterns → System Design → Quality/Security → Observability → Decision Guide) with a companion runnable notebook. All notebooks open in Colab; most run without setup.
+
+### The Builder's Path
+
+The sequence for building toward intelligent production systems.
 
 ```mermaid
 graph TD
@@ -94,20 +111,16 @@ graph TD
     SWE --> SYS
 ```
 
----
+### AI Playbooks
 
-## AI Playbooks
-
-Each AI playbook follows the same 10-chapter structure (Why through Decision Guide) with a companion from-scratch notebook.
-
-### Foundations
+**Foundations**
 
 | Playbook | Focus | Companion Notebook |
 |---|---|---|
 | [Machine Learning](playbooks/ai/ml/) | Prediction, classification, anomaly detection (21 algorithms) | [ML Fundamentals](implementation/notebooks/ML_Fundamentals.ipynb), [Linear Regression](implementation/notebooks/Linear_Regression.ipynb), [Logistic Regression](implementation/notebooks/Logistic_Regression.ipynb) |
 | [Deep Learning](playbooks/ai/deep-learning/) | Neural network foundations, training mechanics, diagnostics | [Deep_Learning_From_Scratch](implementation/notebooks/Deep_Learning_From_Scratch.ipynb) (NumPy MLP + autograd verification), [Deep_Learning_PyTorch](implementation/notebooks/Deep_Learning_PyTorch.ipynb), [Deep_Learning_Regularization](implementation/notebooks/Deep_Learning_Regularization.ipynb) |
 
-### Task-Domain and Architecture
+**Task-Domain and Architecture**
 
 | Playbook | Focus | Companion Notebook |
 |---|---|---|
@@ -117,14 +130,14 @@ Each AI playbook follows the same 10-chapter structure (Why through Decision Gui
 | [Transformers](playbooks/ai/transformers/) | Self-attention, encoder/decoder, GPT/BERT. Architecture deep dive for the Transformer. | [Transformer_From_Scratch](implementation/notebooks/Transformer_From_Scratch.ipynb) (Q/K/V, multi-head, causal masking) |
 | [NLP](playbooks/ai/nlp/) | Task-domain entry point: classification, NER, generation, translation, embeddings. | [NLP_From_Scratch](implementation/notebooks/NLP_From_Scratch.ipynb) (BPE, TF-IDF, naive Bayes) |
 
-### System Patterns
+**System Patterns**
 
 | Playbook | Focus | Companion Notebook |
 |---|---|---|
 | [RAG](playbooks/ai/rag/) | Retrieval-augmented generation — AI grounded in your organization's data | [RAG from Scratch](implementation/notebooks/RAG_from_Scratch.ipynb) |
 | [Agents](playbooks/ai/agents/) | Autonomous AI: ReAct, tool use, multi-step reasoning | [Agents](implementation/notebooks/Agents.ipynb) |
 
-### Shared References
+**Shared References**
 
 | Doc | Purpose |
 |---|---|
@@ -134,9 +147,7 @@ Each AI playbook follows the same 10-chapter structure (Why through Decision Gui
 | [Architecture Reference Card](resources/architecture-reference.md) | One-page printable reference covering foundations + per-architecture quick lookup |
 | [DL_Architecture_Examples](implementation/notebooks/DL_Architecture_Examples.ipynb) | Runnable companion to Architecture Math — parameter counts and shape arithmetic across architectures |
 
----
-
-## Data and Pipelines
+### Data and Pipelines
 
 | Playbook | Focus | Notebooks |
 |---|---|---|
@@ -145,53 +156,18 @@ Each AI playbook follows the same 10-chapter structure (Why through Decision Gui
 | [Cloud Pipelines](playbooks/data/pipelines/cloud/) + [ETL/ELT](playbooks/data/pipelines/etl-elt/) + [Lakehouse](playbooks/data/pipelines/lakehouse/) | Bronze-Silver-Gold, GCP, Delta Lake | [GCP Full Pipeline](implementation/notebooks/GCP_Full_Pipeline.ipynb), [GCP Pipeline Automation](implementation/notebooks/GCP_Pipeline_Automation.ipynb), [ETL/ELT Patterns](implementation/notebooks/ETL_ELT_Patterns.ipynb), [Delta Lake Hello World](implementation/notebooks/Delta_Lake_Hello_World.ipynb) |
 | [PySpark](playbooks/data/pyspark/) | Distributed data processing | [PySpark](implementation/notebooks/PySpark.ipynb) |
 
----
-
-## Python and Engineering
+### Python and Engineering
 
 | Playbook | Focus | Notebooks |
 |---|---|---|
 | [Python](playbooks/python/) | Foundations through advanced patterns | [Python Basics](implementation/notebooks/Python_Basics.ipynb), [Data Structures](implementation/notebooks/Python_Data_Structures.ipynb), [Functions and Classes](implementation/notebooks/Python_Functions_Classes.ipynb), [File I/O](implementation/notebooks/Python_File_IO.ipynb), [NumPy and Pandas](implementation/notebooks/Python_NumPy_Pandas.ipynb), [Advanced Patterns](implementation/notebooks/Python_Advanced.ipynb), [Java/C# Bridge](implementation/notebooks/Python_Java_Bridge.ipynb) |
 | [Software Engineering](playbooks/engineering/) | APIs, testing, Docker, CI/CD, production patterns | [CI/CD for DE](implementation/notebooks/CICD_for_DE.ipynb) |
 
----
-
-## How Real Systems Are Built
-
-### [CSI — A Real Production System](systems/continuous-system-intelligence/architecture.md)
-
-**a production diagnostic system**: a system that continuously observes, diagnoses, and improves production environments across code, data, product, and business signals. Full architecture documented with Mermaid diagrams.
-
-### [Architectural Patterns](patterns/)
-
-Reusable patterns that show up across systems:
-- [Bronze-Silver-Gold](patterns/bronze-silver-gold.md) — the tiered data refinement pattern
-- [Multi-system reconciliation](patterns/multi-system-reconciliation.md) — when truth lives in multiple databases
-- [AI-derived features](patterns/ai-derived-features.md) — feeding ML output back as features
-- [Feedback loops](patterns/feedback-loops.md) — closing the loop in production AI
-- [Event-driven diagnostics](patterns/event-driven-diagnostics.md) — emitting events for downstream observability
-
-### [Production Failures](failures/)
-
-What breaks at scale, and why:
-- [Why flat tables break](failures/why-flat-tables-break.md)
-- [Why ML fails with bad features](failures/why-ml-fails-with-bad-features.md)
-- [Why cross-system joins fail](failures/why-cross-system-joins-fail.md)
-
-### [Architecture Decisions](decisions/)
-
-Documented decision records:
-- [Batch vs streaming](decisions/batch-vs-streaming.md)
-- [Star schema vs query source](decisions/star-schema-vs-query-source.md)
-- [SQL vs Spark vs BigQuery](decisions/sql-vs-spark-vs-bigquery.md)
-
----
-
-## Notebooks Index
+### Notebooks Index
 
 All notebooks open in Colab. Most run without setup; a few (RAG, Agents) require Ollama or other local services — those notebooks document the setup.
 
-### From-Scratch (Math by Hand + PyTorch / sklearn Verification)
+**From-Scratch (Math by Hand + PyTorch / sklearn Verification)**
 
 | Notebook | What It Does |
 |---|---|
@@ -203,7 +179,7 @@ All notebooks open in Colab. Most run without setup; a few (RAG, Agents) require
 | [NLP_From_Scratch](implementation/notebooks/NLP_From_Scratch.ipynb) | Classical NLP by hand. BPE tokenization, TF-IDF, naive Bayes, Word2Vec via PCA. sklearn verification. |
 | [DL_Architecture_Examples](implementation/notebooks/DL_Architecture_Examples.ipynb) | Runnable parameter-count and shape-arithmetic examples for GAN, RNN, LSTM, U-Net, ResNet, Transformer. |
 
-### Full Implementation in PyTorch / Frameworks
+**Full Implementation in PyTorch / Frameworks**
 
 | Notebook | What It Does |
 |---|---|
@@ -215,7 +191,7 @@ All notebooks open in Colab. Most run without setup; a few (RAG, Agents) require
 | [Agents](implementation/notebooks/Agents.ipynb) | ReAct, tool use, multi-step reasoning. |
 | [Multimodal_AI](implementation/notebooks/Multimodal_AI.ipynb) | Vision-language pipelines. |
 
-### Foundations and Data
+**Foundations and Data**
 
 | Notebook | What It Does |
 |---|---|
@@ -242,8 +218,6 @@ All notebooks open in Colab. Most run without setup; a few (RAG, Agents) require
 ## Connect
 
 **[LinkedIn](https://linkedin.com/in/sunilmogadati)** — professional updates and writing.
-
-**[Skool: Delivery Momentum](https://www.skool.com/deliverymomentum)** — discussion, real-system threads.
 
 **[Engagement inquiries](https://calendly.com/sunil-mogadati/connect)** — delivery recovery, embedded technical leadership.
 
