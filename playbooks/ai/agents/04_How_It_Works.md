@@ -359,4 +359,4 @@ This prevents infinite loops and forces the agent to converge.
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) -- see all of this in action, including failure handling and multi-agent coordination.
 
-**Production architecture:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+**Production architecture:** a real-world production diagnostic system

@@ -163,7 +163,7 @@ This is the field you are entering. It is not stable. The specific architecture 
 
 Deep learning is not a standalone product. It is a COMPONENT of larger systems.
 
-In our **Production Diagnostic Intelligence System (CSI):**
+In a real-world production diagnostic system:
 
 | Component | What It Does | How DL Helps |
 |---|---|---|
@@ -174,7 +174,7 @@ In our **Production Diagnostic Intelligence System (CSI):**
 
 When an alert fires at 2 AM, the DL component flags the unusual pattern in the metrics. The RAG component finds the runbook section. The agent assembles the diagnostic. Every layer of the system has a deep learning model somewhere inside it.
 
-See the full architecture: [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+See the full architecture: a real-world production diagnostic system
 
 ---
 

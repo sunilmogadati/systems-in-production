@@ -247,7 +247,7 @@ Most agents start with short-term memory only. Long-term memory is added when th
 
 The agent is the glue. It is not smarter than the individual components -- it is the decision-maker that connects them into a workflow.
 
-See the full system: [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+See the full system: a real-world production diagnostic system
 
 ---
 
@@ -268,4 +268,4 @@ See the full system: [CSI Architecture](../../../systems/continuous-system-intel
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb) -- builds everything from a from-scratch ReAct agent to multi-agent systems with LangGraph, all running locally with Ollama.
 
-**Production architecture:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+**Production architecture:** a real-world production diagnostic system

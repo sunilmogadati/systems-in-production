@@ -153,7 +153,7 @@ Transformers rarely ship standalone. They are components of larger systems.
 
 A "ChatGPT" deployment is the model plus all of these. The model alone produces tokens; the system around it produces a product.
 
-In our **Production Diagnostic Intelligence System (CSI):**
+In a real-world production diagnostic system:
 
 | Component | How Transformers Help |
 |---|---|
@@ -162,7 +162,7 @@ In our **Production Diagnostic Intelligence System (CSI):**
 | Auto-summarization | Encoder-decoder summarizes long incident reports for stakeholders |
 | Code generation for fixes | Decoder-only LLM proposes patches given the bug context |
 
-See the full architecture: [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+See the full architecture: a real-world production diagnostic system
 
 ---
 

@@ -149,7 +149,7 @@ Recurrent models rarely ship standalone. They are components of larger systems.
 | **Decoder / business logic** | Turns predictions into actions (alerts, transcriptions, forecasts) |
 | **Feedback / retraining** | Captures hard cases, retrains periodically |
 
-In our **Production Diagnostic Intelligence System (CSI):**
+In a real-world production diagnostic system:
 
 | Component | How Sequence Models Help |
 |---|---|
@@ -157,7 +157,7 @@ In our **Production Diagnostic Intelligence System (CSI):**
 | Log sequence analysis | LSTM reads recent log lines and flags suspicious patterns |
 | Capacity forecasting | LSTM predicts CPU/memory/traffic for autoscaling |
 
-See the full architecture: [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+See the full architecture: a real-world production diagnostic system
 
 ---
 

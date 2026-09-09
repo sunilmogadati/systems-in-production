@@ -140,7 +140,7 @@ Vision rarely ships standalone. It is a component of a larger system.
 
 A self-driving car has 8 cameras. Each frame goes through a CNN that detects pedestrians, cars, lanes, signs. The output goes to a planning system that decides what the car does. The whole system is integrated. The CNN by itself drives nothing.
 
-In our **Production Diagnostic Intelligence System (CSI):**
+In a real-world production diagnostic system:
 
 | Component | How CV Helps |
 |---|---|
@@ -148,7 +148,7 @@ In our **Production Diagnostic Intelligence System (CSI):**
 | Document analysis | OCR (Optical Character Recognition) + CNN extracts data from screenshots, error reports, support tickets with images |
 | UI testing | Visual regression detection — CNN spots when a UI element drifted between deploys |
 
-See the full architecture: [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+See the full architecture: a real-world production diagnostic system
 
 ---
 

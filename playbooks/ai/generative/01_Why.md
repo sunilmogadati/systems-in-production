@@ -171,7 +171,7 @@ Generative models rarely ship alone. They are components of larger systems.
 
 A Midjourney-style service is the prompt handler + diffusion model + safety filters + watermark + CDN + payment + community gallery. The model is one of many components. Each is engineering, not just ML.
 
-In our **Production Diagnostic Intelligence System (CSI):**
+In a real-world production diagnostic system:
 
 | Component | How Generative Helps |
 |---|---|
@@ -180,7 +180,7 @@ In our **Production Diagnostic Intelligence System (CSI):**
 | Diagram generation | Diffusion generates architecture diagrams from text descriptions |
 | Anomaly synthesis | VAE generates "what would unhealthy look like?" for anomaly detection training |
 
-See the full architecture: [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+See the full architecture: a real-world production diagnostic system
 
 ---
 

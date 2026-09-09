@@ -387,4 +387,4 @@ This 10-chapter series covers AI agents from first principles to production read
 
 **Hands-on notebook:** [Agents on Colab](https://colab.research.google.com/github/sunilmogadati/systems-in-production/blob/main/implementation/notebooks/Agents.ipynb)
 
-**Production architecture:** [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+**Production architecture:** a real-world production diagnostic system

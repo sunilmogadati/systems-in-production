@@ -203,7 +203,7 @@ NLP rarely ships standalone. It is a layer in products.
 | **Postprocessing + output** | Convert model output to product action |
 | **Feedback loop** | User corrections / ratings drive retraining |
 
-In our **Production Diagnostic Intelligence System (CSI):**
+In a real-world production diagnostic system:
 
 | Component | NLP Role |
 |---|---|
@@ -213,7 +213,7 @@ In our **Production Diagnostic Intelligence System (CSI):**
 | Auto-summarization | LLM produces stakeholder-friendly incident summaries |
 | Diagnostic chat | LLM-powered triage assistant (with RAG over runbooks) |
 
-See the full architecture: [CSI Architecture](../../../systems/continuous-system-intelligence/architecture.md)
+See the full architecture: a real-world production diagnostic system
 
 ---
 
